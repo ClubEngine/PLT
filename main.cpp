@@ -1,7 +1,9 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
-#include "core/game.hpp"
 
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+
+#include "core/game.hpp"
 #include "core/TextureHolder.hpp"
 
 using namespace std;
