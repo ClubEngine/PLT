@@ -9,11 +9,24 @@ int main(int argc, char ** argv) {
 
 
     sf::RenderWindow window(
-                sf::VideoMode(800, 600), "Title", sf::Style::Default, sf::ContextSettings(32));
+                sf::VideoMode(800, 600), "CANARD WC", sf::Style::Default, sf::ContextSettings(32));
 
     window.setVerticalSyncEnabled(true);
     // /* or */window.setFramerateLimit(60);
 
+    sf::Texture canardText;
+    if (!canardText.loadFromFile("/home/juleffel/PLT/assets/images/canard.gif"))
+    {
+        cerr << "Erreur lors du chargement de la texture" << endl;
+    }
+    canardText.setSmooth(true);
+    sf::Sprite canardSprite;
+    canardSprite.setTexture(canardText);
+    canardSprite.setScale(sf::Vector2f(0.2f, 0.2f));
+
+    sf::CircleShape c;
+    c.setRadius(10);
+    c.setFillColor(sf::Color::Red);
 
     // run the main loop
     bool running = true;
@@ -30,9 +43,13 @@ int main(int argc, char ** argv) {
                 if (event.key.code == sf::Keyboard::Escape)
                     running = false;
                 if (event.key.code == sf::Keyboard::Up) {
+                    canardSprite.move(0, -5);
                 } else if (event.key.code == sf::Keyboard::Down) {
+                    canardSprite.move(0, 5);
                 } else if (event.key.code == sf::Keyboard::Left) {
+                    canardSprite.move(-5, 0);
                 } else if (event.key.code == sf::Keyboard::Right) {
+                    canardSprite.move(5, 0);
                 }
             }
             else if (event.type == sf::Event::KeyReleased) {
@@ -54,7 +71,8 @@ int main(int argc, char ** argv) {
         }
 
         window.clear();
-        //window.draw();
+        //window.draw(c);
+        window.draw(canardSprite);
         window.display();
     }
 
