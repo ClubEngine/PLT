@@ -19,8 +19,7 @@ class StateStack : private sf::NonCopyable
 			Clear
 		};
 		
-
-		explicit StateStack(AbstractStateFactory & factory, Context & context);
+		explicit StateStack(AbstractStateFactory & factory, Context context);
 		
 		void update(sf::Time dt);
 		void handleEvent(const sf::Event & event);
@@ -47,7 +46,7 @@ class StateStack : private sf::NonCopyable
 		
 		StatePtrVector mStack;
 		PendingChangeVector mPendingList;
-		Context & mContext;
+		Context mContext;
 		
 		AbstractStateFactory & mFactory;
 };

@@ -4,7 +4,7 @@
 #include "States.hpp"
 
 #include "State.hpp"
-
+#include "DebugState.hpp"
 
 
 class StateStack;
