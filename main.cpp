@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "core/game.hpp"
 
 using namespace std;
 
@@ -7,11 +8,10 @@ int main(int argc, char ** argv) {
 
     cout << "SFML2 Project" << __DATE__ << " à " << __TIME__ << endl;
 
+    Game game;
+    game.createWindow();
 
-    sf::RenderWindow window(
-                sf::VideoMode(800, 600), "Title", sf::Style::Default, sf::ContextSettings(32));
-
-    window.setVerticalSyncEnabled(true);
+    game.getWindow()->setVerticalSyncEnabled(true);
     // /* or */window.setFramerateLimit(60);
 
     sf::CircleShape c;
@@ -23,7 +23,7 @@ int main(int argc, char ** argv) {
     while (running) {
 
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (game.getWindow()->pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 running = false;
             }
@@ -56,9 +56,9 @@ int main(int argc, char ** argv) {
             }
         }
 
-        window.clear();
-        window.draw(c);
-        window.display();
+        game.getWindow()->clear();
+        game.getWindow()->draw(c);
+        game.getWindow()->display();
     }
 
     return 0;
