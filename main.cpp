@@ -6,7 +6,7 @@
 #include "core/state/StateStack.hpp"
 #include "gameplay/CStateFactory.hpp"
 #include "core/Context.hpp"
-#include "core/Game.hpp"
+#include "core/Application.hpp"
 #include "core/TextureHolder.hpp"
 
 using namespace std;
@@ -15,24 +15,23 @@ int main(int argc, char ** argv) {
 
     cout << "Long Term Project " << __DATE__ << " at " << __TIME__ << endl;
 	
-	
-    Game game;
-    game.createWindow();
-    game.getWindow().setVerticalSyncEnabled(true);
-    // or game.getWindow()->setFramerateLimit(60);
+    Application application;
+    application.createWindow();
+    application.getWindow().setVerticalSyncEnabled(true);
+    // or application.getWindow()->setFramerateLimit(60);
 
-    Context context(game.getWindow(), game.getTextureHolder(),
-					game.getSoundHolder());
+    Context context(application.getWindow(), application.getTextureHolder(),
+                    application.getSoundHolder());
 	
 	CStateFactory factory;
 	StateStack stack(factory, context);
     stack.pushState(States::Title);
 	stack.pushState(States::Game);
 	
-    sf::Sprite sp(game.getTextureHolder().get(Textures::Patate));
+    sf::Sprite sp(application.getTextureHolder().get(Textures::Patate));
     
     sf::Sprite canardSprite;
-    canardSprite.setTexture(game.getTextureHolder().get(Textures::Rire));
+    canardSprite.setTexture(application.getTextureHolder().get(Textures::Rire));
     canardSprite.setScale(sf::Vector2f(0.2f, 0.2f));
 
     // run the main loop
@@ -40,7 +39,7 @@ int main(int argc, char ** argv) {
     while (running) {
 
         sf::Event event;
-        while (game.getWindow().pollEvent(event)) {
+        while (application.getWindow().pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 running = false;
             }
@@ -75,16 +74,14 @@ int main(int argc, char ** argv) {
             }
             else if (event.type == sf::Event::MouseButtonReleased) {
             }
-			
-			
+				
 			stack.handleEvent(event);
-			
         }
 
-        game.getWindow().clear();
+        application.getWindow().clear();
         stack.draw();
-        game.getWindow().draw(canardSprite);
-        game.getWindow().display();
+        application.getWindow().draw(canardSprite);
+        application.getWindow().display();
     }
 
     return 0;
