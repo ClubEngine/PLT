@@ -13,7 +13,25 @@ class GameState : public State
 		virtual void draw();
 		
 	private:
-		int lol;
+        int lol;
+
+        bool mouseispressed;
+
+        struct selected {
+            sf::Vector2i p1;
+            sf::Vector2i p2;
+        };
+        float aux;
+
+        selected selected;
+
+        int width, height;
+        int tileSize;
+        int map[80][60];
+
+        sf::Texture grid;
+        sf::Sprite gridsprite;
+        sf::RectangleShape selection;
 };
 
 
