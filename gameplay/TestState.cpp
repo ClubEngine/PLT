@@ -22,6 +22,6 @@ bool TestState::update(sf::Time dt)
 
 void TestState::draw()
 {
-	
-	carte->Display(application.getWindow());
+	sf::RenderWindow & window = *getContext().window;
+	carte->Display(&window);
 }

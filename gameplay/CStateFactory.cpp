@@ -2,6 +2,7 @@
 
 #include "TitleState.hpp"
 #include "GameState.hpp"
+#include "TestState.hpp"
 
 CStateFactory::CStateFactory()
 {
@@ -12,6 +13,10 @@ State *CStateFactory::get(States::ID id, StateStack &stateStack, Context &contex
 	switch(id) {
 		case States::Debug:
 			return new DebugState(stateStack, context);
+			break;
+		
+		case States::Test:
+			return new TestState(stateStack, context);
 			break;
 			
 		case States::Title:

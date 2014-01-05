@@ -4,7 +4,7 @@
 
 namespace States {
 	
-	enum ID { None, Debug, Title, Menu, Game, Pause };
+	enum ID { None, Debug, Test, Title, Menu, Game, Pause };
 	
 }
 

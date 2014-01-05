@@ -20,7 +20,7 @@ int main(int argc, char ** argv) {
 	Application application(factory);
 
 	application.pushState(States::Title);
-	application.pushState(States::Game);
+	application.pushState(States::Test);
 	application.pushState(States::Debug);
 	
 	application.run();
