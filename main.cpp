@@ -23,6 +23,10 @@ int main(int argc, char ** argv) {
 	sf::Sprite sp( textureHolder.get(Textures::Patate) );
 	sf::Sprite sp2( textureHolder.get(Textures::Rire) );
 	
+    sf::CircleShape c;
+    c.setRadius(10);
+    c.setFillColor(sf::Color::Red);
+
     // run the main loop
     bool running = true;
     while (running) {
@@ -64,6 +68,8 @@ int main(int argc, char ** argv) {
         window.clear();
         window.draw(sp);
 		window.draw(sp2);
+
+        window.draw(c);
         window.display();
     }
 
