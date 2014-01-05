@@ -23,10 +23,8 @@ Application::Application(AbstractStateFactory &factory)
     mTextureHolder.load(Textures::Patate,	"assets/images/patate.png");
     mTextureHolder.load(Textures::Rire,		"assets/images/canard.gif");
 	
-	
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setVerticalSyncEnabled(true);
-	
 }
 
 void Application::pushState(States::ID id)

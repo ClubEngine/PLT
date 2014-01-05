@@ -1,12 +1,13 @@
-#ifndef CSTATEFACTORY_HPP
-#define CSTATEFACTORY_HPP
+#ifndef MYSTATEFACTORY_HPP
+#define MYSTATEFACTORY_HPP
 
 #include "../core/state/AbstractStateFactory.hpp"
+#include "gameplay/MyStates.hpp"
 
-class CStateFactory : public AbstractStateFactory
+class MyStateFactory : public AbstractStateFactory
 {
 	public:
-		CStateFactory();
+		MyStateFactory();
 		
 		virtual State * get(States::ID id, StateStack &stateStack, Context & context);
 };
