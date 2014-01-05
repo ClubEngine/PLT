@@ -86,7 +86,7 @@ int main(int argc, char ** argv) {
         // *** AFFICHAGE ***
         application.getWindow().clear();
         stack.draw();
-         carte->Display(application.getWindow());
+        //carte->Display(application.getWindow());
         application.getWindow().draw(canardSprite);
         application.getWindow().display();
     }
