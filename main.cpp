@@ -1,20 +1,28 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "TextureHolder.hpp"
+
 using namespace std;
 
 int main(int argc, char ** argv) {
 
-    cout << "SFML2 Project" << __DATE__ << " à " << __TIME__ << endl;
+    cout << "Long Term Project " << __DATE__ << " at " << __TIME__ << endl;
 
 
     sf::RenderWindow window(
-                sf::VideoMode(800, 600), "Title", sf::Style::Default, sf::ContextSettings(32));
+                sf::VideoMode(800, 600), "Title", sf::Style::Default);
 
     window.setVerticalSyncEnabled(true);
     // /* or */window.setFramerateLimit(60);
 
-
+	TextureHolder textureHolder;
+	textureHolder.load(Textures::Patate,	"patate.png");
+	//textureHolder.load(Textures::Rire,		"rire.png");
+	
+	sf::Sprite sp( textureHolder.get(Textures::Patate) );
+	sf::Sprite sp2( textureHolder.get(Textures::Rire) );
+	
     // run the main loop
     bool running = true;
     while (running) {
@@ -54,7 +62,8 @@ int main(int argc, char ** argv) {
         }
 
         window.clear();
-        //window.draw();
+        window.draw(sp);
+		window.draw(sp2);
         window.display();
     }
 
