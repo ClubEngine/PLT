@@ -15,6 +15,7 @@ SOURCES += \
     main.cpp \
     core/TextureHolder.cpp \
     core/Game.cpp \
+    core/SoundHolder.cpp \
     core/state/StateStack.cpp \
     core/state/State.cpp \
     gameplay/TitleState.cpp \
@@ -27,6 +28,8 @@ HEADERS += \
     core/Game.hpp \
     core/TextureHolder.hpp \
     core/Textures.hpp \
+    core/SoundHolder.hpp \
+    core/Sounds.hpp \
     core/state/StateStack.hpp \
     core/state/States.hpp \
     core/state/State.hpp \
