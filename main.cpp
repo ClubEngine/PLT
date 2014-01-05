@@ -3,21 +3,33 @@
 #include "core/game.hpp"
 
 #include "TextureHolder.hpp"
+#include "core/state/StateStack.hpp"
+#include "gameplay/CStateFactory.hpp"
+#include "core/Context.hpp"
 
 using namespace std;
 
 int main(int argc, char ** argv) {
 
     cout << "Long Term Project " << __DATE__ << " at " << __TIME__ << endl;
-
+	
+	
     Game game;
     game.createWindow();
     game.getWindow()->setVerticalSyncEnabled(true);
     // /* or */window.setFramerateLimit(60);
-
+	
 	TextureHolder textureHolder;
 	textureHolder.load(Textures::Patate,	"assets/images/patate.png");
 	textureHolder.load(Textures::Rire,		"assets/images/canard.gif");
+
+	Context context(*game.getWindow(), textureHolder);
+	
+	CStateFactory factory;
+	StateStack stack(factory, context);
+	stack.pushState(States::Title);
+	
+
 	
 	sf::Sprite sp( textureHolder.get(Textures::Patate) );
     
@@ -28,6 +40,8 @@ int main(int argc, char ** argv) {
     sf::CircleShape c;
     c.setRadius(10);
     c.setFillColor(sf::Color::Red);
+	
+	
 
     // run the main loop
     bool running = true;
