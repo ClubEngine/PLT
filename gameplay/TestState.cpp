@@ -4,7 +4,7 @@ TestState::TestState(StateStack &stack, Context &context)
 	: State(stack, context)
 {
 	
-	carte = new Map();
+    carte = new Map(context, 20, 20);
     carte->setTile(1,1,1); // on place une terre
 }
 

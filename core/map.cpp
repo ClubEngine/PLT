@@ -1,28 +1,30 @@
 #include "map.hpp"
+#include <iostream>
 
 using namespace std;
 
 
-Map::Map(){
-    //taille arbitraire 20*20
-    nbrows = 20;
-    nbcols = 20;
+Map::Map(Context &context, int nbCols, int nbRows){
+
+    nbcols = nbRows;
+    nbrows = nbCols; // Oh ta gueule toi...
+
     matrix = (int*)malloc(sizeof(int)*nbrows*nbcols);
     tile_size = 25; //provisoire
 
-    textureHolder.load(Textures::Mapping, "assets/images/maptileset.bmp");
-
-    spriteHerbe.setTexture(textureHolder.get(Textures::Mapping));
-    spriteTerre.setTexture(textureHolder.get(Textures::Mapping));
+    spriteHerbe.setTexture(context.textures->get(Textures::Mapping));
+    spriteTerre.setTexture(context.textures->get(Textures::Mapping));
     spriteHerbe.setTextureRect(sf::IntRect(10*tile_size, 1*tile_size, tile_size, tile_size));
     spriteTerre.setTextureRect(sf::IntRect(8*tile_size, 10*tile_size, tile_size, tile_size));
 
     //initialisation avec des 0
-    for(int i = 0; i<(nbrows* nbrows); i++){
+    for(int i = 0; i<(nbcols * nbrows); i++){
         matrix[i]=0;
     }
 }
 
+// i : Ligne
+// j : Colonne
 int Map::getTile(int i, int j){
     return matrix[i*nbcols + j];
 }

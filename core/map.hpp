@@ -3,11 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 #include "core/TextureHolder.hpp"
+#include "core/Context.hpp"
 
 class Map
 {
     public:
-        Map(); //taille arbitraire 20*20
+        Map(Context &context, int nbcols, int nbrows);
 
         int getTile(int i,int j);
         void setTile(int i,int j, int state);
@@ -20,7 +21,6 @@ class Map
         int tile_size;
         void DisplayTile(sf::RenderWindow* render_win, int i, int j, sf::Sprite sp);
 
-        TextureHolder textureHolder;
         sf::Sprite spriteHerbe;
         sf::Sprite spriteTerre;
 };

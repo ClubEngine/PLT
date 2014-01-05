@@ -13,14 +13,9 @@ GameState::GameState(StateStack &stack, Context &context)
     width = getContext().window->getSize().x;
     height = getContext().window->getSize().y;
 
-    map = new Map();
-
-    if (!grid.loadFromFile("assets/images/grid.png", sf::IntRect(0,0,width,height)))
-    {
-        cerr << "Unable to load grid file." << endl;
-    }
-
-    gridsprite.setTexture(grid);
+    //cerr << width/tileSize << "," << height/tileSize << endl;
+    map = new Map(context, width/tileSize, height/tileSize);
+    //map = new Map(context, 20, 20);
 
     selection.setSize(sf::Vector2f(10,10));
     selection.setFillColor(sf::Color(255,0,0,127));

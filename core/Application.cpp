@@ -22,6 +22,7 @@ Application::Application(AbstractStateFactory &factory)
 
     mTextureHolder.load(Textures::Patate,	"assets/images/patate.png");
     mTextureHolder.load(Textures::Rire,		"assets/images/canard.gif");
+    mTextureHolder.load(Textures::Mapping, "assets/images/maptileset.bmp");
 	
 	mWindow.setKeyRepeatEnabled(false);
 	mWindow.setVerticalSyncEnabled(true);
