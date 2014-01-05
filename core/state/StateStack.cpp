@@ -2,7 +2,7 @@
 
 #include "core/Context.hpp"
 
-StateStack::StateStack(AbstractStateFactory & factory, Context & context)
+StateStack::StateStack(AbstractStateFactory & factory, Context context)
 	: mStack(), mPendingList(), mContext(context), mFactory(factory)
 {
 }

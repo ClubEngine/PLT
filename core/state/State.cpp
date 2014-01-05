@@ -3,7 +3,7 @@
 #include "core/Context.hpp"
 #include "core/state/StateStack.hpp"
 
-State::State(StateStack &stack, Context & context)
+State::State(StateStack &stack, Context context)
 	: mStack(stack), mContext(context)
 {
 }
@@ -11,22 +11,22 @@ State::State(StateStack &stack, Context & context)
 
 void State::requestStackPush(States::ID stateID)
 {
-        mStack.pushState(stateID);
+	mStack.pushState(stateID);
 }
 
 void State::requestStackPop()
 {
-        mStack.popState();
+	mStack.popState();
 }
 
 void State::requestStateClear()
 {
-        mStack.clearStates();
+	mStack.clearStates();
 }
 
-Context & State::getContext() const
+Context State::getContext() const
 {
-        return mContext;
+	return mContext;
 }
 
 

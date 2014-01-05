@@ -10,6 +10,10 @@ CStateFactory::CStateFactory()
 State *CStateFactory::get(States::ID id, StateStack &stateStack, Context &context)
 {
 	switch(id) {
+		case States::Debug:
+			return new DebugState(stateStack, context);
+			break;
+			
 		case States::Title:
 			return new TitleState(stateStack, context);
 			break;

@@ -19,7 +19,7 @@ class State
 {
 	public:
 				
-		State(StateStack & stack, Context & context);
+		State(StateStack & stack, Context context);
 		
 		virtual void draw() = 0;
 		
@@ -41,13 +41,13 @@ class State
 		void requestStackPop();
 		void requestStateClear();
 
-		Context & getContext() const;
+		Context getContext() const;
 		
 		
 	private:
 		
 		StateStack & mStack;
-		Context & mContext;
+		Context mContext;
 };
 
 #endif // STATE_HPP

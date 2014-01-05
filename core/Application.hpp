@@ -8,26 +8,30 @@
 
 #include "SoundHolder.hpp"
 #include "TextureHolder.hpp"
+#include "core/state/StateStack.hpp"
 
 class Application
 {
     public:
-        Application();
-
-        int createWindow();
-        sf::RenderWindow & getWindow();
-        SoundHolder & getSoundHolder();
-        TextureHolder & getTextureHolder();
-
-        virtual ~Application();
-
+        Application(AbstractStateFactory & factory);
+		void run();
+		void pushState(States::ID id);
+		
     private:
-        sf::Music mMusic;
-
-		sf::Context mContext;//to create an OpenGL context before the window creation
-        sf::RenderWindow mWindow;
-        SoundHolder soundHolder;
-        TextureHolder textureHolder;
+		
+		void processInputs();
+		void update(sf::Time dt);
+		void render();
+		
+    private:
+		static const sf::Time TimePerFrame;
+        
+		sf::Context mGLContext;//to create an OpenGL context before the window creation
+		sf::RenderWindow mWindow;
+		TextureHolder mTextureHolder;
+		SoundHolder mSoundHolder;     
+		
+        StateStack mStateStack;
 };
 
 #endif // APPLICATION_HPP

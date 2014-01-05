@@ -16,20 +16,10 @@ int main(int argc, char ** argv) {
 
     cout << "Long Term Project " << __DATE__ << " at " << __TIME__ << endl;
 	
-    Application application;
-    application.createWindow();
-    application.getWindow().setVerticalSyncEnabled(true);
-    // or application.getWindow()->setFramerateLimit(60);
-
-    Context context(application.getWindow(), application.getTextureHolder(),
-                    application.getSoundHolder());
-	
 	CStateFactory factory;
-	StateStack stack(factory, context);
-    stack.pushState(States::Title);
-	stack.pushState(States::Game);
-	
-    sf::Sprite sp(application.getTextureHolder().get(Textures::Patate));
+	Application application(factory);
+
+    /*sf::Sprite sp(application.getTextureHolder().get(Textures::Patate));
     
     sf::Sprite canardSprite;
     canardSprite.setTexture(application.getTextureHolder().get(Textures::Rire));
@@ -89,7 +79,13 @@ int main(int argc, char ** argv) {
         //carte->Display(application.getWindow());
         application.getWindow().draw(canardSprite);
         application.getWindow().display();
-    }
+    }*/
+
+	application.pushState(States::Title);
+	application.pushState(States::Game);
+	application.pushState(States::Debug);
+	
+        application.run();
 
     return 0;
 }

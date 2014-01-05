@@ -2,10 +2,9 @@
 #define STATES_HPP
 
 
-
 namespace States {
 	
-	enum ID { None, Title, Menu, Game, Pause };
+	enum ID { None, Debug, Title, Menu, Game, Pause };
 	
 }
 

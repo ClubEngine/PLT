@@ -10,15 +10,16 @@ class SoundHolder;
 class Context
 {
 	public:
-		Context(sf::RenderWindow& _window, TextureHolder& _textures,
+		Context(sf::RenderWindow & _window, TextureHolder & _textures,
 				SoundHolder & _sounds) 
-			: window(_window), textures(_textures),
-			  sounds(_sounds)
-		{	}
+			: window(&_window), textures(&_textures),
+			  sounds(&_sounds)
+		{
+		}
 
-		sf::RenderWindow &        window;
-		TextureHolder &           textures;
-		SoundHolder & sounds;
+		sf::RenderWindow * window;
+		TextureHolder * textures;
+		SoundHolder * sounds;
 	
 };
 

@@ -128,10 +128,12 @@ bool GameState::handleEvent(const sf::Event &event)
     default:
         break;
     }
+	return false;
 }
 
 bool GameState::update(sf::Time dt)
 {
+	return true;
 }
 
 void GameState::draw()
@@ -180,9 +182,5 @@ void GameState::draw()
     getContext().window.draw(selection);
 
 	sf::Sprite sp( getContext().textures.get(Textures::Patate) );
-	sp.setPosition(lol,lol);
-	lol+=1;
-	
-	getContext().window.draw(sp);
 	
 }

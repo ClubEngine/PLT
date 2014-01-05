@@ -28,8 +28,8 @@ SOURCES += \
     core/Context.cpp \
     gameplay/GameState.cpp \
     core/Application.cpp \
- core/map.cpp
-
+    core/map.cpp \
+    core/state/DebugState.cpp
 HEADERS += \
     core/TextureHolder.hpp \
     core/Textures.hpp \
@@ -44,5 +44,6 @@ HEADERS += \
     core/Context.hpp \
     gameplay/GameState.hpp \
     core/Application.hpp \
- core/map.hpp
+    core/map.hpp \
+    core/state/DebugState.hpp
 
