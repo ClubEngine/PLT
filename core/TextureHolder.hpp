@@ -4,11 +4,12 @@
 #include <map>
 #include <string>
 
+#include <SFML/System/NonCopyable.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
 #include "Textures.hpp"
 
-class TextureHolder
+class TextureHolder : private sf::NonCopyable
 {
 	public:
 		TextureHolder();

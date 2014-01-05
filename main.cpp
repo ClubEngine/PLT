@@ -3,6 +3,9 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "core/state/StateStack.hpp"
+#include "gameplay/CStateFactory.hpp"
+#include "core/Context.hpp"
 #include "core/Game.hpp"
 #include "core/TextureHolder.hpp"
 
@@ -11,11 +14,18 @@ using namespace std;
 int main(int argc, char ** argv) {
 
     cout << "Long Term Project " << __DATE__ << " at " << __TIME__ << endl;
-
+	
+	
     Game game;
     game.createWindow();
     game.getWindow()->setVerticalSyncEnabled(true);
     // or game.getWindow()->setFramerateLimit(60);
+
+    Context context(*game.getWindow(), *game.getTextureHolder());
+	
+	CStateFactory factory;
+	StateStack stack(factory, context);
+    stack.pushState(States::Title);
 	
     sf::Sprite sp(game.getTextureHolder()->get(Textures::Patate));
     
