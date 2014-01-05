@@ -18,31 +18,29 @@ int main(int argc, char ** argv) {
 	
     Game game;
     game.createWindow();
-    game.getWindow()->setVerticalSyncEnabled(true);
+    game.getWindow().setVerticalSyncEnabled(true);
     // or game.getWindow()->setFramerateLimit(60);
 
-    Context context(*game.getWindow(), *game.getTextureHolder());
+    Context context(game.getWindow(), game.getTextureHolder(),
+					game.getSoundHolder());
 	
 	CStateFactory factory;
 	StateStack stack(factory, context);
     stack.pushState(States::Title);
+	stack.pushState(States::Game);
 	
-    sf::Sprite sp(game.getTextureHolder()->get(Textures::Patate));
+    sf::Sprite sp(game.getTextureHolder().get(Textures::Patate));
     
     sf::Sprite canardSprite;
-    canardSprite.setTexture(game.getTextureHolder()->get(Textures::Rire));
+    canardSprite.setTexture(game.getTextureHolder().get(Textures::Rire));
     canardSprite.setScale(sf::Vector2f(0.2f, 0.2f));
-
-    sf::CircleShape c;
-    c.setRadius(10);
-    c.setFillColor(sf::Color::Red);
 
     // run the main loop
     bool running = true;
     while (running) {
 
         sf::Event event;
-        while (game.getWindow()->pollEvent(event)) {
+        while (game.getWindow().pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 running = false;
             }
@@ -83,13 +81,10 @@ int main(int argc, char ** argv) {
 			
         }
 
-        game.getWindow()->clear();
+        game.getWindow().clear();
         stack.draw();
-		
-		game.getWindow()->draw(sp);
-        game.getWindow()->draw(canardSprite);
-		
-        game.getWindow()->display();
+        game.getWindow().draw(canardSprite);
+        game.getWindow().display();
     }
 
     return 0;

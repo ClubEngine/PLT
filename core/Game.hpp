@@ -15,18 +15,19 @@ class Game
         Game();
 
         int createWindow();
-        sf::RenderWindow * getWindow();
-        SoundHolder * getSoundHolder();
-        TextureHolder * getTextureHolder();
+        sf::RenderWindow & getWindow();
+        SoundHolder & getSoundHolder();
+        TextureHolder & getTextureHolder();
 
         virtual ~Game();
 
     private:
         sf::Music mMusic;
 
-        sf::RenderWindow * mWindow;
-        SoundHolder * soundHolder;
-        TextureHolder * textureHolder;
+		sf::Context mContext;//to create an OpenGL context before the window creation
+        sf::RenderWindow mWindow;
+        SoundHolder soundHolder;
+        TextureHolder textureHolder;
 };
 
 #endif // GAME_HPP

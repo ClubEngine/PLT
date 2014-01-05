@@ -22,7 +22,15 @@ class State
 		State(StateStack & stack, Context & context);
 		
 		virtual void draw() = 0;
+		
+		/**
+		  Return false to stop states updating
+		*/
 		virtual bool update(sf::Time dt) = 0;
+		
+		/**
+		  Return false to stop states updating
+		*/
 		virtual bool handleEvent(const sf::Event & event) = 0; 
 		
 		

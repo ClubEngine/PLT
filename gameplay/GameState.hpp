@@ -11,6 +11,10 @@ class GameState : public State
 		virtual bool handleEvent(const sf::Event & event);
 		virtual bool update(sf::Time dt);
 		virtual void draw();
+		
+	private:
+		int lol;
 };
+
 
 #endif // GAMESTATE_HPP

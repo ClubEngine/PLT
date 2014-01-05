@@ -18,6 +18,7 @@ void TitleState::draw()
 
 bool TitleState::update(sf::Time dt)
 {
+	return true;
 }
 
 bool TitleState::handleEvent(const sf::Event &event)
