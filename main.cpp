@@ -15,7 +15,7 @@ int main(int argc, char ** argv) {
     // /* or */window.setFramerateLimit(60);
 
     sf::Texture canardText;
-    if (!canardText.loadFromFile("/home/juleffel/PLT/assets/images/canard.gif"))
+    if (!canardText.loadFromFile("assets/images/canard.gif"))
     {
         cerr << "Erreur lors du chargement de la texture" << endl;
     }
