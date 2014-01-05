@@ -1,24 +1,18 @@
 #include "GameState.hpp"
+#include "core/map.hpp"
 #include <iostream>
 #include <cmath>
 
 using namespace std;
 
 GameState::GameState(StateStack &stack, Context &context)
-    : State(stack, context), lol(100), tileSize(10), mouseispressed(false)
+    : State(stack, context), lol(100), tileSize(25), mouseispressed(false)
 {
 	//getContext().textures.load(Textures::Patate, "assets/images/patate.png");
     width = getContext().window->getSize().x;
     height = getContext().window->getSize().y;
 
-    // map.init();
-    for (int i = 0 ; i < width/tileSize ; i++)
-    {
-        for (int j = 0 ; j < height/tileSize ; j++)
-        {
-            map[i][j] = 0;
-        }
-    };
+    map = new Map();
 
     if (!grid.loadFromFile("assets/images/grid.png", sf::IntRect(0,0,width,height)))
     {
@@ -107,19 +101,19 @@ bool GameState::handleEvent(const sf::Event &event)
                 switch (event.key.code)
                 {
                 case sf::Keyboard::H : {
-                    map[i][j] = 1;
+                    map->setTile(i,j,1);
                     break;
                 }
                 case sf::Keyboard::R : {
-                    map[i][j] = 2;
+                     map->setTile(i,j,2);
                     break;
                 }
                 case sf::Keyboard::P : {
-                    map[i][j] = 3;
+                    map->setTile(i,j,3);
                     break;
                 }
                 case sf::Keyboard::BackSpace : {
-                    map[i][j] = 0;
+                    map->setTile(i,j,0);
                     break;
                 }
 					default:;
@@ -143,46 +137,8 @@ void GameState::draw()
 {
 
 	sf::RenderWindow & window = *getContext().window;
-	
-    
 
-    // map.draw();
-    for (int i = 0 ; i < width/tileSize ; i++)
-    {
-        for (int j = 0 ; j < height/tileSize ; j++)
-        {
-            switch (map[i][j]) {
-            case 1:
-            {
-                sf::RectangleShape text(sf::Vector2f(tileSize,tileSize));
-                text.setFillColor(sf::Color(50,200,50));
-                text.setPosition(sf::Vector2f(i*tileSize, j*tileSize));
-                window.draw(text);
-                break;
-            }
-            case 2:
-            {
-                sf::RectangleShape text(sf::Vector2f(tileSize,tileSize));
-                text.setFillColor(sf::Color(150,150,150));
-                text.setPosition(sf::Vector2f(i*tileSize, j*tileSize));
-				window.draw(text);
-				break;
-            }
-            case 3:
-            {
-                sf::RectangleShape text(sf::Vector2f(tileSize,tileSize));
-                text.setFillColor(sf::Color(50,200,50));
-                text.setPosition(sf::Vector2f(i*tileSize, j*tileSize));
-                window.draw(text);
-                break;
-            }
-            default:
-                break;
-            }
-        }
-    };
-	
-    window.draw(gridsprite);
+    map->Display(getContext().window);
 
     selection.setSize((sf::Vector2f)(selected.p2-selected.p1));
     selection.setPosition((sf::Vector2f)selected.p1);

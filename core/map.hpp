@@ -2,6 +2,7 @@
 #define MAP_HPP
 
 #include <SFML/Graphics.hpp>
+#include "core/TextureHolder.hpp"
 
 class Map
 {
@@ -18,6 +19,10 @@ class Map
         int nbcols;
         int tile_size;
         void DisplayTile(sf::RenderWindow* render_win, int i, int j, sf::Sprite sp);
+
+        TextureHolder textureHolder;
+        sf::Sprite spriteHerbe;
+        sf::Sprite spriteTerre;
 };
 
 

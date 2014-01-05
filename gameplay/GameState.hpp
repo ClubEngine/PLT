@@ -2,6 +2,7 @@
 #define GAMESTATE_HPP
 
 #include "../core/state/State.hpp"
+#include "../core/map.hpp"
 
 class GameState : public State
 {
@@ -27,7 +28,7 @@ class GameState : public State
 
         int width, height;
         int tileSize;
-        int map[80][60];
+        Map *map;
 
         sf::Texture grid;
         sf::Sprite gridsprite;

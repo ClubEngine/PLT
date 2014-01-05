@@ -1,5 +1,4 @@
 #include "map.hpp"
-#include "core/TextureHolder.hpp"
 
 using namespace std;
 
@@ -10,6 +9,13 @@ Map::Map(){
     nbcols = 20;
     matrix = (int*)malloc(sizeof(int)*nbrows*nbcols);
     tile_size = 25; //provisoire
+
+    textureHolder.load(Textures::Mapping, "assets/images/maptileset.bmp");
+
+    spriteHerbe.setTexture(textureHolder.get(Textures::Mapping));
+    spriteTerre.setTexture(textureHolder.get(Textures::Mapping));
+    spriteHerbe.setTextureRect(sf::IntRect(10*tile_size, 1*tile_size, tile_size, tile_size));
+    spriteTerre.setTextureRect(sf::IntRect(8*tile_size, 10*tile_size, tile_size, tile_size));
 
     //initialisation avec des 0
     for(int i = 0; i<(nbrows* nbrows); i++){
@@ -31,25 +37,15 @@ void Map::DisplayTile(sf::RenderWindow* render_win, int i, int j, sf::Sprite sp)
 }
 
 void Map::Display(sf::RenderWindow* render_win){
-    TextureHolder textureHolder;
-    textureHolder.load(Textures::Mapping, "assets/images/maptileset.bmp");
-
-    sf::Sprite spherbe(textureHolder.get(Textures::Mapping));
-    sf::Sprite spterre(textureHolder.get(Textures::Mapping));
-    spherbe.setTextureRect(sf::IntRect(10*tile_size, 1*tile_size, tile_size, tile_size));
-    spterre.setTextureRect(sf::IntRect(8*tile_size, 10*tile_size, tile_size, tile_size));
-
-    //sf::Sprite spherbe( textureHolder.get(Textures::Herbe) );
-    //sf::Sprite spterre( textureHolder.get(Textures::Terre) );
 
     for(int i = 0; i<nbrows; i++){
         for(int j = 0; j<nbcols; j++){
             switch(getTile(i,j)){
                 case 0:
-                    DisplayTile(render_win, i,j, spherbe);
+                    DisplayTile(render_win, i,j, spriteHerbe);
                      break;
                 case 1:
-                    DisplayTile(render_win, i,j, spterre);
+                    DisplayTile(render_win, i,j, spriteTerre);
                      break;
                 default: // error ?
                      break;
