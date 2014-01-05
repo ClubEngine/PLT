@@ -23,6 +23,16 @@ int main(int argc, char ** argv) {
 	sf::Sprite sp( textureHolder.get(Textures::Patate) );
 	sf::Sprite sp2( textureHolder.get(Textures::Rire) );
 	
+    sf::Texture canardText;
+    if (!canardText.loadFromFile("assets/images/canard.gif"))
+    {
+        cerr << "Erreur lors du chargement de la texture" << endl;
+    }
+    canardText.setSmooth(true);
+    sf::Sprite canardSprite;
+    canardSprite.setTexture(canardText);
+    canardSprite.setScale(sf::Vector2f(0.2f, 0.2f));
+
     sf::CircleShape c;
     c.setRadius(10);
     c.setFillColor(sf::Color::Red);
@@ -42,9 +52,13 @@ int main(int argc, char ** argv) {
                 if (event.key.code == sf::Keyboard::Escape)
                     running = false;
                 if (event.key.code == sf::Keyboard::Up) {
+                    canardSprite.move(0, -5);
                 } else if (event.key.code == sf::Keyboard::Down) {
+                    canardSprite.move(0, 5);
                 } else if (event.key.code == sf::Keyboard::Left) {
+                    canardSprite.move(-5, 0);
                 } else if (event.key.code == sf::Keyboard::Right) {
+                    canardSprite.move(5, 0);
                 }
             }
             else if (event.type == sf::Event::KeyReleased) {
@@ -70,6 +84,7 @@ int main(int argc, char ** argv) {
 		window.draw(sp2);
 
         window.draw(c);
+        window.draw(canardSprite);
         window.display();
     }
 
