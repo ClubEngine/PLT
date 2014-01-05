@@ -17,20 +17,13 @@ int main(int argc, char ** argv) {
     // /* or */window.setFramerateLimit(60);
 
 	TextureHolder textureHolder;
-	textureHolder.load(Textures::Patate,	"patate.png");
-	//textureHolder.load(Textures::Rire,		"rire.png");
+	textureHolder.load(Textures::Patate,	"assets/images/patate.png");
+	textureHolder.load(Textures::Rire,		"assets/images/canard.gif");
 	
 	sf::Sprite sp( textureHolder.get(Textures::Patate) );
-	sf::Sprite sp2( textureHolder.get(Textures::Rire) );
-	
-    sf::Texture canardText;
-    if (!canardText.loadFromFile("assets/images/canard.gif"))
-    {
-        cerr << "Erreur lors du chargement de la texture" << endl;
-    }
-    canardText.setSmooth(true);
+    
     sf::Sprite canardSprite;
-    canardSprite.setTexture(canardText);
+    canardSprite.setTexture(textureHolder.get(Textures::Rire));
     canardSprite.setScale(sf::Vector2f(0.2f, 0.2f));
 
     sf::CircleShape c;
@@ -79,11 +72,9 @@ int main(int argc, char ** argv) {
             }
         }
 
-        window.clear();
+        window.clear(sf::Color::Red);
         window.draw(sp);
-		window.draw(sp2);
 
-        window.draw(c);
         window.draw(canardSprite);
         window.display();
     }
