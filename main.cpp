@@ -18,9 +18,10 @@ int main(int argc, char ** argv) {
 	MyStateFactory factory;
 	Application application(factory);
 
-    application.pushState(States::Title);
-    application.pushState(States::Game);
-	application.pushState(States::Debug);
+	//application.pushState(States::Title);
+	//application.pushState(States::Test);
+	application.pushState(States::Game);
+    //application.pushState(States::Debug);
 	
 	application.run();
 
