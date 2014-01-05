@@ -13,12 +13,10 @@ LIBS += -L/usr/local/lib/ -lsfml-graphics-d -lsfml-window-d -lsfml-audio-d -lsfm
 
 SOURCES += \
     main.cpp \
-    TextureHolder.cpp \
     core/game.cpp \
     core/TextureHolder.cpp
 
 HEADERS += \
     core/game.hpp \
-    TextureHolder.hpp \
     core/TextureHolder.hpp \
     core/Textures.hpp

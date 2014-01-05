@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "core/game.hpp"
 
-#include "TextureHolder.hpp"
+#include "core/TextureHolder.hpp"
 
 using namespace std;
 
