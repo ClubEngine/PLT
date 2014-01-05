@@ -5,7 +5,7 @@
 using namespace std;
 
 GameState::GameState(StateStack &stack, Context &context)
-    : State(stack, context), lol(100), tileSize(10)
+    : State(stack, context), lol(100), tileSize(10), mouseispressed(false)
 {
 	//getContext().textures.load(Textures::Patate, "assets/images/patate.png");
     width = getContext().window.getSize().x;
@@ -61,7 +61,6 @@ bool GameState::handleEvent(const sf::Event &event)
             selected.p2.x = ceil(sf::Mouse::getPosition(getContext().window).x/10.0)*10.0;
             selected.p2.y = ceil(sf::Mouse::getPosition(getContext().window).y/10.0)*10.0;
         }
-        getContext().window.close();
         break;
     }
     case sf::Event::MouseButtonReleased :
