@@ -5,6 +5,7 @@
 
 #include "core/game.hpp"
 #include "core/TextureHolder.hpp"
+#include "core/map.hpp"
 
 using namespace std;
 
@@ -30,6 +31,9 @@ int main(int argc, char ** argv) {
     sf::CircleShape c;
     c.setRadius(10);
     c.setFillColor(sf::Color::Red);
+
+    Map* carte = new Map();
+    carte->setTile(1,1,1); // on place une terre
 
     // run the main loop
     bool running = true;
@@ -73,10 +77,11 @@ int main(int argc, char ** argv) {
             }
         }
 
+        // *** AFFICHAGE ***
         game.getWindow()->clear();
-        game.getWindow()->draw(sp);
-        game.getWindow()->draw(canardSprite);
-        game.getWindow()->draw(c);
+        //game.getWindow()->draw(sp);
+        //game.getWindow()->draw(canardSprite);
+       carte->Display(game.getWindow());
         game.getWindow()->display();
     }
 
