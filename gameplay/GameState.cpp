@@ -12,9 +12,9 @@ GameState::GameState(StateStack &stack, Context &context)
     height = getContext().window.getSize().y;
 
     // map.init();
-    for (int i = 0 ; i < width/10 ; i++)
+    for (int i = 0 ; i < width/tileSize ; i++)
     {
-        for (int j = 0 ; j < height/10 ; j++)
+        for (int j = 0 ; j < height/tileSize ; j++)
         {
             map[i][j] = 0;
         }
@@ -45,21 +45,21 @@ bool GameState::handleEvent(const sf::Event &event)
     {
         mouseispressed = true;
 
-        float a = floor((float)event.mouseButton.x/10.0)*10.0;
-        float b = floor((float)event.mouseButton.y/10.0)*10.0;
+        float a = floor((float)event.mouseButton.x/tileSize)*tileSize;
+        float b = floor((float)event.mouseButton.y/tileSize)*tileSize;
 
         selected.p1.x = a;
         selected.p1.y = b;
-        selected.p2.x = a+10;
-        selected.p2.y = b+10;
+        selected.p2.x = a+tileSize;
+        selected.p2.y = b+tileSize;
 
         break;
     }
     case sf::Event::MouseMoved :
     {
         if (mouseispressed){
-            selected.p2.x = ceil(sf::Mouse::getPosition(getContext().window).x/10.0)*10.0;
-            selected.p2.y = ceil(sf::Mouse::getPosition(getContext().window).y/10.0)*10.0;
+            selected.p2.x = ceil(sf::Mouse::getPosition(getContext().window).x/tileSize)*tileSize;
+            selected.p2.y = ceil(sf::Mouse::getPosition(getContext().window).y/tileSize)*tileSize;
         }
         break;
     }
@@ -98,9 +98,9 @@ bool GameState::handleEvent(const sf::Event &event)
     }
     case sf::Event::KeyPressed :
     {
-        for (int i = selected.p1.x/10 ; i < selected.p2.x/10 ; i++)
+        for (int i = selected.p1.x/tileSize ; i < selected.p2.x/tileSize ; i++)
         {
-            for (int j = selected.p1.y/10 ; j < selected.p2.y/10 ; j++)
+            for (int j = selected.p1.y/tileSize ; j < selected.p2.y/tileSize ; j++)
             {
                 switch (event.key.code)
                 {
@@ -139,32 +139,32 @@ void GameState::draw()
     getContext().window.clear(sf::Color::White);
 
     // map.draw();
-    for (int i = 0 ; i < width/10 ; i++)
+    for (int i = 0 ; i < width/tileSize ; i++)
     {
-        for (int j = 0 ; j < height/10 ; j++)
+        for (int j = 0 ; j < height/tileSize ; j++)
         {
             switch (map[i][j]) {
             case 1:
             {
-                sf::RectangleShape text(sf::Vector2f(10,10));
+                sf::RectangleShape text(sf::Vector2f(tileSize,tileSize));
                 text.setFillColor(sf::Color(50,200,50));
-                text.setPosition(sf::Vector2f(i*10, j*10));
+                text.setPosition(sf::Vector2f(i*tileSize, j*tileSize));
                 getContext().window.draw(text);
                 break;
             }
             case 2:
             {
-                sf::RectangleShape text(sf::Vector2f(10,10));
+                sf::RectangleShape text(sf::Vector2f(tileSize,tileSize));
                 text.setFillColor(sf::Color(150,150,150));
-                text.setPosition(sf::Vector2f(i*10, j*10));
+                text.setPosition(sf::Vector2f(i*tileSize, j*tileSize));
                 getContext().window.draw(text);
                 break;
             }
             case 3:
             {
-                sf::RectangleShape text(sf::Vector2f(10,10));
+                sf::RectangleShape text(sf::Vector2f(tileSize,tileSize));
                 text.setFillColor(sf::Color(50,200,50));
-                text.setPosition(sf::Vector2f(i*10, j*10));
+                text.setPosition(sf::Vector2f(i*tileSize, j*tileSize));
                 getContext().window.draw(text);
                 break;
             }
