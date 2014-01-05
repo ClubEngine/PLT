@@ -1,14 +1,14 @@
-#include "CStateFactory.hpp"
+#include "MyStateFactory.hpp"
 
 #include "TitleState.hpp"
 #include "GameState.hpp"
 #include "TestState.hpp"
 
-CStateFactory::CStateFactory()
+MyStateFactory::MyStateFactory()
 {
 }
 
-State *CStateFactory::get(States::ID id, StateStack &stateStack, Context &context)
+State *MyStateFactory::get(States::ID id, StateStack &stateStack, Context &context)
 {
 	switch(id) {
 		case States::Debug:

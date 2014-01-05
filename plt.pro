@@ -23,14 +23,14 @@ SOURCES += \
     core/state/StateStack.cpp \
     core/state/State.cpp \
     gameplay/TitleState.cpp \
-    gameplay/CStateFactory.cpp \
     core/state/AbstractStateFactory.cpp \
     core/Context.cpp \
     gameplay/GameState.cpp \
     core/Application.cpp \
     core/map.cpp \
     core/state/DebugState.cpp \
-    gameplay/TestState.cpp
+    gameplay/TestState.cpp \
+    gameplay/MyStateFactory.cpp
 HEADERS += \
     core/TextureHolder.hpp \
     core/Textures.hpp \
@@ -40,12 +40,13 @@ HEADERS += \
     core/state/States.hpp \
     core/state/State.hpp \
     gameplay/TitleState.hpp \
-    gameplay/CStateFactory.hpp \
     core/state/AbstractStateFactory.hpp \
     core/Context.hpp \
     gameplay/GameState.hpp \
     core/Application.hpp \
     core/map.hpp \
     core/state/DebugState.hpp \
-    gameplay/TestState.hpp
+    gameplay/TestState.hpp \
+    gameplay/MyStates.hpp \
+    gameplay/MyStateFactory.hpp
 

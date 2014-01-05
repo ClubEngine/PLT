@@ -4,8 +4,9 @@
 
 namespace States {
 	
-	enum ID { None, Debug, Test, Title, Menu, Game, Pause };
-	
+	typedef int ID;
+	const ID None = 0;
+	// others => see MyStates.hpp
 }
 
 #endif // STATES_HPP

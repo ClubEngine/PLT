@@ -10,7 +10,7 @@ bool DebugState::handleEvent(const sf::Event &event)
 	if (event.type == sf::Event::KeyPressed &&
 		event.key.code == sf::Keyboard::Escape)
 	{
-		getContext().window->close();
+		requestStateClear();
 	}
 		
 	return true;
