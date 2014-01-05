@@ -14,6 +14,9 @@ int main(int argc, char ** argv) {
     window.setVerticalSyncEnabled(true);
     // /* or */window.setFramerateLimit(60);
 
+    sf::CircleShape c;
+    c.setRadius(10);
+    c.setFillColor(sf::Color::Red);
 
     // run the main loop
     bool running = true;
@@ -54,7 +57,7 @@ int main(int argc, char ** argv) {
         }
 
         window.clear();
-        //window.draw();
+        window.draw(c);
         window.display();
     }
 
