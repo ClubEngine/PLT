@@ -22,7 +22,8 @@ SOURCES += \
     core/state/AbstractStateFactory.cpp \
     core/Context.cpp \
     gameplay/GameState.cpp \
-    core/Application.cpp
+    core/Application.cpp \
+    core/state/DebugState.cpp
 
 HEADERS += \
     core/TextureHolder.hpp \
@@ -37,5 +38,6 @@ HEADERS += \
     core/state/AbstractStateFactory.hpp \
     core/Context.hpp \
     gameplay/GameState.hpp \
-    core/Application.hpp
+    core/Application.hpp \
+    core/state/DebugState.hpp
 

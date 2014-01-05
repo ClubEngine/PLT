@@ -9,18 +9,20 @@ GameState::GameState(StateStack &stack, Context &context)
 
 bool GameState::handleEvent(const sf::Event &event)
 {
+	return false;
 }
 
 bool GameState::update(sf::Time dt)
 {
+	return true;
 }
 
 void GameState::draw()
 {
-	sf::Sprite sp( getContext().textures.get(Textures::Patate) );
+	sf::Sprite sp( getContext().textures->get(Textures::Patate) );
 	sp.setPosition(lol,lol);
 	lol+=1;
 	
-	getContext().window.draw(sp);
+	getContext().window->draw(sp);
 	
 }
