@@ -20,16 +20,19 @@ SOURCES += \
     gameplay/TitleState.cpp \
     gameplay/CStateFactory.cpp \
     core/state/AbstractStateFactory.cpp \
-    core/Context.cpp
+    core/Context.cpp \
+    gameplay/GameState.cpp
 
 HEADERS += \
     core/Game.hpp \
     core/TextureHolder.hpp \
-    core/Textures.hpp
+    core/Textures.hpp \
     core/state/StateStack.hpp \
     core/state/States.hpp \
     core/state/State.hpp \
     gameplay/TitleState.hpp \
     gameplay/CStateFactory.hpp \
     core/state/AbstractStateFactory.hpp \
-    core/Context.hpp
+    core/Context.hpp \
+    gameplay/GameState.hpp
+

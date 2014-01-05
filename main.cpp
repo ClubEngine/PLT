@@ -85,11 +85,18 @@ int main(int argc, char ** argv) {
             }
             else if (event.type == sf::Event::MouseButtonReleased) {
             }
+			
+			
+			stack.handleEvent(event);
+			
         }
 
         game.getWindow()->clear();
-        game.getWindow()->draw(sp);
+        stack.draw();
+		
+		game.getWindow()->draw(sp);
         game.getWindow()->draw(canardSprite);
+		
         game.getWindow()->display();
     }
 

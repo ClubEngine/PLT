@@ -1,4 +1,9 @@
+#include <iostream>
+
 #include "TitleState.hpp"
+
+#include "SFML/Graphics.hpp"
+
 
 TitleState::TitleState(StateStack &stack, Context & context) 
 	: State(stack, context)
@@ -7,6 +12,8 @@ TitleState::TitleState(StateStack &stack, Context & context)
 
 void TitleState::draw()
 {
+	//std::cout << "TitleState.draw" << std::endl;
+	getContext().window.clear(sf::Color::Red);
 }
 
 bool TitleState::update(sf::Time dt)
