@@ -30,7 +30,8 @@ SOURCES += \
     core/map.cpp \
     core/state/DebugState.cpp \
     gameplay/TestState.cpp \
-    gameplay/MyStateFactory.cpp
+    gameplay/MyStateFactory.cpp \
+    gameplay/PauseState.cpp
 HEADERS += \
     core/TextureHolder.hpp \
     core/Textures.hpp \
@@ -48,5 +49,6 @@ HEADERS += \
     core/state/DebugState.hpp \
     gameplay/TestState.hpp \
     gameplay/MyStates.hpp \
-    gameplay/MyStateFactory.hpp
+    gameplay/MyStateFactory.hpp \
+    gameplay/PauseState.hpp
 

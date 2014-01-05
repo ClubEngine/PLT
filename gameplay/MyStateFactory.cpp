@@ -3,12 +3,13 @@
 #include "TitleState.hpp"
 #include "GameState.hpp"
 #include "TestState.hpp"
+#include "PauseState.hpp"
 
 MyStateFactory::MyStateFactory()
 {
 }
 
-State *MyStateFactory::get(States::ID id, StateStack &stateStack, Context &context)
+State * MyStateFactory::get(States::ID id, StateStack &stateStack, Context &context)
 {
 	switch(id) {
 		case States::Debug:
@@ -25,6 +26,10 @@ State *MyStateFactory::get(States::ID id, StateStack &stateStack, Context &conte
 		
 		case States::Game:
 			return new GameState(stateStack, context);
+			break;
+			
+		case States::Pause:
+			return new PauseState(stateStack, context);
 			break;
 		
 		default:

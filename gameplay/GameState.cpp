@@ -1,6 +1,7 @@
 #include "GameState.hpp"
 #include <iostream>
 #include <cmath>
+#include "gameplay/MyStates.hpp"
 
 using namespace std;
 
@@ -100,6 +101,11 @@ bool GameState::handleEvent(const sf::Event &event)
     }
     case sf::Event::KeyPressed :
     {
+		if (event.key.code == sf::Keyboard::P)
+		{
+			requestStackPush(States::Pause);
+		}
+			
         for (int i = selected.p1.x/tileSize ; i < selected.p2.x/tileSize ; i++)
         {
             for (int j = selected.p1.y/tileSize ; j < selected.p2.y/tileSize ; j++)
@@ -144,7 +150,7 @@ void GameState::draw()
 
 	sf::RenderWindow & window = *getContext().window;
 	
-    
+    window.clear(sf::Color::White);
 
     // map.draw();
     for (int i = 0 ; i < width/tileSize ; i++)
