@@ -6,19 +6,27 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "SoundHolder.hpp"
+#include "TextureHolder.hpp"
+
 class Game
 {
     public:
         Game();
 
         int createWindow();
-        sf::RenderWindow* getWindow();
+        sf::RenderWindow * getWindow();
+        SoundHolder * getSoundHolder();
+        TextureHolder * getTextureHolder();
 
         virtual ~Game();
 
     private:
-        sf::RenderWindow* mWindow;
         sf::Music mMusic;
+
+        sf::RenderWindow * mWindow;
+        SoundHolder * soundHolder;
+        TextureHolder * textureHolder;
 };
 
 #endif // GAME_HPP

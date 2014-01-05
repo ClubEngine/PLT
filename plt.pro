@@ -14,9 +14,12 @@ LIBS += -L/usr/local/lib/ -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-syst
 SOURCES += \
     main.cpp \
     core/Game.cpp \
-    core/TextureHolder.cpp
+    core/TextureHolder.cpp \
+    core/SoundHolder.cpp
 
 HEADERS += \
     core/Game.hpp \
     core/TextureHolder.hpp \
-    core/Textures.hpp
+    core/Textures.hpp \
+    core/SoundHolder.hpp \
+    core/Sounds.hpp

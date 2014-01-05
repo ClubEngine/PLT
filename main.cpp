@@ -15,16 +15,12 @@ int main(int argc, char ** argv) {
     Game game;
     game.createWindow();
     game.getWindow()->setVerticalSyncEnabled(true);
-    // /* or */window.setFramerateLimit(60);
-
-	TextureHolder textureHolder;
-	textureHolder.load(Textures::Patate,	"assets/images/patate.png");
-	textureHolder.load(Textures::Rire,		"assets/images/canard.gif");
+    // or game.getWindow()->setFramerateLimit(60);
 	
-	sf::Sprite sp( textureHolder.get(Textures::Patate) );
+    sf::Sprite sp(game.getTextureHolder()->get(Textures::Patate));
     
     sf::Sprite canardSprite;
-    canardSprite.setTexture(textureHolder.get(Textures::Rire));
+    canardSprite.setTexture(game.getTextureHolder()->get(Textures::Rire));
     canardSprite.setScale(sf::Vector2f(0.2f, 0.2f));
 
     sf::CircleShape c;
