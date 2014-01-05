@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "core/game.hpp"
 
 #include "TextureHolder.hpp"
 
@@ -9,11 +10,9 @@ int main(int argc, char ** argv) {
 
     cout << "Long Term Project " << __DATE__ << " at " << __TIME__ << endl;
 
-
-    sf::RenderWindow window(
-                sf::VideoMode(800, 600), "Title", sf::Style::Default);
-
-    window.setVerticalSyncEnabled(true);
+    Game game;
+    game.createWindow();
+    game.getWindow()->setVerticalSyncEnabled(true);
     // /* or */window.setFramerateLimit(60);
 
 	TextureHolder textureHolder;
@@ -35,7 +34,7 @@ int main(int argc, char ** argv) {
     while (running) {
 
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (game.getWindow()->pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 running = false;
             }
@@ -72,11 +71,10 @@ int main(int argc, char ** argv) {
             }
         }
 
-        window.clear(sf::Color::Red);
-        window.draw(sp);
-
-        window.draw(canardSprite);
-        window.display();
+        game.getWindow()->clear();
+        game.getWindow()->draw(sp);
+        game.getWindow()->draw(canardSprite);
+        game.getWindow()->display();
     }
 
     return 0;
