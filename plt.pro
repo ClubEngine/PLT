@@ -7,14 +7,14 @@ INCLUDEPATH  += /usr/local/include/
 #INCLUDEPATH += /usr/local/lib/SFML-2.1/include/
 
 # debug
-LIBS += -L/usr/local/lib/ -lsfml-graphics-d -lsfml-window-d -lsfml-audio-d -lsfml-system-d
+#LIBS += -L/usr/local/lib/ -lsfml-graphics-d -lsfml-window-d -lsfml-audio-d -lsfml-system-d
 # release
-#LIBS += -L/usr/local/lib/ -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system
+LIBS += -L/usr/local/lib/ -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system
 
 SOURCES += \
     main.cpp \
-    TextureHolder.cpp \
-    core/game.cpp \
+    core/TextureHolder.cpp \
+    core/Game.cpp \
     core/state/StateStack.cpp \
     core/state/State.cpp \
     gameplay/TitleState.cpp \
@@ -23,9 +23,9 @@ SOURCES += \
     core/Context.cpp
 
 HEADERS += \
-    core/game.hpp \
-    TextureHolder.hpp \
-    Textures.hpp \
+    core/Game.hpp \
+    core/TextureHolder.hpp \
+    core/Textures.hpp
     core/state/StateStack.hpp \
     core/state/States.hpp \
     core/state/State.hpp \

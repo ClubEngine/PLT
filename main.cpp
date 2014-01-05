@@ -1,11 +1,13 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
-#include "core/game.hpp"
 
-#include "TextureHolder.hpp"
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+
 #include "core/state/StateStack.hpp"
 #include "gameplay/CStateFactory.hpp"
 #include "core/Context.hpp"
+#include "core/Game.hpp"
+#include "core/TextureHolder.hpp"
 
 using namespace std;
 
