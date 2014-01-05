@@ -3,7 +3,7 @@
 
 namespace Textures {
 	
-	enum ID { Patate, Rire };
+        enum ID { Patate, Rire, Mapping};
 	
 }
 

@@ -9,6 +9,7 @@
 #include "core/Application.hpp"
 #include "core/TextureHolder.hpp"
 
+
 using namespace std;
 
 int main(int argc, char ** argv) {
@@ -17,13 +18,13 @@ int main(int argc, char ** argv) {
 	
 	CStateFactory factory;
 	Application application(factory);
-	
+
 	application.pushState(States::Title);
 	application.pushState(States::Game);
 	application.pushState(States::Debug);
 	
-	application.run();	
-   
+	application.run();
+
     return 0;
 }
 
