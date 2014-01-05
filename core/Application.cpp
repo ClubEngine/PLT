@@ -1,8 +1,8 @@
-#include "Game.hpp"
+#include "Application.hpp"
 
 using namespace std;
 
-Game::Game()
+Application::Application()
 {
     soundHolder.load(Sounds::Test, "assets/sounds/test.ogg");
 
@@ -11,12 +11,12 @@ Game::Game()
 	
 }
 
-Game::~Game()
+Application::~Application()
 {
     
 }
 
-int Game::createWindow()
+int Application::createWindow()
 {
     mWindow.create(sf::VideoMode(800, 600), 
 				   "PLT", 
@@ -31,17 +31,17 @@ int Game::createWindow()
     return 0;
 }
 
-sf::RenderWindow & Game::getWindow()
+sf::RenderWindow & Application::getWindow()
 {
     return mWindow;
 }
 
-SoundHolder & Game::getSoundHolder()
+SoundHolder & Application::getSoundHolder()
 {
     return soundHolder;
 }
 
-TextureHolder & Game::getTextureHolder()
+TextureHolder & Application::getTextureHolder()
 {
     return textureHolder;
 }

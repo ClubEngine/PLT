@@ -1,5 +1,5 @@
-#ifndef GAME_HPP
-#define GAME_HPP
+#ifndef APPLICATION_HPP
+#define APPLICATION_HPP
 
 #include <iostream>
 
@@ -9,17 +9,17 @@
 #include "SoundHolder.hpp"
 #include "TextureHolder.hpp"
 
-class Game
+class Application
 {
     public:
-        Game();
+        Application();
 
         int createWindow();
         sf::RenderWindow & getWindow();
         SoundHolder & getSoundHolder();
         TextureHolder & getTextureHolder();
 
-        virtual ~Game();
+        virtual ~Application();
 
     private:
         sf::Music mMusic;
@@ -30,4 +30,4 @@ class Game
         TextureHolder textureHolder;
 };
 
-#endif // GAME_HPP
+#endif // APPLICATION_HPP
