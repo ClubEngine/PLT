@@ -8,8 +8,8 @@ GameState::GameState(StateStack &stack, Context &context)
     : State(stack, context), lol(100), tileSize(10), mouseispressed(false)
 {
 	//getContext().textures.load(Textures::Patate, "assets/images/patate.png");
-    width = getContext().window.getSize().x;
-    height = getContext().window.getSize().y;
+    width = getContext().window->getSize().x;
+    height = getContext().window->getSize().y;
 
     // map.init();
     for (int i = 0 ; i < width/10 ; i++)
@@ -35,10 +35,12 @@ GameState::GameState(StateStack &stack, Context &context)
 
 bool GameState::handleEvent(const sf::Event &event)
 {
+	sf::RenderWindow & window = *getContext().window;
+	
     switch (event.type) {
     case sf::Event::Closed :
     {
-        getContext().window.close();
+        getContext().window->close();
         break;
     }
     case sf::Event::MouseButtonPressed :
@@ -58,8 +60,8 @@ bool GameState::handleEvent(const sf::Event &event)
     case sf::Event::MouseMoved :
     {
         if (mouseispressed){
-            selected.p2.x = ceil(sf::Mouse::getPosition(getContext().window).x/10.0)*10.0;
-            selected.p2.y = ceil(sf::Mouse::getPosition(getContext().window).y/10.0)*10.0;
+            selected.p2.x = ceil(sf::Mouse::getPosition(window).x/10.0)*10.0;
+            selected.p2.y = ceil(sf::Mouse::getPosition(window).y/10.0)*10.0;
         }
         break;
     }
@@ -120,6 +122,7 @@ bool GameState::handleEvent(const sf::Event &event)
                     map[i][j] = 0;
                     break;
                 }
+					default:;
                 }
             }
         }
@@ -138,7 +141,10 @@ bool GameState::update(sf::Time dt)
 
 void GameState::draw()
 {
-    getContext().window.clear(sf::Color::White);
+
+	sf::RenderWindow & window = *getContext().window;
+	
+    
 
     // map.draw();
     for (int i = 0 ; i < width/10 ; i++)
@@ -151,7 +157,7 @@ void GameState::draw()
                 sf::RectangleShape text(sf::Vector2f(10,10));
                 text.setFillColor(sf::Color(50,200,50));
                 text.setPosition(sf::Vector2f(i*10, j*10));
-                getContext().window.draw(text);
+                window.draw(text);
                 break;
             }
             case 2:
@@ -159,7 +165,7 @@ void GameState::draw()
                 sf::RectangleShape text(sf::Vector2f(10,10));
                 text.setFillColor(sf::Color(150,150,150));
                 text.setPosition(sf::Vector2f(i*10, j*10));
-                getContext().window.draw(text);
+                window.draw(text);
                 break;
             }
             case 3:
@@ -167,7 +173,7 @@ void GameState::draw()
                 sf::RectangleShape text(sf::Vector2f(10,10));
                 text.setFillColor(sf::Color(50,200,50));
                 text.setPosition(sf::Vector2f(i*10, j*10));
-                getContext().window.draw(text);
+                window.draw(text);
                 break;
             }
             default:
@@ -175,12 +181,12 @@ void GameState::draw()
             }
         }
     };
-    getContext().window.draw(gridsprite);
+	
+    window.draw(gridsprite);
 
     selection.setSize((sf::Vector2f)(selected.p2-selected.p1));
     selection.setPosition((sf::Vector2f)selected.p1);
-    getContext().window.draw(selection);
+    window.draw(selection);
 
-	sf::Sprite sp( getContext().textures.get(Textures::Patate) );
 	
 }
