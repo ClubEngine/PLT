@@ -74,6 +74,7 @@ int main(int argc, char ** argv) {
         game.getWindow()->clear();
         game.getWindow()->draw(sp);
         game.getWindow()->draw(canardSprite);
+        game.getWindow()->draw(c);
         game.getWindow()->display();
     }
 
