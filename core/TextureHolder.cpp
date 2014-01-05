@@ -7,6 +7,12 @@ TextureHolder::TextureHolder()
 
 void TextureHolder::load(Textures::ID id, const std::string &filename)
 {
+	TextureMap::iterator it = mTextureMap.find(id);
+	if (it != mTextureMap.end()) {
+		delete it->second;
+		mTextureMap.erase(id);
+	}
+	
 	sf::Texture * texture = new sf::Texture();
 	if (texture->loadFromFile(filename))
 		mTextureMap[id] = texture;

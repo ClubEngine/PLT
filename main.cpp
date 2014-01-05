@@ -3,7 +3,10 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "core/game.hpp"
+#include "core/state/StateStack.hpp"
+#include "gameplay/CStateFactory.hpp"
+#include "core/Context.hpp"
+#include "core/Application.hpp"
 #include "core/TextureHolder.hpp"
 #include "core/map.hpp"
 
@@ -12,35 +15,36 @@ using namespace std;
 int main(int argc, char ** argv) {
 
     cout << "Long Term Project " << __DATE__ << " at " << __TIME__ << endl;
-
-    Game game;
-    game.createWindow();
-    game.getWindow()->setVerticalSyncEnabled(true);
-    // /* or */window.setFramerateLimit(60);
-
-	TextureHolder textureHolder;
-	textureHolder.load(Textures::Patate,	"assets/images/patate.png");
-	textureHolder.load(Textures::Rire,		"assets/images/canard.gif");
 	
-	sf::Sprite sp( textureHolder.get(Textures::Patate) );
+    Application application;
+    application.createWindow();
+    application.getWindow().setVerticalSyncEnabled(true);
+    // or application.getWindow()->setFramerateLimit(60);
+
+    Context context(application.getWindow(), application.getTextureHolder(),
+                    application.getSoundHolder());
+	
+	CStateFactory factory;
+	StateStack stack(factory, context);
+    stack.pushState(States::Title);
+	stack.pushState(States::Game);
+	
+    sf::Sprite sp(application.getTextureHolder().get(Textures::Patate));
     
     sf::Sprite canardSprite;
-    canardSprite.setTexture(textureHolder.get(Textures::Rire));
+    canardSprite.setTexture(application.getTextureHolder().get(Textures::Rire));
     canardSprite.setScale(sf::Vector2f(0.2f, 0.2f));
-
-    sf::CircleShape c;
-    c.setRadius(10);
-    c.setFillColor(sf::Color::Red);
 
     Map* carte = new Map();
     carte->setTile(1,1,1); // on place une terre
+
 
     // run the main loop
     bool running = true;
     while (running) {
 
         sf::Event event;
-        while (game.getWindow()->pollEvent(event)) {
+        while (application.getWindow().pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 running = false;
             }
@@ -75,14 +79,16 @@ int main(int argc, char ** argv) {
             }
             else if (event.type == sf::Event::MouseButtonReleased) {
             }
+				
+			stack.handleEvent(event);
         }
 
         // *** AFFICHAGE ***
-        game.getWindow()->clear();
-        //game.getWindow()->draw(sp);
-        //game.getWindow()->draw(canardSprite);
-       carte->Display(game.getWindow());
-        game.getWindow()->display();
+        application.getWindow().clear();
+        stack.draw();
+         carte->Display(application.getWindow());
+        application.getWindow().draw(canardSprite);
+        application.getWindow().display();
     }
 
     return 0;

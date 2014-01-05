@@ -15,11 +15,34 @@ LIBS += -L/usr/local/lib/ \
 
 # release
 # LIBS += -L/usr/local/lib/ -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system
-SOURCES += main.cpp \
-    core/game.cpp \
+
+SOURCES += \
+    main.cpp \
     core/TextureHolder.cpp \
-    core/map.cpp
-HEADERS += core/game.hpp \
+    core/SoundHolder.cpp \
+    core/state/StateStack.cpp \
+    core/state/State.cpp \
+    gameplay/TitleState.cpp \
+    gameplay/CStateFactory.cpp \
+    core/state/AbstractStateFactory.cpp \
+    core/Context.cpp \
+    gameplay/GameState.cpp \
+    core/Application.cpp \
+ core/map.cpp
+
+HEADERS += \
     core/TextureHolder.hpp \
     core/Textures.hpp \
-    core/map.hpp
+    core/SoundHolder.hpp \
+    core/Sounds.hpp \
+    core/state/StateStack.hpp \
+    core/state/States.hpp \
+    core/state/State.hpp \
+    gameplay/TitleState.hpp \
+    gameplay/CStateFactory.hpp \
+    core/state/AbstractStateFactory.hpp \
+    core/Context.hpp \
+    gameplay/GameState.hpp \
+    core/Application.hpp \
+ core/map.hpp
+
