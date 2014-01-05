@@ -18,7 +18,7 @@ class TextureHolder
 		sf::Texture & get(Textures::ID id);
 		const sf::Texture & get(Textures::ID id) const;
 		
-		~TextureHolder();
+        virtual ~TextureHolder();
 		
 	private:
 		typedef std::map<Textures::ID, sf::Texture *> TextureMap;

@@ -7,15 +7,16 @@
 
 class Game
 {
-public:
-    Game();
-    virtual ~Game();
+    public:
+        Game();
 
-    void createWindow();
-    sf::RenderWindow* getWindow();
+        void createWindow();
+        sf::RenderWindow* getWindow();
 
-private:
-    sf::RenderWindow* mWindow;
+        virtual ~Game();
+
+    private:
+        sf::RenderWindow* mWindow;
 };
 
 #endif // GAME_HPP
