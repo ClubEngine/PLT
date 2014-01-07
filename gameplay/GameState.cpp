@@ -151,8 +151,8 @@ void GameState::draw()
 
     map->Display(getContext().window);
 
-    selection.setSize(sf::Vector2f(selected.p2.x-selected.p1.x,selected.p2.y-selected.p1.y));
-    selection.setPosition(sf::Vector2f(selected.p1));
+    selection.setSize((sf::Vector2f)(selected.p2-selected.p1));
+    selection.setPosition((sf::Vector2f)(selected.p1));
     window.draw(selection);
 
 	
