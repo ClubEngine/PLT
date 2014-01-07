@@ -21,6 +21,8 @@ class GameState : public State
         struct selected {
             sf::Vector2i p1;
             sf::Vector2i p2;
+            sf::Vector2i i1;
+            sf::Vector2i i2;
         };
         float aux;
 

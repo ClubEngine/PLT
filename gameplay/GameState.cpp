@@ -40,18 +40,26 @@ bool GameState::handleEvent(const sf::Event &event)
         float a = floor((float)event.mouseButton.x/tileSize)*tileSize;
         float b = floor((float)event.mouseButton.y/tileSize)*tileSize;
 
-        selected.p1.x = a;
-        selected.p1.y = b;
-        selected.p2.x = a+tileSize;
-        selected.p2.y = b+tileSize;
+        selected.i1.x = a;
+        selected.i1.y = b;
+        selected.i2.x = selected.i1.x+tileSize;
+        selected.i2.y = selected.i1.y+tileSize;
+
+        selected.p1 = selected.i1;
+        selected.p2 = selected.i2;
 
         break;
     }
     case sf::Event::MouseMoved :
     {
         if (mouseispressed){
-            selected.p2.x = ceil(sf::Mouse::getPosition(window).x/tileSize)*tileSize;
-            selected.p2.y = ceil(sf::Mouse::getPosition(window).y/tileSize)*tileSize;
+            sf::Vector2i f = sf::Mouse::getPosition(window);
+            sf::Vector2i f1= sf::Vector2i(floor(f.x/tileSize)*tileSize,floor(f.y/tileSize)*tileSize);
+            sf::Vector2i f2= f1 + sf::Vector2i(tileSize,tileSize);
+            selected.p1.x = min(min(selected.i1.x,selected.i2.x),min(f1.x,f2.x));
+            selected.p2.x = max(max(selected.i1.x,selected.i2.x),max(f1.x,f2.x));
+            selected.p1.y = min(min(selected.i1.y,selected.i2.y),min(f1.y,f2.y));
+            selected.p2.y = max(max(selected.i1.y,selected.i2.y),max(f1.y,f2.y));
         }
         break;
     }
@@ -143,8 +151,8 @@ void GameState::draw()
 
     map->Display(getContext().window);
 
-    selection.setSize((sf::Vector2f)(selected.p2-selected.p1));
-    selection.setPosition((sf::Vector2f)selected.p1);
+    selection.setSize(sf::Vector2f(selected.p2.x-selected.p1.x,selected.p2.y-selected.p1.y));
+    selection.setPosition(sf::Vector2f(selected.p1));
     window.draw(selection);
 
 	
