@@ -23,6 +23,7 @@ class Map
 
         sf::Sprite spriteHerbe;
         sf::Sprite spriteTerre;
+        sf::Sprite spriteStone;
 };
 
 

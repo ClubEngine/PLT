@@ -65,19 +65,6 @@ bool GameState::handleEvent(const sf::Event &event)
     }
     case sf::Event::MouseButtonReleased :
     {
-        if (selected.p1.x > selected.p2.x)
-        {
-            aux = selected.p1.x;
-            selected.p1.x = selected.p2.x;
-            selected.p2.x = aux;
-        }
-
-        if (selected.p1.y > selected.p2.y)
-        {
-            aux = selected.p1.y;
-            selected.p1.y = selected.p2.y;
-            selected.p2.y = aux;
-        }
 
         if (selected.p2.x > width){
             selected.p2.x = width;
@@ -109,19 +96,23 @@ bool GameState::handleEvent(const sf::Event &event)
             {
                 switch (event.key.code)
                 {
-                case sf::Keyboard::H : {
-                    map->setTile(i,j,1);
-                    break;
-                }
-                case sf::Keyboard::R : {
+                // ERASE TILE LEAVING A BLANK ONE
+                case sf::Keyboard::BackSpace : {
                      map->setTile(i,j,2);
                     break;
                 }
-                case sf::Keyboard::P : {
+                // CREATE DUST TILE
+                case sf::Keyboard::T : {
+                    map->setTile(i,j,1);
+                    break;
+                }
+                // CREATE STONE TILE
+                case sf::Keyboard::S : {
                     map->setTile(i,j,3);
                     break;
                 }
-                case sf::Keyboard::BackSpace : {
+                // CREATE GRASS TILE
+                case sf::Keyboard::H : {
                     map->setTile(i,j,0);
                     break;
                 }

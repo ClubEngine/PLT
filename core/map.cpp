@@ -14,8 +14,10 @@ Map::Map(Context &context, int nbCols, int nbRows){
 
     spriteHerbe.setTexture(context.textures->get(Textures::Mapping));
     spriteTerre.setTexture(context.textures->get(Textures::Mapping));
+    spriteStone.setTexture(context.textures->get(Textures::Mapping));
     spriteHerbe.setTextureRect(sf::IntRect(10*tile_size, 1*tile_size, tile_size, tile_size));
     spriteTerre.setTextureRect(sf::IntRect(8*tile_size, 10*tile_size, tile_size, tile_size));
+    spriteStone.setTextureRect(sf::IntRect(5*tile_size, 7*tile_size, tile_size, tile_size));
 
     //initialisation avec des 0
     for(int i = 0; i<(nbcols * nbrows); i++){
@@ -49,6 +51,9 @@ void Map::Display(sf::RenderWindow* render_win){
                 case 1:
                     DisplayTile(render_win, i,j, spriteTerre);
                      break;
+                case 3:
+                    DisplayTile(render_win, i,j, spriteStone);
+                    break;
                 default: // error ?
                      break;
             }
