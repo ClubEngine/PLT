@@ -1,13 +1,9 @@
 #include <iostream>
-
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-
-#include "gameplay/MyStateFactory.hpp"
-
 #include "core/Application.hpp"
-
+#include "gameplay/MyStateFactory.hpp"
 
 using namespace std;
 
@@ -21,7 +17,7 @@ int main(int argc, char ** argv) {
 	//application.pushState(States::Title);
 	//application.pushState(States::Test);
 	application.pushState(States::Game);
-    //application.pushState(States::Debug);
+    application.pushState(States::Debug);
 	
 	application.run();
 

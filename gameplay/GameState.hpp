@@ -3,6 +3,7 @@
 
 #include "../core/state/State.hpp"
 #include "../core/map.hpp"
+#include "../core/Camera.hpp"
 
 class GameState : public State
 {
@@ -35,6 +36,8 @@ class GameState : public State
         sf::Texture grid;
         sf::Sprite gridsprite;
         sf::RectangleShape selection;
+		
+		Camera camera;
 };
 
 

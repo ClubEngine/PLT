@@ -7,7 +7,8 @@
 using namespace std;
 
 GameState::GameState(StateStack &stack, Context &context)
-    : State(stack, context), lol(100), tileSize(25), mouseispressed(false)
+    : State(stack, context), lol(100), tileSize(25), mouseispressed(false),
+	  camera(*(context.window))
 {
 	//getContext().textures.load(Textures::Patate, "assets/images/patate.png");
     width = getContext().window->getSize().x;
@@ -125,11 +126,17 @@ bool GameState::handleEvent(const sf::Event &event)
     default:
         break;
     }
+	
+	camera.handleEvent(event);
+	
+	
 	return false;
 }
 
 bool GameState::update(sf::Time dt)
 {
+	camera.update(dt);
+	
 	return true;
 }
 
@@ -138,6 +145,8 @@ void GameState::draw()
 
     sf::RenderWindow & window = *getContext().window;
 
+	window.setView(camera.getView());
+	
     window.clear(sf::Color::White);
 
     map->Display(getContext().window);

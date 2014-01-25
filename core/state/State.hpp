@@ -14,7 +14,8 @@
 
 class StateStack;
 
-
+/** Represent a state of the application life.
+  */
 class State
 {
 	public:

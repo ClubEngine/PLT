@@ -9,6 +9,9 @@
 
 #include "Textures.hpp"
 
+/** Manage textures.
+  Avoid double resource.
+*/
 class TextureHolder : private sf::NonCopyable
 {
 	public:

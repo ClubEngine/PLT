@@ -9,7 +9,9 @@
 
 #include "AbstractStateFactory.hpp"
 
-
+/**
+  Manage states of the application.
+*/
 class StateStack : private sf::NonCopyable
 {
 	public:
@@ -21,10 +23,21 @@ class StateStack : private sf::NonCopyable
 		
 		explicit StateStack(AbstractStateFactory & factory, Context context);
 		
+		/** Update all the states
+		  @param dt Time elapsed since the latest call
+		*/
 		void update(sf::Time dt);
+		/** Notify states from the top
+		  @param event Event to treat
+		*/
 		void handleEvent(const sf::Event & event);
+		/** Draw all the states from the bottom
+		  */
 		void draw();
 		
+		/** Set the top active state
+		  @param id Id of the state, accordly to the id into the StateFactory
+		*/
 		void pushState(States::ID id);
 		void popState();
 		void clearStates();

@@ -8,6 +8,8 @@
 
 #include "Sounds.hpp"
 
+/** Manage sounds
+  */
 class SoundHolder
 {
     public:

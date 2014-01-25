@@ -1,0 +1,84 @@
+\hypertarget{classState}{\section{\-State \-Class \-Reference}
+\label{classState}\index{\-State@{\-State}}
+}
+
+
+{\ttfamily \#include $<$\-State.\-hpp$>$}
+
+\-Inheritance diagram for \-State\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classState}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classState_afede488ff3c1b264bbd07f8aeead84a7_afede488ff3c1b264bbd07f8aeead84a7}{{\bfseries \-State} (\hyperlink{classStateStack}{\-State\-Stack} \&stack, \hyperlink{classContext}{\-Context} context)}\label{classState_afede488ff3c1b264bbd07f8aeead84a7_afede488ff3c1b264bbd07f8aeead84a7}
+
+\item 
+\hypertarget{classState_ae261605bc40b7e3959ce5df5457e4942_ae261605bc40b7e3959ce5df5457e4942}{virtual void {\bfseries draw} ()=0}\label{classState_ae261605bc40b7e3959ce5df5457e4942_ae261605bc40b7e3959ce5df5457e4942}
+
+\item 
+virtual bool \hyperlink{classState_acd5926bc7a373edff9e57f3ffe94ca13_acd5926bc7a373edff9e57f3ffe94ca13}{update} (sf\-::\-Time dt)=0
+\item 
+virtual bool \hyperlink{classState_a19965f83460b248c42952aac8d001206_a19965f83460b248c42952aac8d001206}{handle\-Event} (const sf\-::\-Event \&event)=0
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classState_a6763de833ceb9c23df45aff163a4a1cd_a6763de833ceb9c23df45aff163a4a1cd}{void {\bfseries request\-Stack\-Push} (\-States\-::\-I\-D state\-I\-D)}\label{classState_a6763de833ceb9c23df45aff163a4a1cd_a6763de833ceb9c23df45aff163a4a1cd}
+
+\item 
+\hypertarget{classState_aa418660892d6161772c907bd8d70f910_aa418660892d6161772c907bd8d70f910}{void {\bfseries request\-Stack\-Pop} ()}\label{classState_aa418660892d6161772c907bd8d70f910_aa418660892d6161772c907bd8d70f910}
+
+\item 
+\hypertarget{classState_a4b602bed9bf0179ee5f6748fce340ae6_a4b602bed9bf0179ee5f6748fce340ae6}{void {\bfseries request\-State\-Clear} ()}\label{classState_a4b602bed9bf0179ee5f6748fce340ae6_a4b602bed9bf0179ee5f6748fce340ae6}
+
+\item 
+\hypertarget{classState_aec041e226f59f134902ca8671c02788c_aec041e226f59f134902ca8671c02788c}{\hyperlink{classContext}{\-Context} {\bfseries get\-Context} () const }\label{classState_aec041e226f59f134902ca8671c02788c_aec041e226f59f134902ca8671c02788c}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classState_ab7ae9bb2e54a4325acb013c1a51b7b0c_ab7ae9bb2e54a4325acb013c1a51b7b0c}{\hyperlink{classStateStack}{\-State\-Stack} \& {\bfseries m\-Stack}}\label{classState_ab7ae9bb2e54a4325acb013c1a51b7b0c_ab7ae9bb2e54a4325acb013c1a51b7b0c}
+
+\item 
+\hypertarget{classState_a7a3d9f2d67529dd7c2eaae143447511b_a7a3d9f2d67529dd7c2eaae143447511b}{\hyperlink{classContext}{\-Context} {\bfseries m\-Context}}\label{classState_a7a3d9f2d67529dd7c2eaae143447511b_a7a3d9f2d67529dd7c2eaae143447511b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Represent a state of the application. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classState_a19965f83460b248c42952aac8d001206_a19965f83460b248c42952aac8d001206}{\index{\-State@{\-State}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!State@{\-State}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-State\-::handle\-Event} (
+\begin{DoxyParamCaption}
+\item[{const sf\-::\-Event \&}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}\label{classState_a19965f83460b248c42952aac8d001206_a19965f83460b248c42952aac8d001206}
+\-Return false to stop states updating 
+
+\-Implemented in \hyperlink{classPauseState_a685dda66dca3e1c41f4cb02da93c5a8d_a685dda66dca3e1c41f4cb02da93c5a8d}{\-Pause\-State}, \hyperlink{classTestState_a4035262de8411c2f8e2d12980cff089b_a4035262de8411c2f8e2d12980cff089b}{\-Test\-State}, \hyperlink{classTitleState_a91c6ab4d741fe7445d88ed603001971a_a91c6ab4d741fe7445d88ed603001971a}{\-Title\-State}, \hyperlink{classGameState_a000dd3306b1cb9faab5a86774a22aa6d_a000dd3306b1cb9faab5a86774a22aa6d}{\-Game\-State}, and \hyperlink{classDebugState_aef82c5d07e51ab4ea7abcade50370ae2_aef82c5d07e51ab4ea7abcade50370ae2}{\-Debug\-State}.
+
+\hypertarget{classState_acd5926bc7a373edff9e57f3ffe94ca13_acd5926bc7a373edff9e57f3ffe94ca13}{\index{\-State@{\-State}!update@{update}}
+\index{update@{update}!State@{\-State}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-State\-::update} (
+\begin{DoxyParamCaption}
+\item[{sf\-::\-Time}]{dt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}\label{classState_acd5926bc7a373edff9e57f3ffe94ca13_acd5926bc7a373edff9e57f3ffe94ca13}
+\-Return false to stop states updating 
+
+\-Implemented in \hyperlink{classPauseState_a9d6e9c6d96e140487badbe1da2738fa3_a9d6e9c6d96e140487badbe1da2738fa3}{\-Pause\-State}, \hyperlink{classTestState_affddb89d007d492d4317dbfd1a920b96_affddb89d007d492d4317dbfd1a920b96}{\-Test\-State}, \hyperlink{classGameState_a4ac988f0da5c33b43ff356890fcf9c1c_a4ac988f0da5c33b43ff356890fcf9c1c}{\-Game\-State}, \hyperlink{classDebugState_a6f49614c9b947cedcad131c28e24f885_a6f49614c9b947cedcad131c28e24f885}{\-Debug\-State}, and \hyperlink{classTitleState_aa282ac0c6e22267cb6a7054973d75fdf_aa282ac0c6e22267cb6a7054973d75fdf}{\-Title\-State}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+core/state/\-State.\-hpp\item 
+core/state/\-State.\-cpp\end{DoxyCompactItemize}

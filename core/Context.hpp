@@ -7,6 +7,8 @@ namespace sf {
 class TextureHolder;
 class SoundHolder;
 
+/** Contain global resources for states
+  */
 class Context
 {
 	public:

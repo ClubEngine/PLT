@@ -1,0 +1,129 @@
+\hypertarget{classStateStack}{\section{\-State\-Stack \-Class \-Reference}
+\label{classStateStack}\index{\-State\-Stack@{\-State\-Stack}}
+}
+
+
+{\ttfamily \#include $<$\-State\-Stack.\-hpp$>$}
+
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structStateStack_1_1PendingChange}{\-Pending\-Change}
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries \-Action} \{ {\bfseries \-Push}, 
+{\bfseries \-Pop}, 
+{\bfseries \-Clear}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStateStack_a237f619f1ee404b3d966fd5dbba98f5a_a237f619f1ee404b3d966fd5dbba98f5a}{{\bfseries \-State\-Stack} (\hyperlink{classAbstractStateFactory}{\-Abstract\-State\-Factory} \&factory, \hyperlink{classContext}{\-Context} context)}\label{classStateStack_a237f619f1ee404b3d966fd5dbba98f5a_a237f619f1ee404b3d966fd5dbba98f5a}
+
+\item 
+void \hyperlink{classStateStack_ae90af9f56ce7774d47d0407e2680c27d_ae90af9f56ce7774d47d0407e2680c27d}{update} (sf\-::\-Time dt)
+\item 
+void \hyperlink{classStateStack_a70d3ffad9da499b8356789115f3e2acf_a70d3ffad9da499b8356789115f3e2acf}{handle\-Event} (const sf\-::\-Event \&event)
+\item 
+void \hyperlink{classStateStack_a0990b973b2a0bdf8fad2f326e564931a_a0990b973b2a0bdf8fad2f326e564931a}{draw} ()
+\item 
+void \hyperlink{classStateStack_a5d4d9c5e5d95be4392ef2c95fdc0c047_a5d4d9c5e5d95be4392ef2c95fdc0c047}{push\-State} (\-States\-::\-I\-D id)
+\item 
+\hypertarget{classStateStack_a7e050a57b798295c2344f1318765b5ee_a7e050a57b798295c2344f1318765b5ee}{void {\bfseries pop\-State} ()}\label{classStateStack_a7e050a57b798295c2344f1318765b5ee_a7e050a57b798295c2344f1318765b5ee}
+
+\item 
+\hypertarget{classStateStack_a49f0703d4037c3bf63494e64cb09898d_a49f0703d4037c3bf63494e64cb09898d}{void {\bfseries clear\-States} ()}\label{classStateStack_a49f0703d4037c3bf63494e64cb09898d_a49f0703d4037c3bf63494e64cb09898d}
+
+\item 
+\hypertarget{classStateStack_a63a73898d24eb0a68cac0215a9fda4fc_a63a73898d24eb0a68cac0215a9fda4fc}{bool {\bfseries is\-Empty} () const }\label{classStateStack_a63a73898d24eb0a68cac0215a9fda4fc_a63a73898d24eb0a68cac0215a9fda4fc}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStateStack_a98d8e25ed9ad5889b145982b8a167cf0_a98d8e25ed9ad5889b145982b8a167cf0}{typedef std\-::vector$<$ \hyperlink{classState}{\-State} $\ast$ $>$ {\bfseries \-State\-Ptr\-Vector}}\label{classStateStack_a98d8e25ed9ad5889b145982b8a167cf0_a98d8e25ed9ad5889b145982b8a167cf0}
+
+\item 
+\hypertarget{classStateStack_aa3a35524fb99f5d12b4276bdf2a56744_aa3a35524fb99f5d12b4276bdf2a56744}{typedef std\-::vector\*
+$<$ \hyperlink{structStateStack_1_1PendingChange}{\-Pending\-Change} $>$ {\bfseries \-Pending\-Change\-Vector}}\label{classStateStack_aa3a35524fb99f5d12b4276bdf2a56744_aa3a35524fb99f5d12b4276bdf2a56744}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStateStack_af664f95954b4621175c9fc0f9d30fdf0_af664f95954b4621175c9fc0f9d30fdf0}{void {\bfseries apply\-Pending\-Changes} ()}\label{classStateStack_af664f95954b4621175c9fc0f9d30fdf0_af664f95954b4621175c9fc0f9d30fdf0}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStateStack_a1e91ad8bee74b8d3b0a79516334f876e_a1e91ad8bee74b8d3b0a79516334f876e}{\-State\-Ptr\-Vector {\bfseries m\-Stack}}\label{classStateStack_a1e91ad8bee74b8d3b0a79516334f876e_a1e91ad8bee74b8d3b0a79516334f876e}
+
+\item 
+\hypertarget{classStateStack_adbc8d0b3e30caf552c705ee189a5bcbb_adbc8d0b3e30caf552c705ee189a5bcbb}{\-Pending\-Change\-Vector {\bfseries m\-Pending\-List}}\label{classStateStack_adbc8d0b3e30caf552c705ee189a5bcbb_adbc8d0b3e30caf552c705ee189a5bcbb}
+
+\item 
+\hypertarget{classStateStack_ac5e8ff25cd93f9c4a4345be08b6da7ea_ac5e8ff25cd93f9c4a4345be08b6da7ea}{\hyperlink{classContext}{\-Context} {\bfseries m\-Context}}\label{classStateStack_ac5e8ff25cd93f9c4a4345be08b6da7ea_ac5e8ff25cd93f9c4a4345be08b6da7ea}
+
+\item 
+\hypertarget{classStateStack_a10fc35b00720872d373ea694a6a911e0_a10fc35b00720872d373ea694a6a911e0}{\hyperlink{classAbstractStateFactory}{\-Abstract\-State\-Factory} \& {\bfseries m\-Factory}}\label{classStateStack_a10fc35b00720872d373ea694a6a911e0_a10fc35b00720872d373ea694a6a911e0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Manage states of the application. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classStateStack_a0990b973b2a0bdf8fad2f326e564931a_a0990b973b2a0bdf8fad2f326e564931a}{\index{\-State\-Stack@{\-State\-Stack}!draw@{draw}}
+\index{draw@{draw}!StateStack@{\-State\-Stack}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-State\-Stack\-::draw} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classStateStack_a0990b973b2a0bdf8fad2f326e564931a_a0990b973b2a0bdf8fad2f326e564931a}
+\-Draw all the states from the bottom \hypertarget{classStateStack_a70d3ffad9da499b8356789115f3e2acf_a70d3ffad9da499b8356789115f3e2acf}{\index{\-State\-Stack@{\-State\-Stack}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!StateStack@{\-State\-Stack}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-State\-Stack\-::handle\-Event} (
+\begin{DoxyParamCaption}
+\item[{const sf\-::\-Event \&}]{event}
+\end{DoxyParamCaption}
+)}}\label{classStateStack_a70d3ffad9da499b8356789115f3e2acf_a70d3ffad9da499b8356789115f3e2acf}
+\-Notify states from the top 
+\begin{DoxyParams}{\-Parameters}
+{\em event} & \-Event to treat \\
+\hline
+\end{DoxyParams}
+\hypertarget{classStateStack_a5d4d9c5e5d95be4392ef2c95fdc0c047_a5d4d9c5e5d95be4392ef2c95fdc0c047}{\index{\-State\-Stack@{\-State\-Stack}!push\-State@{push\-State}}
+\index{push\-State@{push\-State}!StateStack@{\-State\-Stack}}
+\subsubsection[{push\-State}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-State\-Stack\-::push\-State} (
+\begin{DoxyParamCaption}
+\item[{\-States\-::\-I\-D}]{id}
+\end{DoxyParamCaption}
+)}}\label{classStateStack_a5d4d9c5e5d95be4392ef2c95fdc0c047_a5d4d9c5e5d95be4392ef2c95fdc0c047}
+\-Set the top active state 
+\begin{DoxyParams}{\-Parameters}
+{\em id} & \-Id of the state, accordly to the id into the \-State\-Factory \\
+\hline
+\end{DoxyParams}
+\hypertarget{classStateStack_ae90af9f56ce7774d47d0407e2680c27d_ae90af9f56ce7774d47d0407e2680c27d}{\index{\-State\-Stack@{\-State\-Stack}!update@{update}}
+\index{update@{update}!StateStack@{\-State\-Stack}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-State\-Stack\-::update} (
+\begin{DoxyParamCaption}
+\item[{sf\-::\-Time}]{dt}
+\end{DoxyParamCaption}
+)}}\label{classStateStack_ae90af9f56ce7774d47d0407e2680c27d_ae90af9f56ce7774d47d0407e2680c27d}
+\-Update all the states 
+\begin{DoxyParams}{\-Parameters}
+{\em dt} & \-Time elapsed since the latest call \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+core/state/\-State\-Stack.\-hpp\item 
+core/state/\-State\-Stack.\-cpp\end{DoxyCompactItemize}

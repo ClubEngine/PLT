@@ -1,0 +1,94 @@
+\hypertarget{classGameState}{\section{\-Game\-State \-Class \-Reference}
+\label{classGameState}\index{\-Game\-State@{\-Game\-State}}
+}
+\-Inheritance diagram for \-Game\-State\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGameState}
+\end{center}
+\end{figure}
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structGameState_1_1selected}{selected}
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameState_aa7d21e6d14f32ba7c2e155a9905b81aa_aa7d21e6d14f32ba7c2e155a9905b81aa}{{\bfseries \-Game\-State} (\hyperlink{classStateStack}{\-State\-Stack} \&stack, \hyperlink{classContext}{\-Context} \&context)}\label{classGameState_aa7d21e6d14f32ba7c2e155a9905b81aa_aa7d21e6d14f32ba7c2e155a9905b81aa}
+
+\item 
+virtual bool \hyperlink{classGameState_a000dd3306b1cb9faab5a86774a22aa6d_a000dd3306b1cb9faab5a86774a22aa6d}{handle\-Event} (const sf\-::\-Event \&event)
+\item 
+virtual bool \hyperlink{classGameState_a4ac988f0da5c33b43ff356890fcf9c1c_a4ac988f0da5c33b43ff356890fcf9c1c}{update} (sf\-::\-Time dt)
+\item 
+\hypertarget{classGameState_a3c511417d8934943ae65c04681f321a3_a3c511417d8934943ae65c04681f321a3}{virtual void {\bfseries draw} ()}\label{classGameState_a3c511417d8934943ae65c04681f321a3_a3c511417d8934943ae65c04681f321a3}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Private \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameState_a63a1d1e3f644331ed1d38fac12f0de82_a63a1d1e3f644331ed1d38fac12f0de82}{int {\bfseries lol}}\label{classGameState_a63a1d1e3f644331ed1d38fac12f0de82_a63a1d1e3f644331ed1d38fac12f0de82}
+
+\item 
+\hypertarget{classGameState_a5461ce079b93c1a1fb52199af6b21629_a5461ce079b93c1a1fb52199af6b21629}{bool {\bfseries mouseispressed}}\label{classGameState_a5461ce079b93c1a1fb52199af6b21629_a5461ce079b93c1a1fb52199af6b21629}
+
+\item 
+\hypertarget{classGameState_a840248426d5f4d682a5a46dbe865c01d_a840248426d5f4d682a5a46dbe865c01d}{float {\bfseries aux}}\label{classGameState_a840248426d5f4d682a5a46dbe865c01d_a840248426d5f4d682a5a46dbe865c01d}
+
+\item 
+\hypertarget{classGameState_aa05df59ca1bb66f1ce5524cbc6fcac3d_aa05df59ca1bb66f1ce5524cbc6fcac3d}{\hyperlink{structGameState_1_1selected}{selected} {\bfseries selected}}\label{classGameState_aa05df59ca1bb66f1ce5524cbc6fcac3d_aa05df59ca1bb66f1ce5524cbc6fcac3d}
+
+\item 
+\hypertarget{classGameState_a87df533b5aa84d3fe41fbaf1d5ec8861_a87df533b5aa84d3fe41fbaf1d5ec8861}{int {\bfseries width}}\label{classGameState_a87df533b5aa84d3fe41fbaf1d5ec8861_a87df533b5aa84d3fe41fbaf1d5ec8861}
+
+\item 
+\hypertarget{classGameState_ad5cc108fdbfdd24fa5d8897b680438bc_ad5cc108fdbfdd24fa5d8897b680438bc}{int {\bfseries height}}\label{classGameState_ad5cc108fdbfdd24fa5d8897b680438bc_ad5cc108fdbfdd24fa5d8897b680438bc}
+
+\item 
+\hypertarget{classGameState_ada30b3ee0f083563f7b1d28e8bcf10ce_ada30b3ee0f083563f7b1d28e8bcf10ce}{int {\bfseries tile\-Size}}\label{classGameState_ada30b3ee0f083563f7b1d28e8bcf10ce_ada30b3ee0f083563f7b1d28e8bcf10ce}
+
+\item 
+\hypertarget{classGameState_a660ea9817bdd451f5ffffaf18fae63e9_a660ea9817bdd451f5ffffaf18fae63e9}{\hyperlink{classMap}{\-Map} $\ast$ {\bfseries map}}\label{classGameState_a660ea9817bdd451f5ffffaf18fae63e9_a660ea9817bdd451f5ffffaf18fae63e9}
+
+\item 
+\hypertarget{classGameState_a9dd8bced38e96ba91a1d95a6c8cbeab4_a9dd8bced38e96ba91a1d95a6c8cbeab4}{sf\-::\-Texture {\bfseries grid}}\label{classGameState_a9dd8bced38e96ba91a1d95a6c8cbeab4_a9dd8bced38e96ba91a1d95a6c8cbeab4}
+
+\item 
+\hypertarget{classGameState_a0c86e04c6d92c157785a446140aca6d0_a0c86e04c6d92c157785a446140aca6d0}{sf\-::\-Sprite {\bfseries gridsprite}}\label{classGameState_a0c86e04c6d92c157785a446140aca6d0_a0c86e04c6d92c157785a446140aca6d0}
+
+\item 
+\hypertarget{classGameState_a768594ad10d1ac7f832f30f120f2cc57_a768594ad10d1ac7f832f30f120f2cc57}{sf\-::\-Rectangle\-Shape {\bfseries selection}}\label{classGameState_a768594ad10d1ac7f832f30f120f2cc57_a768594ad10d1ac7f832f30f120f2cc57}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classGameState_a000dd3306b1cb9faab5a86774a22aa6d_a000dd3306b1cb9faab5a86774a22aa6d}{\index{\-Game\-State@{\-Game\-State}!handle\-Event@{handle\-Event}}
+\index{handle\-Event@{handle\-Event}!GameState@{\-Game\-State}}
+\subsubsection[{handle\-Event}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Game\-State\-::handle\-Event} (
+\begin{DoxyParamCaption}
+\item[{const sf\-::\-Event \&}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classGameState_a000dd3306b1cb9faab5a86774a22aa6d_a000dd3306b1cb9faab5a86774a22aa6d}
+\-Return false to stop states updating 
+
+\-Implements \hyperlink{classState_a19965f83460b248c42952aac8d001206_a19965f83460b248c42952aac8d001206}{\-State}.
+
+\hypertarget{classGameState_a4ac988f0da5c33b43ff356890fcf9c1c_a4ac988f0da5c33b43ff356890fcf9c1c}{\index{\-Game\-State@{\-Game\-State}!update@{update}}
+\index{update@{update}!GameState@{\-Game\-State}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Game\-State\-::update} (
+\begin{DoxyParamCaption}
+\item[{sf\-::\-Time}]{dt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}\label{classGameState_a4ac988f0da5c33b43ff356890fcf9c1c_a4ac988f0da5c33b43ff356890fcf9c1c}
+\-Return false to stop states updating 
+
+\-Implements \hyperlink{classState_acd5926bc7a373edff9e57f3ffe94ca13_acd5926bc7a373edff9e57f3ffe94ca13}{\-State}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+gameplay/\-Game\-State.\-hpp\item 
+gameplay/\-Game\-State.\-cpp\end{DoxyCompactItemize}
