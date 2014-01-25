@@ -29,11 +29,6 @@ bool GameState::handleEvent(const sf::Event &event)
 	sf::RenderWindow & window = *getContext().window;
 	
     switch (event.type) {
-    case sf::Event::Closed :
-    {
-        requestStateClear();
-        break;
-    }
     case sf::Event::MouseButtonPressed :
     {
         mouseispressed = true;

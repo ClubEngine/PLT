@@ -19,8 +19,6 @@ class Camera
 		
 		const sf::View & getView() const;
 		
-		
-		
 	private:
 		sf::View mDefaultView;
 		sf::View mView;

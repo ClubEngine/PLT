@@ -14,3 +14,4 @@
 
 bin/Makefile
 bin/plt
+*.pro.user

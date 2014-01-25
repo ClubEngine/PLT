@@ -19,13 +19,14 @@ bool PauseState::handleEvent(const sf::Event &event)
 
 bool PauseState::update(sf::Time dt)
 {
-	
 	return false;
 }
 
 void PauseState::draw()
 {
 	sf::RenderWindow & window = *getContext().window;
+	
+	window.setView(window.getDefaultView());
 	
 	sf::RectangleShape rect(sf::Vector2f(800,600));
 	rect.setFillColor(sf::Color(0,0,0,128));
