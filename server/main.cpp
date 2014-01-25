@@ -3,6 +3,8 @@
 #include <SFML/System.hpp>
 #include <SFML/Network.hpp>
 
+#include "network/ReusableTcpListener.hpp"
+
 using namespace std;
 
 int main(int argc, char ** argv) {
@@ -13,8 +15,10 @@ int main(int argc, char ** argv) {
 	sf::Time timeout = sf::seconds(1.0f);
 		
 	// Create a socket to listen to new connections
-	sf::TcpListener listener;
-	listener.listen(55001);
+	Network::ReusableTcpListener listener;
+	if (listener.listen(55001) != sf::Socket::Done)
+		return 0;
+	listener.reuse();
 	// Create a list to store the future clients
 	std::list<sf::TcpSocket*> clients;
 	// Create a selector
@@ -33,29 +37,29 @@ int main(int argc, char ** argv) {
 			if (selector.isReady(listener))
 			{
 				// The listener is ready: there is a pending connection
-				sf::TcpSocket* client = new sf::TcpSocket;
-				if (listener.accept(*client) == sf::Socket::Done)
+				sf::TcpSocket* clientPtr = new sf::TcpSocket;
+				if (listener.accept(*clientPtr) == sf::Socket::Done)
 				{
-					std::cout << "New client : " << client->getRemoteAddress() << endl;
+					std::cout << "New client : " << clientPtr->getRemoteAddress() << endl;
 					// Add the new client to the clients list
-					clients.push_back(client);
+					clients.push_back(clientPtr);
 					// Add the new client to the selector so that we will
 					// be notified when he sends something
-					selector.add(*client);
+					selector.add(*clientPtr);
 				}
 				else
 				{
 					// Error, we won't get a new connection, delete the socket
-					delete client;
+					delete clientPtr;
 				}
 			}
 			else
 			{
-				cout << "not the listener" << endl;
+				cout << "not the listener. test in " << clients.size() << " client" << endl;
 				// The listener socket is not ready, test all other sockets (the clients)
 				for (std::list<sf::TcpSocket*>::iterator it = clients.begin(); it != clients.end(); ++it)
 				{
-					cout << "test socket " << (int*)*it;
+					cout << "test socket " << (int*)*it <<endl;
 					sf::TcpSocket& client = **it;
 					if (selector.isReady(client))
 					{
@@ -70,15 +74,18 @@ int main(int argc, char ** argv) {
 							cout << endl;
 							
 						} else {
+							cout << "Client disconnects : " << client.getRemoteAddress() << endl;
+							selector.remove(client);
+							delete &client;
 							it = clients.erase(it);
 						}
 					}
 				}
 			}
-		} else {
-			cout << "timeout" << endl;
 		}
 	}
+	
+	
 
     return 0;
 }
