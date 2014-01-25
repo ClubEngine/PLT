@@ -37,9 +37,13 @@ bool GameState::handleEvent(const sf::Event &event)
     case sf::Event::MouseButtonPressed :
     {
         mouseispressed = true;
+		
+		sf::Vector2f mousepos = window.mapPixelToCoords(
+									sf::Vector2i(event.mouseButton.x, event.mouseButton.y),
+									camera.getView());
 
-        float a = floor((float)event.mouseButton.x/tileSize)*tileSize;
-        float b = floor((float)event.mouseButton.y/tileSize)*tileSize;
+        float a = floor(mousepos.x/tileSize)*tileSize;
+        float b = floor(mousepos.y/tileSize)*tileSize;
 
         selected.i1.x = a;
         selected.i1.y = b;
@@ -54,7 +58,9 @@ bool GameState::handleEvent(const sf::Event &event)
     case sf::Event::MouseMoved :
     {
         if (mouseispressed){
-            sf::Vector2i f = sf::Mouse::getPosition(window);
+			sf::Vector2f f = window.mapPixelToCoords(
+								 sf::Vector2i(event.mouseMove.x, event.mouseMove.y), 
+								 camera.getView());
             sf::Vector2i f1= sf::Vector2i(floor(f.x/tileSize)*tileSize,floor(f.y/tileSize)*tileSize);
             sf::Vector2i f2= f1 + sf::Vector2i(tileSize,tileSize);
             selected.p1.x = min(min(selected.i1.x,selected.i2.x),min(f1.x,f2.x));
