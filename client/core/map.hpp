@@ -24,6 +24,16 @@ class Map
         sf::Sprite spriteHerbe;
         sf::Sprite spriteTerre;
         sf::Sprite spriteStone;
+
+        sf::Sprite spriteHTupleft;
+        sf::Sprite spriteHTupright;
+        sf::Sprite spriteHTdownright;
+        sf::Sprite spriteHTdownleft;
+
+        sf::Sprite spriteHTupseg;
+        sf::Sprite spriteHTdownseg;
+        sf::Sprite spriteHTleftseg;
+        sf::Sprite spriteHTrightseg;
 };
 
 

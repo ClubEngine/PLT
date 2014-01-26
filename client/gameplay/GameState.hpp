@@ -36,6 +36,14 @@ class GameState : public State
         sf::Texture grid;
         sf::Sprite gridsprite;
         sf::RectangleShape selection;
+        sf::RectangleShape upleft;
+        sf::RectangleShape upright;
+        sf::RectangleShape downright;
+        sf::RectangleShape downleft;
+        sf::RectangleShape upseg;
+        sf::RectangleShape rightseg;
+        sf::RectangleShape leftseg;
+        sf::RectangleShape downseg;
 		
 		Camera camera;
 };

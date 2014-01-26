@@ -18,10 +18,41 @@ GameState::GameState(StateStack &stack, Context &context)
     map = new Map(context, width/tileSize, height/tileSize);
     //map = new Map(context, 20, 20);
 
-    selection.setSize(sf::Vector2f(10,10));
-    selection.setFillColor(sf::Color(255,0,0,127));
+    selection.setFillColor(sf::Color(255,0,0,63));
     selection.setOutlineThickness(0.5);
     selection.setOutlineColor(sf::Color::White);
+
+    upright.setFillColor(sf::Color(255,0,0,188));
+    upright.setOutlineThickness(0.5);
+    upright.setOutlineColor(sf::Color::White);
+
+    upleft.setFillColor(sf::Color(255,0,0,188));
+    upleft.setOutlineThickness(0.5);
+    upleft.setOutlineColor(sf::Color::White);
+
+    downright.setFillColor(sf::Color(255,0,0,188));
+    downright.setOutlineThickness(0.5);
+    downright.setOutlineColor(sf::Color::White);
+
+    downleft.setFillColor(sf::Color(255,0,0,188));
+    downleft.setOutlineThickness(0.5);
+    downleft.setOutlineColor(sf::Color::White);
+
+    upseg.setFillColor(sf::Color(255,0,0,125));
+    upseg.setOutlineThickness(0.5);
+    upseg.setOutlineColor(sf::Color::White);
+
+    downseg.setFillColor(sf::Color(255,0,0,125));
+    downseg.setOutlineThickness(0.5);
+    downseg.setOutlineColor(sf::Color::White);
+
+    leftseg.setFillColor(sf::Color(255,0,0,125));
+    leftseg.setOutlineThickness(0.5);
+    leftseg.setOutlineColor(sf::Color::White);
+
+    rightseg.setFillColor(sf::Color(255,0,0,125));
+    rightseg.setOutlineThickness(0.5);
+    rightseg.setOutlineColor(sf::Color::White);
 }
 
 bool GameState::handleEvent(const sf::Event &event)
@@ -100,23 +131,50 @@ bool GameState::handleEvent(const sf::Event &event)
                 {
                 // ERASE TILE LEAVING A BLANK ONE
                 case sf::Keyboard::BackSpace : {
-                     map->setTile(i,j,2);
-                    break;
-                }
-                // CREATE DUST TILE
-                case sf::Keyboard::T : {
-                    map->setTile(i,j,1);
-                    break;
-                }
-                // CREATE STONE TILE
-                case sf::Keyboard::S : {
-                    map->setTile(i,j,3);
+                     map->setTile(i,j,0);
                     break;
                 }
                 // CREATE GRASS TILE
                 case sf::Keyboard::H : {
-                    map->setTile(i,j,0);
+                     map->setTile(i,j,1);
                     break;
+                }
+                // CREATE SOIL TILE
+                case sf::Keyboard::T : {
+                    if ( j == selected.p1.y/tileSize ) {
+                        if ( i == selected.p1.x/tileSize )
+                            map->setTile(i,j,11);
+                        else if ( i == selected.p2.x/tileSize-1 )
+                            map->setTile(i,j,12);
+                        else
+                            map->setTile(i,j,15);
+                    } else if ( j == selected.p2.y/tileSize-1 ) {
+                        if ( i == selected.p1.x/tileSize )
+                            map->setTile(i,j,14);
+                        else if ( i == selected.p2.x/tileSize-1 )
+                            map->setTile(i,j,13);
+                        else
+                            map->setTile(i,j,16);
+                    } else {
+                        if ( i == selected.p1.x/tileSize )
+                            map->setTile(i,j,17);
+                        else if ( i == selected.p2.x/tileSize-1 )
+                            map->setTile(i,j,18);
+                        else
+                            map->setTile(i,j,2);
+                    }
+
+                    if ( selected.p1.x == selected.p2.x + tileSize ) {
+                      map->setTile(i,j,2);
+                    } // normalement ici je verifie que si on selectionne juste une
+                      // case je met la tile 2 mais il veux pas pour je ne sais quelle
+                      // raison :-(
+                   break;
+                }
+                // CREATE STONE TILE
+                case sf::Keyboard::S : {
+                    map->setTile(i,j,3);
+                   break;
                 }
 					default:;
                 }
@@ -152,9 +210,41 @@ void GameState::draw()
 
     map->Display(getContext().window);
 
-    selection.setSize((sf::Vector2f)(selected.p2-selected.p1));
-    selection.setPosition((sf::Vector2f)(selected.p1));
+    upleft.setSize(sf::Vector2f(tileSize,tileSize));
+    upright.setSize(sf::Vector2f(tileSize,tileSize));
+    downright.setSize(sf::Vector2f(tileSize,tileSize));
+    downleft.setSize(sf::Vector2f(tileSize,tileSize));
+
+    upleft.setPosition(selected.p1.x, selected.p1.y);
+    upright.setPosition(selected.p2.x-tileSize, selected.p1.y);
+    downright.setPosition(selected.p2.x-tileSize, selected.p2.y-tileSize);
+    downleft.setPosition(selected.p1.x, selected.p2.y-tileSize);
+
+
+    upseg.setSize(sf::Vector2f(selected.p2.x-selected.p1.x-2*tileSize,tileSize));
+    downseg.setSize(sf::Vector2f(selected.p2.x-selected.p1.x-2*tileSize,tileSize));
+    leftseg.setSize(sf::Vector2f(tileSize,selected.p2.y-selected.p1.y-2*tileSize));
+    rightseg.setSize(sf::Vector2f(tileSize,selected.p2.y-selected.p1.y-2*tileSize));
+
+    upseg.setPosition(selected.p1.x+tileSize,selected.p1.y);
+    downseg.setPosition(selected.p1.x+tileSize,selected.p2.y-tileSize);
+    leftseg.setPosition(selected.p1.x,selected.p1.y+tileSize);
+    rightseg.setPosition(selected.p2.x-tileSize,selected.p1.y+tileSize);
+
+
+    selection.setSize(sf::Vector2f(selected.p2.x-selected.p1.x-2*tileSize,selected.p2.y-selected.p1.y-2*tileSize));
+
+    selection.setPosition(selected.p1.x+tileSize,selected.p1.y+tileSize);
+
     window.draw(selection);
+    window.draw(upright);
+    window.draw(upleft);
+    window.draw(downleft);
+    window.draw(downright);
+    window.draw(upseg);
+    window.draw(downseg);
+    window.draw(leftseg);
+    window.draw(rightseg);
 
 	
 }
