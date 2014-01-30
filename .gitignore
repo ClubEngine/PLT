@@ -16,3 +16,7 @@ bin/Makefile
 bin/plt
 *.pro.user
 client/bin
+
+*.autosave
+client/plt
+server/server
