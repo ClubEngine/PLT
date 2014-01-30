@@ -32,7 +32,10 @@ SOURCES += \
     gameplay/TestState.cpp \
     gameplay/MyStateFactory.cpp \
     gameplay/PauseState.cpp \
-    core/Camera.cpp
+    core/Camera.cpp \
+    entity/EntityManager.cpp \
+    entity/Entity.cpp \
+    entity/Unit.cpp
 
 HEADERS += \
     core/TextureHolder.hpp \
@@ -53,5 +56,8 @@ HEADERS += \
     gameplay/MyStates.hpp \
     gameplay/MyStateFactory.hpp \
     gameplay/PauseState.hpp \
-    core/Camera.hpp
+    core/Camera.hpp \
+    entity/EntityManager.hpp \
+    entity/Entity.hpp \
+    entity/Unit.hpp
 
