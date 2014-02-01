@@ -11,6 +11,7 @@ LIBS += -L/usr/local/lib/ \
     -lsfml-graphics-d \
     -lsfml-window-d \
     -lsfml-audio-d \
+    -lsfml-network-d \
     -lsfml-system-d
 
 # release
@@ -35,7 +36,10 @@ SOURCES += \
     core/Camera.cpp \
     entity/EntityManager.cpp \
     entity/Entity.cpp \
-    entity/Unit.cpp
+    entity/Unit.cpp \
+    core/network/Command.cpp \
+    core/network/CommandFactory.cpp \
+    core/network/NetInterface.cpp
 
 HEADERS += \
     core/TextureHolder.hpp \
@@ -59,5 +63,8 @@ HEADERS += \
     core/Camera.hpp \
     entity/EntityManager.hpp \
     entity/Entity.hpp \
-    entity/Unit.hpp
+    entity/Unit.hpp \
+    core/network/Command.hpp \
+    core/network/CommandFactory.hpp \
+    core/network/NetInterface.hpp
 

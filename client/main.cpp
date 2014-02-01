@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char ** argv) {
 
-    cout << "Long Term Project " << __DATE__ << " at " << __TIME__ << endl;
+    cout << "\nLong Term Project " << __DATE__ << " at " << __TIME__ << endl;
 	
 	MyStateFactory factory;
 	Application application(factory);

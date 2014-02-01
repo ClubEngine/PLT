@@ -4,6 +4,8 @@
 #include "../core/state/State.hpp"
 #include "../core/map.hpp"
 #include "../core/Camera.hpp"
+#include "../core/network/NetInterface.hpp"
+#include "../entity/EntityManager.hpp"
 
 class GameState : public State
 {
@@ -46,6 +48,8 @@ class GameState : public State
         sf::RectangleShape downseg;
 		
 		Camera camera;
+		NetInterface netInterface;
+		EntityManager entities;
 };
 
 

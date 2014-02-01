@@ -69,7 +69,7 @@ void Application::processInputs()
 		mStateStack.handleEvent(event);
 	
 		if (event.type == sf::Event::Closed)
-			mWindow.close();
+			mStateStack.clearStates();
 	}
 }
 

@@ -8,7 +8,8 @@ using namespace std;
 
 GameState::GameState(StateStack &stack, Context &context)
     : State(stack, context), lol(100), tileSize(25), mouseispressed(false),
-	  camera(*(context.window))
+	  camera(*(context.window)), netInterface(),
+	  entities()
 {
 	//getContext().textures.load(Textures::Patate, "assets/images/patate.png");
     width = getContext().window->getSize().x;
@@ -53,6 +54,15 @@ GameState::GameState(StateStack &stack, Context &context)
     rightseg.setFillColor(sf::Color(255,0,0,125));
     rightseg.setOutlineThickness(0.5);
     rightseg.setOutlineColor(sf::Color::White);
+	
+	// ***
+	
+	netInterface.init("localhost", 55001);
+	
+	Entity entity;
+	entity.setPosition(0,0); entities.add(entity);
+	entity.setPosition(100,10); entities.add(entity);
+	entity.setPosition(10,100); entities.add(entity);
 }
 
 bool GameState::handleEvent(const sf::Event &event)
@@ -188,6 +198,27 @@ bool GameState::handleEvent(const sf::Event &event)
 	
 	camera.handleEvent(event);
 	
+	{
+		sf::Packet packet;
+		bool hasone=false;
+		while (netInterface.getPacket(packet)) {
+			hasone = true;
+			std::cout << "* Receive : ";
+			std::string s;
+			if (packet >> s)
+				std::cout << s;
+			cout << endl;
+			s = "Patate !";
+			packet.clear();
+			packet << s;
+			netInterface.send(packet);
+			netInterface.send(packet);
+			netInterface.send(packet);
+		}
+		if (hasone)
+			std::cout << "end" << endl;
+	}
+	
 	
 	return false;
 }
@@ -209,6 +240,18 @@ void GameState::draw()
     window.clear(sf::Color::White);
 
     map->Display(getContext().window);
+	
+	{
+		sf::RectangleShape sprite(sf::Vector2f(32,32));
+		sprite.setFillColor(sf::Color(255,128,64));
+		const EntityVector & allEntities = entities.getAll();
+		for(EntityVector::const_iterator it = allEntities.begin();
+			it != allEntities.end(); ++it) {
+			const Entity & entity = *it;
+			sprite.setPosition(entity.getPosition());
+			window.draw(sprite);
+		}
+	}
 
     upleft.setSize(sf::Vector2f(tileSize,tileSize));
     upright.setSize(sf::Vector2f(tileSize,tileSize));
