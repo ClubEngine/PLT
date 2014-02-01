@@ -46,6 +46,17 @@ int main(int argc, char ** argv) {
 					// Add the new client to the selector so that we will
 					// be notified when he sends something
 					selector.add(*clientPtr);
+					
+					// tests
+					{
+						sf::Packet p;
+						std::string s = "Hello !";
+						p << s;
+						clientPtr->send(p);
+						clientPtr->send(p);
+						clientPtr->send(p);
+						clientPtr->send(p);
+					}
 				}
 				else
 				{
@@ -67,7 +78,7 @@ int main(int argc, char ** argv) {
 						sf::Packet packet;
 						if (client.receive(packet) == sf::Socket::Done)
 						{
-							std::cout << "Receive : ";
+							std::cout << "* Receive : ";
 							std::string s;
 							if (packet >> s)
 								std::cout << s;
