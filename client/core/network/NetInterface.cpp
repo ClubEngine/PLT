@@ -1,4 +1,6 @@
+#include "../../Log.hpp"
 #include "NetInterface.hpp"
+
 
 NetInterface::NetInterface() :
 	mReady(false),
@@ -19,8 +21,10 @@ void NetInterface::init(const std::string &host, unsigned short port)
 	if (mSocket.connect(sf::IpAddress(host), port, sf::seconds(TIMEOUT_CONNECT))
 		== sf::Socket::Done) {
 		mReady = true;
-		
+		LOG("NetInterface : connected to server.");
 		mListenThread.launch();
+	} else {
+		LOG("NetInterface : NOT connected to server.");
 	}
 }
 

@@ -3,13 +3,14 @@
 #include <iostream>
 #include <cmath>
 #include "gameplay/MyStates.hpp"
+#include "commands/CommandMove.hpp"
 
 using namespace std;
 
 GameState::GameState(StateStack &stack, Context &context)
-    : State(stack, context), lol(100), tileSize(25), mouseispressed(false),
+    : State(stack, context), lol(100), mouseispressed(false), tileSize(25),
 	  camera(*(context.window)), netInterface(),
-	  entities()
+	  entities(), commandFactory()
 {
 	//getContext().textures.load(Textures::Patate, "assets/images/patate.png");
     width = getContext().window->getSize().x;
@@ -72,22 +73,32 @@ bool GameState::handleEvent(const sf::Event &event)
     switch (event.type) {
     case sf::Event::MouseButtonPressed :
     {
-        mouseispressed = true;
+			if (event.mouseButton.button == sf::Mouse::Left) {
+				mouseispressed = true;
+				
+				sf::Vector2f mousepos = window.mapPixelToCoords(
+											sf::Vector2i(event.mouseButton.x, event.mouseButton.y),
+											camera.getView());
 		
-		sf::Vector2f mousepos = window.mapPixelToCoords(
-									sf::Vector2i(event.mouseButton.x, event.mouseButton.y),
-									camera.getView());
-
-        float a = floor(mousepos.x/tileSize)*tileSize;
-        float b = floor(mousepos.y/tileSize)*tileSize;
-
-        selected.i1.x = a;
-        selected.i1.y = b;
-        selected.i2.x = selected.i1.x+tileSize;
-        selected.i2.y = selected.i1.y+tileSize;
-
-        selected.p1 = selected.i1;
-        selected.p2 = selected.i2;
+				float a = floor(mousepos.x/tileSize)*tileSize;
+				float b = floor(mousepos.y/tileSize)*tileSize;
+		
+				selected.i1.x = a;
+				selected.i1.y = b;
+				selected.i2.x = selected.i1.x+tileSize;
+				selected.i2.y = selected.i1.y+tileSize;
+		
+				selected.p1 = selected.i1;
+				selected.p2 = selected.i2;
+			} else if (event.mouseButton.button == sf::Mouse::Right) {
+				const EntityVector & selectedEntities = entities.getAll(); // test with all
+				sf::Vector2f target = window.mapPixelToCoords(
+										  sf::Vector2i(event.mouseButton.x, 
+													   event.mouseButton.y));
+				
+				CommandMove command(selectedEntities, target);
+				commandFactory.send(netInterface, command);
+			}
 
         break;
     }

@@ -14,3 +14,8 @@ const sf::Vector2f &Entity::getPosition() const
 {
 	return mPosition;
 }
+
+const EntityId Entity::getId() const
+{
+	return mId;
+}

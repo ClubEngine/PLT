@@ -1,9 +1,12 @@
-#include "CommandFactory.hpp"
+#include "AbstractCommandFactory.hpp"
 
-CommandFactory::CommandFactory()
+AbstractCommandFactory::AbstractCommandFactory()
 {
 }
 
-void CommandFactory::prepareToSend(sf::Packet &packet, const Command &command) const
+void AbstractCommandFactory::send(NetInterface &netinterface, const Command &command) const
 {
+	sf::Packet packet;
+	prepareToSend(packet, command);
+	netinterface.send(packet);
 }

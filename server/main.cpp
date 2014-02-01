@@ -81,7 +81,17 @@ int main(int argc, char ** argv) {
 							std::cout << "* Receive : ";
 							std::string s;
 							if (packet >> s)
-								std::cout << s;
+								std::cout << s << endl;
+							if (s=="COMMAND") {
+								sf::Uint16 type;
+								packet >> type;
+								std::cout << type << endl;
+								if (type == 1) {// MOVE
+									float x=0,y=0;
+									packet >> x >> y;
+									std::cout << x << " " << y << endl;
+								}
+							}
 							cout << endl;
 							
 						} else {

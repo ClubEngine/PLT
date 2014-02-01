@@ -39,7 +39,9 @@ SOURCES += \
     entity/Unit.cpp \
     core/network/Command.cpp \
     core/network/CommandFactory.cpp \
-    core/network/NetInterface.cpp
+    core/network/NetInterface.cpp \
+    gameplay/commands/CommandMove.cpp \
+    gameplay/commands/MyCommandFactory.cpp
 
 HEADERS += \
     core/TextureHolder.hpp \
@@ -65,6 +67,10 @@ HEADERS += \
     entity/Entity.hpp \
     entity/Unit.hpp \
     core/network/Command.hpp \
-    core/network/CommandFactory.hpp \
-    core/network/NetInterface.hpp
+    core/network/NetInterface.hpp \
+    Log.hpp \
+    gameplay/commands/CommandMove.hpp \
+    gameplay/commands/MyCommandFactory.hpp \
+    core/network/AbstractCommandFactory.hpp \
+    gameplay/commands/CommandsType.hpp
 
