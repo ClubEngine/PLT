@@ -49,6 +49,13 @@ void NetInterface::send(sf::Packet &packet)
 	}
 }
 
+void NetInterface::send(const Command &command)
+{
+	sf::Packet packet;
+	command.pack(packet);
+	send(packet);
+}
+
 
 
 void NetInterface::run()

@@ -1,5 +1,4 @@
 #include "CommandMove.hpp"
-#include "CommandsType.hpp"
 #include "../../Log.hpp"
 
 CommandMove::CommandMove(const EntityVector &entities, const sf::Vector2f &target)
@@ -11,5 +10,14 @@ CommandMove::CommandMove(const EntityVector &entities, const sf::Vector2f &targe
 	}
 	
 	//LOG(target.x << " " << target.y)
+}
+
+void CommandMove::specialPackStep(sf::Packet &packet) const
+{
+	int size = mIds.size();
+	packet << size;
+	for (int i = 0; i < size; ++i)
+		packet << mIds[i];
+	packet << mTarget.x << mTarget.y;		
 }
 

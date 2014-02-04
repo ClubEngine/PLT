@@ -3,6 +3,7 @@
 
 #include <queue>
 #include <SFML/Network.hpp>
+#include "Command.hpp"
 
 #define TIMEOUT_CONNECT 2
 
@@ -16,6 +17,10 @@ class NetInterface : public sf::NonCopyable
 		bool getPacket(sf::Packet & packet);
 		
 		void send(sf::Packet & packet);
+		
+		// high level
+		
+		void send(const Command & command);
 		
 		~NetInterface();
 		

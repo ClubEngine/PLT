@@ -6,7 +6,6 @@
 #include "../core/Camera.hpp"
 #include "../core/network/NetInterface.hpp"
 #include "../entity/EntityManager.hpp"
-#include "commands/MyCommandFactory.hpp"
 
 class GameState : public State
 {
@@ -51,7 +50,6 @@ class GameState : public State
 		Camera camera;
 		NetInterface netInterface;
 		EntityManager entities;
-		MyCommandFactory commandFactory;
 };
 
 

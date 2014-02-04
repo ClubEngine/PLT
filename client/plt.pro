@@ -1,5 +1,6 @@
 # PLT
 TEMPLATE = app
+OBJECTS_DIR = obj
 
 # LIBS += -L/home/juleffel/Documents/glew/lib -L/usr/local/sfml/lib -L/usr/lib -L/lib -L/usr/lib/x86_64-linux-gnu
 # LIBS += -L/usr/local/lib/SFML-2.1/lib/
@@ -38,10 +39,8 @@ SOURCES += \
     entity/Entity.cpp \
     entity/Unit.cpp \
     core/network/Command.cpp \
-    core/network/CommandFactory.cpp \
     core/network/NetInterface.cpp \
-    gameplay/commands/CommandMove.cpp \
-    gameplay/commands/MyCommandFactory.cpp
+    gameplay/commands/CommandMove.cpp
 
 HEADERS += \
     core/TextureHolder.hpp \
@@ -70,7 +69,5 @@ HEADERS += \
     core/network/NetInterface.hpp \
     Log.hpp \
     gameplay/commands/CommandMove.hpp \
-    gameplay/commands/MyCommandFactory.hpp \
-    core/network/AbstractCommandFactory.hpp \
     gameplay/commands/CommandsType.hpp
 

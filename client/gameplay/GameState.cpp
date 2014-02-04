@@ -10,7 +10,7 @@ using namespace std;
 GameState::GameState(StateStack &stack, Context &context)
     : State(stack, context), lol(100), mouseispressed(false), tileSize(25),
 	  camera(*(context.window)), netInterface(),
-	  entities(), commandFactory()
+	  entities()
 {
 	//getContext().textures.load(Textures::Patate, "assets/images/patate.png");
     width = getContext().window->getSize().x;
@@ -97,7 +97,7 @@ bool GameState::handleEvent(const sf::Event &event)
 													   event.mouseButton.y));
 				
 				CommandMove command(selectedEntities, target);
-				commandFactory.send(netInterface, command);
+				netInterface.send(command);
 			}
 
         break;

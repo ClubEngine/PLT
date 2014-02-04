@@ -11,6 +11,10 @@ class CommandMove : public Command
 {
 	public:
 		CommandMove(const EntityVector &entities, const sf::Vector2f &target);
+		
+	protected:
+		virtual void specialPackStep(sf::Packet &packet) const;
+		
 	private:
 		std::vector<EntityId> mIds;
 		sf::Vector2f mTarget;
