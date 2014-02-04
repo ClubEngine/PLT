@@ -19,7 +19,7 @@ const EntityVector EntityManager::getAll() const
 	return mAll;
 }
 
-void EntityManager::add(Entity entity)
+void EntityManager::add(Entity * entity)
 {
 	mAll.push_back(entity);
 }

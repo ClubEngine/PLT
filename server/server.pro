@@ -1,7 +1,11 @@
 TEMPLATE = app
-#CONFIG += console
-#CONFIG -= qt
+OBJECTS_DIR = obj
 
+INCLUDEPATH += /usr/local/include/ ../common/
+
+# all
+LIBS += -L../common/ \
+    -lcommon
 # debug
 LIBS += -L/usr/local/lib/ -lsfml-network-d -lsfml-system-d
 # release

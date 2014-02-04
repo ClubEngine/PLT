@@ -4,9 +4,13 @@ OBJECTS_DIR = obj
 
 # LIBS += -L/home/juleffel/Documents/glew/lib -L/usr/local/sfml/lib -L/usr/lib -L/lib -L/usr/lib/x86_64-linux-gnu
 # LIBS += -L/usr/local/lib/SFML-2.1/lib/
-INCLUDEPATH += /usr/local/include/
+INCLUDEPATH += /usr/local/include/ ../common/
 
 # INCLUDEPATH += /usr/local/lib/SFML-2.1/include/
+# all
+LIBS += -L../common/ \
+    -lcommon
+
 # debug
 LIBS += -L/usr/local/lib/ \
     -lsfml-graphics-d \
@@ -36,11 +40,9 @@ SOURCES += \
     gameplay/PauseState.cpp \
     core/Camera.cpp \
     entity/EntityManager.cpp \
-    entity/Entity.cpp \
     entity/Unit.cpp \
-    core/network/Command.cpp \
     core/network/NetInterface.cpp \
-    gameplay/commands/CommandMove.cpp
+    entity/MovableEntity.cpp
 
 HEADERS += \
     core/TextureHolder.hpp \
@@ -65,9 +67,7 @@ HEADERS += \
     entity/EntityManager.hpp \
     entity/Entity.hpp \
     entity/Unit.hpp \
-    core/network/Command.hpp \
     core/network/NetInterface.hpp \
     Log.hpp \
-    gameplay/commands/CommandMove.hpp \
-    gameplay/commands/CommandsType.hpp
+    entity/MovableEntity.hpp
 

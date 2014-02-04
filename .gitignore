@@ -12,11 +12,12 @@
 *.la
 *.a
 
-bin/Makefile
-bin/plt
+# specific user
 *.pro.user
-client/bin
 
+# editors
 *.autosave
+
+# bin
 client/plt
 server/server

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cmath>
 #include "gameplay/MyStates.hpp"
-#include "commands/CommandMove.hpp"
+#include "../common/commands/gameplay/CommandMove.hpp"
 
 using namespace std;
 
@@ -60,10 +60,10 @@ GameState::GameState(StateStack &stack, Context &context)
 	
 	netInterface.init("localhost", 55001);
 	
-	Entity entity;
-	entity.setPosition(0,0); entities.add(entity);
-	entity.setPosition(100,10); entities.add(entity);
-	entity.setPosition(10,100); entities.add(entity);
+	MovableEntity * entity;
+	entity = new MovableEntity(); entity->setPosition(0,0); entities.add(entity);
+	entity = new MovableEntity(); entity->setPosition(100,10); entities.add(entity);
+	entity = new MovableEntity(); entity->setPosition(10,100); entities.add(entity);
 }
 
 bool GameState::handleEvent(const sf::Event &event)
@@ -258,9 +258,11 @@ void GameState::draw()
 		const EntityVector & allEntities = entities.getAll();
 		for(EntityVector::const_iterator it = allEntities.begin();
 			it != allEntities.end(); ++it) {
-			const Entity & entity = *it;
-			sprite.setPosition(entity.getPosition());
-			window.draw(sprite);
+			const MovableEntity * mentity = dynamic_cast<const MovableEntity*>(*it);
+			if (mentity != 0) {
+				sprite.setPosition(mentity->getPosition());
+				window.draw(sprite);
+			}
 		}
 	}
 

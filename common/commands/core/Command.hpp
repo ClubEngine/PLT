@@ -4,8 +4,6 @@
 #include <SFML/System.hpp>
 #include <SFML/Network/Packet.hpp>
 
-#include "../../../common/CommandsType.hpp"
-
 typedef sf::Uint16 CommandType;
 
 class Command
@@ -13,6 +11,7 @@ class Command
 	public:
 		Command();
 		Command(CommandType type);
+		Command(sf::Packet & packet);
 		
 		CommandType getType() const;
 		
@@ -21,6 +20,7 @@ class Command
 		virtual ~Command();
 	
 	protected:
+		void unpack(sf::Packet & packet);
 		
 		virtual void specialPackStep(sf::Packet & packet) const = 0;
 		

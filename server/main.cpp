@@ -5,6 +5,11 @@
 
 #include "network/ReusableTcpListener.hpp"
 
+//test
+#include "../common/commands/gameplay/CommandMove.hpp"
+// or
+#include "commands/gameplay/CommandMove.hpp"
+
 using namespace std;
 
 int main(int argc, char ** argv) {
@@ -86,10 +91,13 @@ int main(int argc, char ** argv) {
 								sf::Uint16 type;
 								packet >> type;
 								std::cout << type << endl;
-								if (type == 1) {// MOVE
-									float x=0,y=0;
-									packet >> x >> y;
-									std::cout << x << " " << y << endl;
+								if (type == MOVE) {
+									CommandMove move(packet);
+									cout << "[" << move.mIds.size() << "] ";
+									for(int i=0;i<move.mIds.size();++i)
+										cout << move.mIds[i] << " ";
+									cout << endl;
+									cout << move.mTarget.x << " " << move.mTarget.y << endl;
 								}
 							}
 							cout << endl;

@@ -1,9 +1,9 @@
 #ifndef UNIT_HPP
 #define UNIT_HPP
 
-#include "Entity.hpp"
+#include "MovableEntity.hpp"
 
-class Unit : public Entity
+class Unit : public MovableEntity
 {
 	public:
 		Unit();

@@ -3,7 +3,7 @@
 
 #include <queue>
 #include <SFML/Network.hpp>
-#include "Command.hpp"
+#include "../../../common/commands/core/Command.hpp"
 
 #define TIMEOUT_CONNECT 2
 

@@ -1,12 +1,11 @@
 #ifndef ENTITYMANAGER_HPP
 #define ENTITYMANAGER_HPP
 
-#include <vector>
+
 #include <SFML/System.hpp>
 #include <SFML/Graphics/Rect.hpp>
-#include "Entity.hpp"
+#include "MovableEntity.hpp"
 
-typedef std::vector<Entity> EntityVector;
 
 class EntityManager
 {
@@ -16,7 +15,7 @@ class EntityManager
 		const EntityVector getSelectedEntity(const sf::FloatRect & selection) const;
 		const EntityVector getAll() const;
 		
-		void add(Entity entity);
+		void add(Entity *entity);
 		
 	private:
 		

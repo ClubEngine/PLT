@@ -1,23 +1,27 @@
 #ifndef ENTITY_HPP
 #define ENTITY_HPP
 
+#include <vector>
 #include <SFML/System.hpp>
 
 typedef sf::Uint32 EntityId;
+typedef std::vector<EntityId> EntityIdVector;
 
 class Entity
 {
 	public:
 		Entity();
 		
-		void setPosition(float x, float y);
-		const sf::Vector2f & getPosition() const;
-		
 		const EntityId getId() const;
 		
+		virtual ~Entity();
+		
 	private:
-		sf::Vector2f mPosition;
 		EntityId mId;
+		
+		static EntityId stNextId;
 };
+
+typedef std::vector<Entity*> EntityVector;
 
 #endif // ENTITY_HPP
