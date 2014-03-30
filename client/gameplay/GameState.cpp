@@ -100,6 +100,7 @@ bool GameState::handleEvent(const sf::Event &event)
 				
 				CommandMove command(selectedEntities, target);
 				netInterface.send(command);
+				//cout << "MOVE send" << endl;
 			}
 
         break;
@@ -199,6 +200,7 @@ bool GameState::handleEvent(const sf::Event &event)
 
                 // Create building
                 case sf::Keyboard::B : {
+                    cout << "Here" <<endl;
                     CommandBuild command(selected.p1, 0);
                     netInterface.send(command);
                     break;

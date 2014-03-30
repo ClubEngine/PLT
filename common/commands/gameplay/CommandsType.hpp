@@ -3,11 +3,11 @@
 
 // CommandType
 
-enum { NONE, 
+enum { CT_NONE, 
 	   
-	   MOVE,
-	   BUILD,
+	   CT_MOVE,
+	   CT_BUILD,
 	   
-	   TOTAL };
+	   CT_TOTAL };
 
 #endif // COMMANDSTYPE_HPP

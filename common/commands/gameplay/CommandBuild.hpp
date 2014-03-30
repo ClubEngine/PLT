@@ -14,7 +14,7 @@ class CommandBuild : public Command
 		virtual void specialPackStep(sf::Packet &packet) const;
 		virtual void specialUnpackStep(sf::Packet &packet);
 
-    private:
+    public:
         sf::Vector2i mCordinates;
         sf::Int32 mBuildingType;
 };

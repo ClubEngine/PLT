@@ -19,7 +19,8 @@ HEADERS += commands/gameplay/CommandMove.hpp \
     commands/gameplay/CommandsType.hpp \
     commands/core/Command.hpp \
     entity/Entity.hpp \
-    commands/gameplay/CommandBuild.hpp
+    commands/gameplay/CommandBuild.hpp \
+    network/Network.hpp
 unix:!symbian {
     maemo5 {
         target.path = /opt/usr/lib

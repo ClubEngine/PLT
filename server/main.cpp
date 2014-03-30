@@ -9,6 +9,7 @@
 #include "../common/commands/gameplay/CommandMove.hpp"
 // or
 #include "commands/gameplay/CommandMove.hpp"
+#include "commands/gameplay/CommandBuild.hpp"
 
 using namespace std;
 
@@ -84,22 +85,38 @@ int main(int argc, char ** argv) {
 						if (client.receive(packet) == sf::Socket::Done)
 						{
 							std::cout << "* Receive : ";
-							std::string s;
-							if (packet >> s)
-								std::cout << s << endl;
-							if (s==Command::PACKET_TYPE) {
-								sf::Uint16 type;
-								packet >> type;
-								std::cout << type << endl;
-								if (type == MOVE) {
-									CommandMove move(packet);
-									cout << "[" << move.mIds.size() << "] ";
-									for(int i=0;i<move.mIds.size();++i)
-										cout << move.mIds[i] << " ";
-									cout << endl;
-									cout << move.mTarget.x << " " << move.mTarget.y << endl;
-								}
+							PacketType packetType;
+							if (packet >> packetType)
+								std::cout << packetType << endl;
+							
+							switch(packetType) {
+								case PT_COMMAND:
+									CommandType commandType;
+									packet >> commandType;
+									std::cout << commandType << endl;
+									
+									switch(commandType) {
+										case CT_MOVE: {
+											CommandMove move(packet);
+											cout << "[" << move.mIds.size() << "]";
+											for(int i=0;i<move.mIds.size();++i)
+												cout << move.mIds[i] << " ";
+											cout << endl;
+											cout << move.mTarget.x << " " << move.mTarget.y << endl;
+											}
+											break;
+										case CT_BUILD: {
+                                            cout << "Command Build" << endl;
+											CommandBuild build(packet);
+                                            cout << build.mCordinates.x << " " << build.mCordinates.y << endl;
+                                            cout << build.mBuildingType << endl;
+											}
+											break;
+									}
+
+									break;
 							}
+
 							cout << endl;
 							
 						} else {
