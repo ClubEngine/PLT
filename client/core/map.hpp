@@ -16,7 +16,7 @@ class Map
         void setTile(int i,int j, int state);
         void Display(sf::RenderWindow* render_win);
 
-        const static int tile_size = 25;
+        const static int tileSize = 25;
 
     private:
         int* matrix;

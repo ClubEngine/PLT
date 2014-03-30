@@ -24,17 +24,17 @@ Map::Map(Context &context, int nbCols, int nbRows){
     spriteHTleftseg.setTexture(context.textures->get(Textures::Mapping));
     spriteHTrightseg.setTexture(context.textures->get(Textures::Mapping));
 
-    spriteHerbe.setTextureRect(sf::IntRect(10*tile_size, 1*tile_size, tile_size, tile_size));
-    spriteTerre.setTextureRect(sf::IntRect(3*tile_size, 4*tile_size, tile_size, tile_size));
-    spriteStone.setTextureRect(sf::IntRect(5*tile_size, 7*tile_size, tile_size, tile_size));
-    spriteHTupleft.setTextureRect(sf::IntRect(7*tile_size, 0*tile_size, tile_size, tile_size));
-    spriteHTupright.setTextureRect(sf::IntRect(8*tile_size, 0*tile_size, tile_size, tile_size));
-    spriteHTdownleft.setTextureRect(sf::IntRect(7*tile_size, 1*tile_size, tile_size, tile_size));
-    spriteHTdownright.setTextureRect(sf::IntRect(8*tile_size, 1*tile_size, tile_size, tile_size));
-    spriteHTupseg.setTextureRect(sf::IntRect(10*tile_size, 2*tile_size, tile_size, tile_size));
-    spriteHTdownseg.setTextureRect(sf::IntRect(10*tile_size, 0*tile_size, tile_size, tile_size));
-    spriteHTleftseg.setTextureRect(sf::IntRect(11*tile_size, 1*tile_size, tile_size, tile_size));
-    spriteHTrightseg.setTextureRect(sf::IntRect(9*tile_size, 1*tile_size, tile_size, tile_size));
+    spriteHerbe.setTextureRect(sf::IntRect(10*tileSize, 1*tileSize, tileSize, tileSize));
+    spriteTerre.setTextureRect(sf::IntRect(3*tileSize, 4*tileSize, tileSize, tileSize));
+    spriteStone.setTextureRect(sf::IntRect(5*tileSize, 7*tileSize, tileSize, tileSize));
+    spriteHTupleft.setTextureRect(sf::IntRect(7*tileSize, 0*tileSize, tileSize, tileSize));
+    spriteHTupright.setTextureRect(sf::IntRect(8*tileSize, 0*tileSize, tileSize, tileSize));
+    spriteHTdownleft.setTextureRect(sf::IntRect(7*tileSize, 1*tileSize, tileSize, tileSize));
+    spriteHTdownright.setTextureRect(sf::IntRect(8*tileSize, 1*tileSize, tileSize, tileSize));
+    spriteHTupseg.setTextureRect(sf::IntRect(10*tileSize, 2*tileSize, tileSize, tileSize));
+    spriteHTdownseg.setTextureRect(sf::IntRect(10*tileSize, 0*tileSize, tileSize, tileSize));
+    spriteHTleftseg.setTextureRect(sf::IntRect(11*tileSize, 1*tileSize, tileSize, tileSize));
+    spriteHTrightseg.setTextureRect(sf::IntRect(9*tileSize, 1*tileSize, tileSize, tileSize));
 
     //initialisation avec des 0
     for(int i = 0; i<(nbcols * nbrows); i++){
@@ -53,7 +53,7 @@ void Map::setTile(int i, int j, int state){
 }
 
 void Map::DisplayTile(sf::RenderWindow* render_win, int i, int j, sf::Sprite sp){
-    sp.setPosition(i*tile_size, j*tile_size);
+    sp.setPosition(i*tileSize, j*tileSize);
     render_win->draw(sp);
 }
 
