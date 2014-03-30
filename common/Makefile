@@ -10,7 +10,11 @@
 
 CC            = gcc
 CXX           = g++
+<<<<<<< HEAD
 DEFINES       = -DQT_WEBKIT -DQT_NO_DEBUG
+=======
+DEFINES       = -DQT_NO_DEBUG
+>>>>>>> efd51e3c1e68d32fe020213d2f2eb3a8e76a7714
 CFLAGS        = -pipe -O2 -fPIC -Wall -W -D_REENTRANT $(DEFINES)
 CXXFLAGS      = -pipe -O2 -fPIC -Wall -W -D_REENTRANT $(DEFINES)
 INCPATH       = -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4 -I.
@@ -55,7 +59,11 @@ DIST          = /usr/share/qt4/mkspecs/common/unix.conf \
 		/usr/share/qt4/mkspecs/common/g++-base.conf \
 		/usr/share/qt4/mkspecs/common/g++-unix.conf \
 		/usr/share/qt4/mkspecs/qconfig.pri \
+<<<<<<< HEAD
 		/usr/share/qt4/mkspecs/modules/qt_webkit_version.pri \
+=======
+		/usr/share/qt4/mkspecs/modules/qt_phonon.pri \
+>>>>>>> efd51e3c1e68d32fe020213d2f2eb3a8e76a7714
 		/usr/share/qt4/mkspecs/features/qt_functions.prf \
 		/usr/share/qt4/mkspecs/features/qt_config.prf \
 		/usr/share/qt4/mkspecs/features/exclusive_builds.prf \
@@ -117,7 +125,11 @@ Makefile: common.pro  /usr/share/qt4/mkspecs/linux-g++/qmake.conf /usr/share/qt4
 		/usr/share/qt4/mkspecs/common/g++-base.conf \
 		/usr/share/qt4/mkspecs/common/g++-unix.conf \
 		/usr/share/qt4/mkspecs/qconfig.pri \
+<<<<<<< HEAD
 		/usr/share/qt4/mkspecs/modules/qt_webkit_version.pri \
+=======
+		/usr/share/qt4/mkspecs/modules/qt_phonon.pri \
+>>>>>>> efd51e3c1e68d32fe020213d2f2eb3a8e76a7714
 		/usr/share/qt4/mkspecs/features/qt_functions.prf \
 		/usr/share/qt4/mkspecs/features/qt_config.prf \
 		/usr/share/qt4/mkspecs/features/exclusive_builds.prf \
@@ -144,7 +156,11 @@ Makefile: common.pro  /usr/share/qt4/mkspecs/linux-g++/qmake.conf /usr/share/qt4
 /usr/share/qt4/mkspecs/common/g++-base.conf:
 /usr/share/qt4/mkspecs/common/g++-unix.conf:
 /usr/share/qt4/mkspecs/qconfig.pri:
+<<<<<<< HEAD
 /usr/share/qt4/mkspecs/modules/qt_webkit_version.pri:
+=======
+/usr/share/qt4/mkspecs/modules/qt_phonon.pri:
+>>>>>>> efd51e3c1e68d32fe020213d2f2eb3a8e76a7714
 /usr/share/qt4/mkspecs/features/qt_functions.prf:
 /usr/share/qt4/mkspecs/features/qt_config.prf:
 /usr/share/qt4/mkspecs/features/exclusive_builds.prf:

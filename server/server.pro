@@ -5,7 +5,7 @@ INCLUDEPATH += /usr/local/include/ ../common/
 
 # all
 LIBS += -L../common/ \
-    -lcommon
+    -lcommon-d
 # debug
 #LIBS += -L/usr/local/lib/ -lsfml-network-d -lsfml-system-d
 # release

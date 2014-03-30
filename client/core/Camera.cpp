@@ -50,7 +50,7 @@ void Camera::handleEvent(const sf::Event &event)
             case sf::Keyboard::Left :
                 mMoveDirection.x = -speed;
                 break;
-            case sf::Keyboard::A :
+            case sf::Keyboard::Home :
                 mView.setCenter(mView.getSize().x/2, mView.getSize().y/2);
                 break;
             default:

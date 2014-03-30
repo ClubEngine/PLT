@@ -7,13 +7,16 @@
 class CommandBuild : public Command
 {
 	public:
-		CommandBuild();
+        CommandBuild(const sf::Vector2i &cordinates,  const sf::Int32 &buildingType);
 		CommandBuild(sf::Packet & packet);
 		
 	protected:
 		virtual void specialPackStep(sf::Packet &packet) const;
 		virtual void specialUnpackStep(sf::Packet &packet);
-		
+
+    public:
+        sf::Vector2i mCordinates;
+        sf::Int32 mBuildingType;
 };
 
 #endif // COMMANDBUILD_HPP
