@@ -3,14 +3,14 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Network/Packet.hpp>
+#include "network/Network.hpp"
 
 typedef sf::Uint16 CommandType;
 
 class Command
 {
 	public:
-		const static std::string PACKET_TYPE;
-		
+		const static PacketType PACKET_TYPE;
 		
 		Command();
 		Command(CommandType type);

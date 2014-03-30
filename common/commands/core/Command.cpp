@@ -1,6 +1,5 @@
 #include "Command.hpp"
 
-const std::string Command::PACKET_TYPE = "COMMAND";
 
 Command::Command() :
 	mType(0)
@@ -20,7 +19,7 @@ CommandType Command::getType() const
 
 void Command::pack(sf::Packet &packet) const
 {
-	packet << PACKET_TYPE << getType();
+	packet << PT_COMMAND << getType();
 	specialPackStep(packet);
 }
 

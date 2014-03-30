@@ -9,7 +9,7 @@ const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application(AbstractStateFactory &factory)
 	: mGLContext(), 
-	  mWindow(sf::VideoMode(800, 600), 
+	  mWindow(sf::VideoMode(400, 300), 
 			  "PLT", 
 		      sf::Style::Default), 
 	  mTextureHolder(), 

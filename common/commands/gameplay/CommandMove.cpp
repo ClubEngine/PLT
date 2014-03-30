@@ -2,7 +2,7 @@
 //#include "../../Log.hpp"
 
 CommandMove::CommandMove(const EntityVector &entities, const sf::Vector2f &target)
-	: Command(MOVE), mIds(), mTarget(target)
+	: Command(CT_MOVE), mIds(), mTarget(target)
 {
 	for(EntityVector::const_iterator it = entities.begin();
 		it != entities.end() ; ++it) {
@@ -13,7 +13,7 @@ CommandMove::CommandMove(const EntityVector &entities, const sf::Vector2f &targe
 }
 
 CommandMove::CommandMove(sf::Packet &packet) 
-	: Command(MOVE)
+	: Command(CT_MOVE)
 {
 	mIds.clear();
 	sf::Int32 size = 0;
