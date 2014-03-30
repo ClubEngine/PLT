@@ -12,21 +12,8 @@ CommandMove::CommandMove(const EntityVector &entities, const sf::Vector2f &targe
 	//LOG(target.x << " " << target.y)
 }
 
-CommandMove::CommandMove(sf::Packet &packet) : Command(packet)
-{
-	specialUnpackStep(packet);
-}
-
-void CommandMove::specialPackStep(sf::Packet &packet) const
-{
-	sf::Int32 size = mIds.size();
-	packet << size;
-	for (int i = 0; i < size; ++i)
-		packet << mIds[i];
-	packet << mTarget.x << mTarget.y;
-}
-
-void CommandMove::specialUnpackStep(sf::Packet &packet)
+CommandMove::CommandMove(sf::Packet &packet) 
+	: Command(MOVE)
 {
 	mIds.clear();
 	sf::Int32 size = 0;
@@ -39,4 +26,15 @@ void CommandMove::specialUnpackStep(sf::Packet &packet)
 	}
 	packet >> mTarget.x >> mTarget.y;
 }
+
+void CommandMove::specialPackStep(sf::Packet &packet) const
+{
+	sf::Int32 size = mIds.size();
+	packet << size;
+	for (int i = 0; i < size; ++i)
+		packet << mIds[i];
+	packet << mTarget.x << mTarget.y;
+}
+
+
 

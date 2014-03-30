@@ -5,7 +5,8 @@
 
 enum { NONE, 
 	   
-	   MOVE, 
+	   MOVE,
+	   BUILD,
 	   
 	   TOTAL };
 
