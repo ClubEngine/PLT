@@ -1,12 +1,12 @@
 #include "CommandBuild.hpp"
 
 CommandBuild::CommandBuild() 
-	: Command(BUILD)
+	: Command(CT_BUILD)
 {
 }
 
 CommandBuild::CommandBuild(sf::Packet &packet)
-	: Command(BUILD)
+	: Command(CT_BUILD)
 {
 }
 

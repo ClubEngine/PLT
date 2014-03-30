@@ -98,6 +98,7 @@ bool GameState::handleEvent(const sf::Event &event)
 				
 				CommandMove command(selectedEntities, target);
 				netInterface.send(command);
+				//cout << "MOVE send" << endl;
 			}
 
         break;
