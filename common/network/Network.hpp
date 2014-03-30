@@ -3,14 +3,11 @@
 
 #include <SFML/System.hpp>
 
-typedef sf::Uint8 PacketType;
+typedef std::string PacketType;
 
 // PacketType
 
-enum {
-	PT_NONE,
-	PT_COMMAND
-	
-};
+const PacketType PT_NONE = "NONE";
+const PacketType PT_COMMAND = "COMMAND";
 
 #endif // NETWORK_HPP

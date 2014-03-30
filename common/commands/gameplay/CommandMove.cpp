@@ -29,9 +29,9 @@ CommandMove::CommandMove(sf::Packet &packet)
 
 void CommandMove::specialPackStep(sf::Packet &packet) const
 {
-	sf::Int32 size = mIds.size();
+	sf::Uint32 size = mIds.size();
 	packet << size;
-	for (int i = 0; i < size; ++i)
+	for (sf::Uint32 i = 0; i < size; ++i)
 		packet << mIds[i];
 	packet << mTarget.x << mTarget.y;
 }

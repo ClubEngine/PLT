@@ -38,7 +38,7 @@ int main(int argc, char ** argv) {
 		// Make the selector wait for data on any socket
 		if (selector.wait(timeout))
 		{
-			std::cout << "Sthg" << endl;
+			std::cout << "Selector.wait finished." << endl;
 			// Test the listener
 			if (selector.isReady(listener))
 			{
@@ -58,9 +58,6 @@ int main(int argc, char ** argv) {
 						sf::Packet p;
 						std::string s = "Hello !";
 						p << s;
-						clientPtr->send(p);
-						clientPtr->send(p);
-						clientPtr->send(p);
 						clientPtr->send(p);
 					}
 				}
@@ -89,30 +86,23 @@ int main(int argc, char ** argv) {
 							if (packet >> packetType)
 								std::cout << packetType << endl;
 							
-							switch(packetType) {
-								case PT_COMMAND:
-									CommandType commandType;
-									packet >> commandType;
-									std::cout << commandType << endl;
-									
-									switch(commandType) {
-										case CT_MOVE: {
-											CommandMove move(packet);
-											cout << "[" << move.mIds.size() << "]";
-											for(int i=0;i<move.mIds.size();++i)
-												cout << move.mIds[i] << " ";
-											cout << endl;
-											cout << move.mTarget.x << " " << move.mTarget.y << endl;
-											}
-											break;
-										case CT_BUILD: {
-											CommandBuild build(packet);
-											cout << "[" << "]" << endl;
-											}
-											break;
-									}
-
-									break;
+							if (packetType == PT_COMMAND) {
+								CommandType commandType;
+								packet >> commandType;
+								std::cout << commandType << endl;
+								
+								if (commandType == CT_MOVE) {
+									CommandMove move(packet);
+									cout << "[" << move.mIds.size() << "]";
+									for(unsigned int i=0;i<move.mIds.size();++i)
+										cout << move.mIds[i] << " ";
+									cout << endl;
+									cout << move.mTarget.x << " " << move.mTarget.y << endl;
+								
+								} else if (commandType == CT_BUILD) {
+									CommandBuild build(packet);
+									cout << "[" << "]" << endl;
+								}
 							}
 
 							cout << endl;

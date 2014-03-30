@@ -6,7 +6,7 @@ Entity::Entity() : mId(stNextId++)
 {
 }
 
-const EntityId Entity::getId() const
+EntityId Entity::getId() const
 {
 	return mId;
 }

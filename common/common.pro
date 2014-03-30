@@ -6,9 +6,17 @@
 
 QT       -= core gui
 
-TARGET = common
+
 TEMPLATE = lib
-CONFIG += staticlib
+CONFIG += staticlib # debug_and_release
+
+
+debug {
+    TARGET = common-d
+}
+release {
+    TARGET = common
+}
 
 SOURCES += commands/gameplay/CommandMove.cpp \
     commands/core/Command.cpp \

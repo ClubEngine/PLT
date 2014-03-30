@@ -12,7 +12,7 @@ class Entity
 	public:
 		Entity();
 		
-		const EntityId getId() const;
+		EntityId getId() const;
 		
 		virtual ~Entity();
 		
