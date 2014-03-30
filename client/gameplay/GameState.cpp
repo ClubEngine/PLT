@@ -5,11 +5,12 @@
 #include <cmath>
 #include "gameplay/MyStates.hpp"
 #include "../common/commands/gameplay/CommandMove.hpp"
+#include "../common/commands/gameplay/CommandBuild.hpp"
 
 using namespace std;
 
 GameState::GameState(StateStack &stack, Context &context)
-    : State(stack, context), lol(100), mouseispressed(false), tileSize(25),
+    : State(stack, context), mouseispressed(false),
 	  camera(*(context.window)), netInterface(),
 	  entities()
 {
@@ -17,8 +18,8 @@ GameState::GameState(StateStack &stack, Context &context)
     width = getContext().window->getSize().x;
     height = getContext().window->getSize().y;
 
-    //cerr << width/tileSize << "," << height/tileSize << endl;
-    map = new Map(context, width/tileSize, height/tileSize);
+    //cerr << width/Map::tile_size << "," << height/Map::tile_size << endl;
+    map = new Map(context, width/Map::tile_size, height/Map::tile_size);
     //map = new Map(context, 20, 20);
 
     selection.setFillColor(sf::Color(255,0,0,63));
@@ -81,13 +82,13 @@ bool GameState::handleEvent(const sf::Event &event)
 											sf::Vector2i(event.mouseButton.x, event.mouseButton.y),
 											camera.getView());
 		
-				float a = floor(mousepos.x/tileSize)*tileSize;
-				float b = floor(mousepos.y/tileSize)*tileSize;
+                float a = floor(mousepos.x/Map::tile_size)*Map::tile_size;
+                float b = floor(mousepos.y/Map::tile_size)*Map::tile_size;
 		
 				selected.i1.x = a;
 				selected.i1.y = b;
-				selected.i2.x = selected.i1.x+tileSize;
-				selected.i2.y = selected.i1.y+tileSize;
+                selected.i2.x = selected.i1.x+Map::tile_size;
+                selected.i2.y = selected.i1.y+Map::tile_size;
 		
 				selected.p1 = selected.i1;
 				selected.p2 = selected.i2;
@@ -110,8 +111,8 @@ bool GameState::handleEvent(const sf::Event &event)
 								 sf::Vector2i(event.mouseMove.x, event.mouseMove.y), 
 								 camera.getView());
             sf::Vector2i f1 = CordinatesHelper::getCordinated(f);
-            //sf::Vector2i f1= sf::Vector2i(floor(f.x/tileSize)*tileSize,floor(f.y/tileSize)*tileSize);
-            sf::Vector2i f2= f1 + sf::Vector2i(tileSize,tileSize);
+            //sf::Vector2i f1= sf::Vector2i(floor(f.x/Map::tile_size)*Map::tile_size,floor(f.y/Map::tile_size)*Map::tile_size);
+            sf::Vector2i f2= f1 + sf::Vector2i(Map::tile_size,Map::tile_size);
             selected.p1.x = min(min(selected.i1.x,selected.i2.x),min(f1.x,f2.x));
             selected.p2.x = max(max(selected.i1.x,selected.i2.x),max(f1.x,f2.x));
             selected.p1.y = min(min(selected.i1.y,selected.i2.y),min(f1.y,f2.y));
@@ -147,9 +148,9 @@ bool GameState::handleEvent(const sf::Event &event)
 		}
 
 
-        for (int i = selected.p1.x/tileSize ; i < selected.p2.x/tileSize ; i++)
+        for (int i = selected.p1.x/Map::tile_size ; i < selected.p2.x/Map::tile_size ; i++)
         {
-            for (int j = selected.p1.y/tileSize ; j < selected.p2.y/tileSize ; j++)
+            for (int j = selected.p1.y/Map::tile_size ; j < selected.p2.y/Map::tile_size ; j++)
             {
                 switch (event.key.code)
                 {
@@ -165,30 +166,30 @@ bool GameState::handleEvent(const sf::Event &event)
                 }
                 // CREATE SOIL TILE
                 case sf::Keyboard::T : {
-                    if ( j == selected.p1.y/tileSize ) {
-                        if ( i == selected.p1.x/tileSize )
+                    if ( j == selected.p1.y/Map::tile_size ) {
+                        if ( i == selected.p1.x/Map::tile_size )
                             map->setTile(i,j,11);
-                        else if ( i == selected.p2.x/tileSize-1 )
+                        else if ( i == selected.p2.x/Map::tile_size-1 )
                             map->setTile(i,j,12);
                         else
                             map->setTile(i,j,15);
-                    } else if ( j == selected.p2.y/tileSize-1 ) {
-                        if ( i == selected.p1.x/tileSize )
+                    } else if ( j == selected.p2.y/Map::tile_size-1 ) {
+                        if ( i == selected.p1.x/Map::tile_size )
                             map->setTile(i,j,14);
-                        else if ( i == selected.p2.x/tileSize-1 )
+                        else if ( i == selected.p2.x/Map::tile_size-1 )
                             map->setTile(i,j,13);
                         else
                             map->setTile(i,j,16);
                     } else {
-                        if ( i == selected.p1.x/tileSize )
+                        if ( i == selected.p1.x/Map::tile_size )
                             map->setTile(i,j,17);
-                        else if ( i == selected.p2.x/tileSize-1 )
+                        else if ( i == selected.p2.x/Map::tile_size-1 )
                             map->setTile(i,j,18);
                         else
                             map->setTile(i,j,2);
                     }
 
-                    if ( selected.p1.x == selected.p2.x + tileSize ) {
+                    if ( selected.p1.x == selected.p2.x + Map::tile_size ) {
                       map->setTile(i,j,2);
                     } // normalement ici je verifie que si on selectionne juste une
                       // case je met la tile 2 mais il veux pas pour je ne sais quelle
@@ -198,6 +199,8 @@ bool GameState::handleEvent(const sf::Event &event)
 
                 // Create building
                 case sf::Keyboard::B : {
+                    CommandBuild command(selected.p1, 0);
+                    netInterface.send(command);
                     break;
                 }
                 // CREATE STONE TILE
@@ -274,31 +277,31 @@ void GameState::draw()
 		}
 	}
 
-    upleft.setSize(sf::Vector2f(tileSize,tileSize));
-    upright.setSize(sf::Vector2f(tileSize,tileSize));
-    downright.setSize(sf::Vector2f(tileSize,tileSize));
-    downleft.setSize(sf::Vector2f(tileSize,tileSize));
+    upleft.setSize(sf::Vector2f(Map::tile_size,Map::tile_size));
+    upright.setSize(sf::Vector2f(Map::tile_size,Map::tile_size));
+    downright.setSize(sf::Vector2f(Map::tile_size,Map::tile_size));
+    downleft.setSize(sf::Vector2f(Map::tile_size,Map::tile_size));
 
     upleft.setPosition(selected.p1.x, selected.p1.y);
-    upright.setPosition(selected.p2.x-tileSize, selected.p1.y);
-    downright.setPosition(selected.p2.x-tileSize, selected.p2.y-tileSize);
-    downleft.setPosition(selected.p1.x, selected.p2.y-tileSize);
+    upright.setPosition(selected.p2.x-Map::tile_size, selected.p1.y);
+    downright.setPosition(selected.p2.x-Map::tile_size, selected.p2.y-Map::tile_size);
+    downleft.setPosition(selected.p1.x, selected.p2.y-Map::tile_size);
 
 
-    upseg.setSize(sf::Vector2f(selected.p2.x-selected.p1.x-2*tileSize,tileSize));
-    downseg.setSize(sf::Vector2f(selected.p2.x-selected.p1.x-2*tileSize,tileSize));
-    leftseg.setSize(sf::Vector2f(tileSize,selected.p2.y-selected.p1.y-2*tileSize));
-    rightseg.setSize(sf::Vector2f(tileSize,selected.p2.y-selected.p1.y-2*tileSize));
+    upseg.setSize(sf::Vector2f(selected.p2.x-selected.p1.x-2*Map::tile_size,Map::tile_size));
+    downseg.setSize(sf::Vector2f(selected.p2.x-selected.p1.x-2*Map::tile_size,Map::tile_size));
+    leftseg.setSize(sf::Vector2f(Map::tile_size,selected.p2.y-selected.p1.y-2*Map::tile_size));
+    rightseg.setSize(sf::Vector2f(Map::tile_size,selected.p2.y-selected.p1.y-2*Map::tile_size));
 
-    upseg.setPosition(selected.p1.x+tileSize,selected.p1.y);
-    downseg.setPosition(selected.p1.x+tileSize,selected.p2.y-tileSize);
-    leftseg.setPosition(selected.p1.x,selected.p1.y+tileSize);
-    rightseg.setPosition(selected.p2.x-tileSize,selected.p1.y+tileSize);
+    upseg.setPosition(selected.p1.x+Map::tile_size,selected.p1.y);
+    downseg.setPosition(selected.p1.x+Map::tile_size,selected.p2.y-Map::tile_size);
+    leftseg.setPosition(selected.p1.x,selected.p1.y+Map::tile_size);
+    rightseg.setPosition(selected.p2.x-Map::tile_size,selected.p1.y+Map::tile_size);
 
 
-    selection.setSize(sf::Vector2f(selected.p2.x-selected.p1.x-2*tileSize,selected.p2.y-selected.p1.y-2*tileSize));
+    selection.setSize(sf::Vector2f(selected.p2.x-selected.p1.x-2*Map::tile_size,selected.p2.y-selected.p1.y-2*Map::tile_size));
 
-    selection.setPosition(selected.p1.x+tileSize,selected.p1.y+tileSize);
+    selection.setPosition(selected.p1.x+Map::tile_size,selected.p1.y+Map::tile_size);
 
     window.draw(selection);
     window.draw(upright);

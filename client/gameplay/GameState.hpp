@@ -17,7 +17,6 @@ class GameState : public State
 		virtual void draw();
 		
 	private:
-        int lol;
 
         bool mouseispressed;
 
@@ -32,7 +31,6 @@ class GameState : public State
         selected selected;
 
         int width, height;
-        int tileSize;
         Map *map;
 
         sf::Texture grid;

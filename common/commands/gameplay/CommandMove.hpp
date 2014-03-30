@@ -15,7 +15,7 @@ class CommandMove : public Command
 		
 	protected:
 		virtual void specialPackStep(sf::Packet &packet) const;
-		void specialUnpackStep(sf::Packet &packet);
+		virtual void specialUnpackStep(sf::Packet &packet);
 		
 	//private:
 	// test

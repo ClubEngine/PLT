@@ -1,5 +1,7 @@
 #include "Command.hpp"
 
+const std::string Command::PACKET_TYPE = "COMMAND";
+
 Command::Command() :
 	mType(0)
 {
@@ -11,11 +13,6 @@ Command::Command(CommandType type) :
 }
 
 
-Command::Command(sf::Packet &packet)
-{
-	unpack(packet);
-}
-
 CommandType Command::getType() const
 {
 	return mType;
@@ -23,13 +20,8 @@ CommandType Command::getType() const
 
 void Command::pack(sf::Packet &packet) const
 {
-	packet << "COMMAND" << getType();
+	packet << PACKET_TYPE << getType();
 	specialPackStep(packet);
-}
-
-void Command::unpack(sf::Packet &packet)
-{
-	//suppose "COMMAND" and type were already extracted
 }
 
 Command::~Command()
