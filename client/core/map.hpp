@@ -5,6 +5,8 @@
 #include "core/TextureHolder.hpp"
 #include "core/Context.hpp"
 
+typedef sf::Vector2i MapCordinates;
+
 class Map
 {
     public:
@@ -14,11 +16,13 @@ class Map
         void setTile(int i,int j, int state);
         void Display(sf::RenderWindow* render_win);
 
+        const static int tile_size = 25;
+
     private:
         int* matrix;
         int nbrows;
         int nbcols;
-        int tile_size;
+
         void DisplayTile(sf::RenderWindow* render_win, int i, int j, sf::Sprite sp);
 
         sf::Sprite spriteHerbe;

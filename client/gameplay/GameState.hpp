@@ -22,8 +22,8 @@ class GameState : public State
         bool mouseispressed;
 
         struct selected {
-            sf::Vector2i p1;
-            sf::Vector2i p2;
+            MapCordinates p1;
+            MapCordinates p2;
             sf::Vector2i i1;
             sf::Vector2i i2;
         };

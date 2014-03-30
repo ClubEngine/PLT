@@ -10,7 +10,7 @@ Map::Map(Context &context, int nbCols, int nbRows){
     nbrows = nbCols; // Oh ta gueule toi...
 
     matrix = (int*)malloc(sizeof(int)*nbrows*nbcols);
-    tile_size = 25; //provisoire
+
 
     spriteHerbe.setTexture(context.textures->get(Textures::Mapping));
     spriteTerre.setTexture(context.textures->get(Textures::Mapping));
@@ -62,7 +62,7 @@ void Map::Display(sf::RenderWindow* render_win){
     for(int i = 0; i<nbrows; i++){
         for(int j = 0; j<nbcols; j++){
             switch(getTile(i,j)){
-                case 1:
+            case 1:
                     DisplayTile(render_win, i,j, spriteHerbe);
                      break;
             case 11:

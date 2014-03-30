@@ -1,5 +1,6 @@
 #include "GameState.hpp"
 #include "core/map.hpp"
+#include "core/CordinatesHelper.hpp"
 #include <iostream>
 #include <cmath>
 #include "gameplay/MyStates.hpp"
@@ -108,7 +109,8 @@ bool GameState::handleEvent(const sf::Event &event)
 			sf::Vector2f f = window.mapPixelToCoords(
 								 sf::Vector2i(event.mouseMove.x, event.mouseMove.y), 
 								 camera.getView());
-            sf::Vector2i f1= sf::Vector2i(floor(f.x/tileSize)*tileSize,floor(f.y/tileSize)*tileSize);
+            sf::Vector2i f1 = CordinatesHelper::getCordinated(f);
+            //sf::Vector2i f1= sf::Vector2i(floor(f.x/tileSize)*tileSize,floor(f.y/tileSize)*tileSize);
             sf::Vector2i f2= f1 + sf::Vector2i(tileSize,tileSize);
             selected.p1.x = min(min(selected.i1.x,selected.i2.x),min(f1.x,f2.x));
             selected.p2.x = max(max(selected.i1.x,selected.i2.x),max(f1.x,f2.x));
@@ -143,7 +145,8 @@ bool GameState::handleEvent(const sf::Event &event)
 		{
 			requestStackPush(States::Pause);
 		}
-			
+
+
         for (int i = selected.p1.x/tileSize ; i < selected.p2.x/tileSize ; i++)
         {
             for (int j = selected.p1.y/tileSize ; j < selected.p2.y/tileSize ; j++)
@@ -191,6 +194,11 @@ bool GameState::handleEvent(const sf::Event &event)
                       // case je met la tile 2 mais il veux pas pour je ne sais quelle
                       // raison :-(
                    break;
+                }
+
+                // Create building
+                case sf::Keyboard::B : {
+                    break;
                 }
                 // CREATE STONE TILE
                 case sf::Keyboard::S : {
