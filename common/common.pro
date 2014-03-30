@@ -12,12 +12,14 @@ CONFIG += staticlib
 
 SOURCES += commands/gameplay/CommandMove.cpp \
     commands/core/Command.cpp \
-    entity/Entity.cpp
+    entity/Entity.cpp \
+    commands/gameplay/CommandBuild.cpp
 
 HEADERS += commands/gameplay/CommandMove.hpp \
     commands/gameplay/CommandsType.hpp \
     commands/core/Command.hpp \
-    entity/Entity.hpp
+    entity/Entity.hpp \
+    commands/gameplay/CommandBuild.hpp
 unix:!symbian {
     maemo5 {
         target.path = /opt/usr/lib

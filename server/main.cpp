@@ -87,7 +87,7 @@ int main(int argc, char ** argv) {
 							std::string s;
 							if (packet >> s)
 								std::cout << s << endl;
-							if (s=="COMMAND") {
+							if (s==Command::PACKET_TYPE) {
 								sf::Uint16 type;
 								packet >> type;
 								std::cout << type << endl;
