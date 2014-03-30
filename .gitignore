@@ -21,3 +21,6 @@
 # bin
 client/plt
 server/server
+
+# Makefile
+Makefile

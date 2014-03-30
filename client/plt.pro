@@ -2,25 +2,34 @@
 TEMPLATE = app
 OBJECTS_DIR = obj
 
-# LIBS += -L/home/juleffel/Documents/glew/lib -L/usr/local/sfml/lib -L/usr/lib -L/lib -L/usr/lib/x86_64-linux-gnu
-# LIBS += -L/usr/local/lib/SFML-2.1/lib/
 INCLUDEPATH += /usr/local/include/ ../common/
 
-# INCLUDEPATH += /usr/local/lib/SFML-2.1/include/
-# all
-LIBS += -L../common/ \
-    -lcommon
 
 # debug
-#LIBS += -L/usr/local/lib/ \
- #   -lsfml-graphics-d \
-  #  -lsfml-window-d \
-   # -lsfml-audio-d \
-    #-lsfml-network-d \
-    #-lsfml-system-d
+CONFIG(debug) {
+    LIBS += -L/usr/local/lib/ \
+        -lsfml-graphics-d \
+        -lsfml-window-d \
+        -lsfml-audio-d \
+        -lsfml-network-d \
+        -lsfml-system-d
+    
+    LIBS += -L../common/ \
+        -lcommon-d
+}
 
 # release
- LIBS += -L/usr/local/lib/ -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system -lsfml-network
+CONFIG(release) {
+    LIBS += -L/usr/local/lib/ \
+        -lsfml-graphics \
+        -lsfml-window \
+        -lsfml-audio \
+        -lsfml-system \
+        -lsfml-network
+
+    LIBS += -L../common/ \
+        -lcommon
+}
 
 SOURCES += \
     main.cpp \
