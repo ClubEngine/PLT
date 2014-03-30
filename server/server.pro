@@ -12,8 +12,10 @@ LIBS += -L../common/ \
 LIBS += -L/usr/local/lib/ -lsfml-network -lsfml-system
 
 SOURCES += main.cpp \
-    network/ReusableTcpListener.cpp
+    network/ReusableTcpListener.cpp \
+    client.cpp
 
 HEADERS += \
-    network/ReusableTcpListener.hpp
+    network/ReusableTcpListener.hpp \
+    client.hpp
 
