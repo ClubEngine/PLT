@@ -12,15 +12,15 @@ LIBS += -L../common/ \
     -lcommon
 
 # debug
-LIBS += -L/usr/local/lib/ \
-    -lsfml-graphics-d \
-    -lsfml-window-d \
-    -lsfml-audio-d \
-    -lsfml-network-d \
-    -lsfml-system-d
+#LIBS += -L/usr/local/lib/ \
+ #   -lsfml-graphics-d \
+  #  -lsfml-window-d \
+   # -lsfml-audio-d \
+    #-lsfml-network-d \
+    #-lsfml-system-d
 
 # release
-# LIBS += -L/usr/local/lib/ -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system
+ LIBS += -L/usr/local/lib/ -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system -lsfml-network
 
 SOURCES += \
     main.cpp \
