@@ -51,7 +51,8 @@ SOURCES += \
     entity/EntityManager.cpp \
     entity/Unit.cpp \
     core/network/NetInterface.cpp \
-    entity/MovableEntity.cpp
+    entity/MovableEntity.cpp \
+    core/CordinatesHelper.cpp
 
 HEADERS += \
     core/TextureHolder.hpp \
@@ -78,5 +79,6 @@ HEADERS += \
     entity/Unit.hpp \
     core/network/NetInterface.hpp \
     Log.hpp \
-    entity/MovableEntity.hpp
+    entity/MovableEntity.hpp \
+    core/CordinatesHelper.hpp
 

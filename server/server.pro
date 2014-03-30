@@ -11,9 +11,8 @@ CONFIG(debug) {
         -lsfml-window-d \
         -lsfml-audio-d \
         -lsfml-network-d \
-        -lsfml-system-d
-    
-    LIBS += -L../common/ \
+        -lsfml-system-d \
+        -L../common/ \
         -lcommon-d
 }
 
@@ -24,15 +23,18 @@ CONFIG(release) {
         -lsfml-window \
         -lsfml-audio \
         -lsfml-system \
-        -lsfml-network
-
-    LIBS += -L../common/ \
+        -lsfml-network \
+        -L../common/ \
         -lcommon
 }
 
 SOURCES += main.cpp \
-    network/ReusableTcpListener.cpp
+    network/ReusableTcpListener.cpp \
+    client.cpp \
+    server.cpp
 
 HEADERS += \
-    network/ReusableTcpListener.hpp
+    network/ReusableTcpListener.hpp \
+    client.hpp \
+    server.hpp
 
