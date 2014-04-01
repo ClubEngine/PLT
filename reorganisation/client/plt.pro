@@ -2,7 +2,7 @@
 TEMPLATE = app
 OBJECTS_DIR = obj
 
-INCLUDEPATH += /usr/local/include/ ../common/
+INCLUDEPATH += /usr/local/include/ #../common/
 
 
 # debug
@@ -14,8 +14,8 @@ CONFIG(debug) {
         -lsfml-network-d \
         -lsfml-system-d
     
-    LIBS += -L../common/ \
-        -lcommon-d
+#   LIBS += -L../common/ \
+#       -lcommon-d
 }
 
 # release
@@ -27,21 +27,21 @@ CONFIG(release) {
         -lsfml-system \
         -lsfml-network
 
-    LIBS += -L../common/ \
-        -lcommon
+#   LIBS += -L../common/ \
+#       -lcommon
 }
 
 SOURCES += \
     	main.cpp \
-    Application.cpp \
-    Controller/Controller.cpp \
-    View/View.cpp \
-    Model/Model.cpp
+        Application.cpp \
+        Controller/Controller.cpp \
+        View/View.cpp \
+        Model/Model.cpp
 
 HEADERS += \
 	Application.hpp \
-    Application.hpp \
-    Controller/Controller.hpp \
-    View/View.hpp \
-    Model/Model.hpp
+        Application.hpp \
+        Controller/Controller.hpp \
+        View/View.hpp \
+        Model/Model.hpp
 
