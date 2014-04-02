@@ -1,7 +1,7 @@
 #ifndef TITLESTATE_HPP
 #define TITLESTATE_HPP
 
-#include "../core/state/State.hpp"
+#include "../engine/state/State.hpp"
 
 class TitleState : public State
 {

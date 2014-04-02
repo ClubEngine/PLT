@@ -11,12 +11,13 @@ TEMPLATE = lib
 CONFIG += staticlib # debug_and_release
 
 
+
 debug {
     TARGET = common-d
-}
-release {
+} else:release {
     TARGET = common
 }
+
 
 SOURCES += commands/gameplay/CommandMove.cpp \
     commands/core/Command.cpp \
@@ -29,11 +30,4 @@ HEADERS += commands/gameplay/CommandMove.hpp \
     entity/Entity.hpp \
     commands/gameplay/CommandBuild.hpp \
     network/Network.hpp
-unix:!symbian {
-    maemo5 {
-        target.path = /opt/usr/lib
-    } else {
-        target.path = /usr/lib
-    }
-    INSTALLS += target
-}
+

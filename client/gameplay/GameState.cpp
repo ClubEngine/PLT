@@ -1,6 +1,6 @@
 #include "GameState.hpp"
-#include "core/map.hpp"
-#include "core/CordinatesHelper.hpp"
+#include "engine/map.hpp"
+#include "engine/CordinatesHelper.hpp"
 #include <iostream>
 #include <cmath>
 #include "gameplay/MyStates.hpp"

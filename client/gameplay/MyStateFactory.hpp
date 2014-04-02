@@ -1,7 +1,7 @@
 #ifndef MYSTATEFACTORY_HPP
 #define MYSTATEFACTORY_HPP
 
-#include "../core/state/AbstractStateFactory.hpp"
+#include "../engine/state/AbstractStateFactory.hpp"
 #include "gameplay/MyStates.hpp"
 
 class MyStateFactory : public AbstractStateFactory

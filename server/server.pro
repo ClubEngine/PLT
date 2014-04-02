@@ -4,8 +4,7 @@ OBJECTS_DIR = obj
 INCLUDEPATH += /usr/local/include/ ../common/
 
 
-# debug
-CONFIG(debug) {
+debug {
     LIBS += -L/usr/local/lib/ \
         -lsfml-graphics-d \
         -lsfml-window-d \
@@ -14,10 +13,7 @@ CONFIG(debug) {
         -lsfml-system-d \
         -L../common/ \
         -lcommon-d
-}
-
-# release
-CONFIG(release) {
+} else:release {
     LIBS += -L/usr/local/lib/ \
         -lsfml-graphics \
         -lsfml-window \

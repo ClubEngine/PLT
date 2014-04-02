@@ -2,9 +2,9 @@
 #define PAUSESTATE_HPP
 
 
-#include "../core/state/State.hpp"
+#include "../engine/state/State.hpp"
 
-#include "core/map.hpp"
+#include "engine/map.hpp"
 
 class PauseState : public State
 {

@@ -1,12 +1,11 @@
-# PLT
+# CLIENT
 TEMPLATE = app
 OBJECTS_DIR = obj
 
 INCLUDEPATH += /usr/local/include/ ../common/
 
 
-# debug
-CONFIG(debug) {
+debug {
     LIBS += -L/usr/local/lib/ \
         -lsfml-graphics-d \
         -lsfml-window-d \
@@ -16,10 +15,7 @@ CONFIG(debug) {
     
     LIBS += -L../common/ \
         -lcommon-d
-}
-
-# release
-CONFIG(release) {
+} else:release {
     LIBS += -L/usr/local/lib/ \
         -lsfml-graphics \
         -lsfml-window \
@@ -33,52 +29,52 @@ CONFIG(release) {
 
 SOURCES += \
     main.cpp \
-    core/TextureHolder.cpp \
-    core/SoundHolder.cpp \
-    core/state/StateStack.cpp \
-    core/state/State.cpp \
+    engine/TextureHolder.cpp \
+    engine/SoundHolder.cpp \
+    engine/state/StateStack.cpp \
+    engine/state/State.cpp \
     gameplay/TitleState.cpp \
-    core/state/AbstractStateFactory.cpp \
-    core/Context.cpp \
+    engine/state/AbstractStateFactory.cpp \
+    engine/Context.cpp \
     gameplay/GameState.cpp \
-    core/Application.cpp \
-    core/map.cpp \
-    core/state/DebugState.cpp \
+    engine/Application.cpp \
+    engine/map.cpp \
+    engine/state/DebugState.cpp \
     gameplay/TestState.cpp \
     gameplay/MyStateFactory.cpp \
     gameplay/PauseState.cpp \
-    core/Camera.cpp \
+    engine/Camera.cpp \
     entity/EntityManager.cpp \
     entity/Unit.cpp \
-    core/network/NetInterface.cpp \
+    engine/network/NetInterface.cpp \
     entity/MovableEntity.cpp \
-    core/CordinatesHelper.cpp
+    engine/CordinatesHelper.cpp
 
 HEADERS += \
-    core/TextureHolder.hpp \
-    core/Textures.hpp \
-    core/SoundHolder.hpp \
-    core/Sounds.hpp \
-    core/state/StateStack.hpp \
-    core/state/States.hpp \
-    core/state/State.hpp \
+    engine/TextureHolder.hpp \
+    engine/Textures.hpp \
+    engine/SoundHolder.hpp \
+    engine/Sounds.hpp \
+    engine/state/StateStack.hpp \
+    engine/state/States.hpp \
+    engine/state/State.hpp \
     gameplay/TitleState.hpp \
-    core/state/AbstractStateFactory.hpp \
-    core/Context.hpp \
+    engine/state/AbstractStateFactory.hpp \
+    engine/Context.hpp \
     gameplay/GameState.hpp \
-    core/Application.hpp \
-    core/map.hpp \
-    core/state/DebugState.hpp \
+    engine/Application.hpp \
+    engine/map.hpp \
+    engine/state/DebugState.hpp \
     gameplay/TestState.hpp \
     gameplay/MyStates.hpp \
     gameplay/MyStateFactory.hpp \
     gameplay/PauseState.hpp \
-    core/Camera.hpp \
+    engine/Camera.hpp \
     entity/EntityManager.hpp \
     entity/Entity.hpp \
     entity/Unit.hpp \
-    core/network/NetInterface.hpp \
+    engine/network/NetInterface.hpp \
     Log.hpp \
     entity/MovableEntity.hpp \
-    core/CordinatesHelper.hpp
+    engine/CordinatesHelper.hpp
 

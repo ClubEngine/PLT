@@ -1,10 +1,10 @@
 #ifndef GAMESTATE_HPP
 #define GAMESTATE_HPP
 
-#include "../core/state/State.hpp"
-#include "../core/map.hpp"
-#include "../core/Camera.hpp"
-#include "../core/network/NetInterface.hpp"
+#include "../engine/state/State.hpp"
+#include "../engine/map.hpp"
+#include "../engine/Camera.hpp"
+#include "../engine/network/NetInterface.hpp"
 #include "../entity/EntityManager.hpp"
 
 class GameState : public State
