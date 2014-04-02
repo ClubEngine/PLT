@@ -1,7 +1,7 @@
 #include "MyStateFactory.hpp"
 
 #include "TitleState.hpp"
-#include "GameState.hpp"
+#include "game/GameState.hpp"
 #include "TestState.hpp"
 #include "PauseState.hpp"
 
@@ -9,7 +9,7 @@ MyStateFactory::MyStateFactory()
 {
 }
 
-State * MyStateFactory::get(States::ID id, StateStack &stateStack, Context &context)
+State * MyStateFactory::get(States::ID id, StateStackManager &stateStack, Context &context)
 {
 	switch(id) {
 		case States::Debug:

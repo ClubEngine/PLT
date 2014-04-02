@@ -1,16 +1,15 @@
 #ifndef GAMESTATE_HPP
 #define GAMESTATE_HPP
 
-#include "../engine/state/State.hpp"
-#include "../engine/map.hpp"
-#include "../engine/Camera.hpp"
-#include "../engine/network/NetInterface.hpp"
-#include "../entity/EntityManager.hpp"
+
+#include "views/GameView.hpp"
+#include "models/GameModel.hpp"
+#include "controllers/GameController.hpp"
 
 class GameState : public State
 {
 	public:
-		GameState(StateStack & stack, Context &context);
+		GameState(StateStackManager & stack, Context &context);
 		
 		virtual bool handleEvent(const sf::Event & event);
 		virtual bool update(sf::Time dt);
@@ -48,6 +47,12 @@ class GameState : public State
 		Camera camera;
 		NetInterface netInterface;
 		EntityManager entities;
+		
+		
+		GameView mView;
+		GameModel mModel;
+		GameController mController;
+		
 };
 
 

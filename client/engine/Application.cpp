@@ -15,7 +15,7 @@ Application::Application(AbstractStateFactory &factory)
 		      sf::Style::Default), 
 	  mTextureHolder(), 
 	  mSoundHolder(),
-	  mStateStack(factory, Context(mWindow, 
+	  mStateStackManager(factory, Context(mWindow, 
 								   mTextureHolder, 
 							       mSoundHolder))
 {
@@ -31,7 +31,7 @@ Application::Application(AbstractStateFactory &factory)
 
 void Application::pushState(States::ID id)
 {
-	mStateStack.pushState(id);
+	mStateStackManager.pushState(id);
 }
 
 void Application::run()
@@ -48,11 +48,17 @@ void Application::run()
 		{
 			timeSinceLastUpdate -= TimePerFrame;
 			
+			//processNetworkMessages();
+			//updateModel(TimePerFrame);
 			processInputs();
+			//updateView(TimePerFrame);
+			
+			
+			
 			update(TimePerFrame);
 			
 			// Check inside this loop, because stack might be empty before update() call
-			if (mStateStack.isEmpty())
+			if (mStateStackManager.isEmpty())
 				mWindow.close();
 		}
 		
@@ -67,23 +73,24 @@ void Application::processInputs()
 	sf::Event event;
 	while (mWindow.pollEvent(event)) {
 		
-		mStateStack.handleEvent(event);
+		
+		mStateStackManager.handleEvent(event);
 	
 		if (event.type == sf::Event::Closed)
-			mStateStack.clearStates();
+			mStateStackManager.clearStates();
 	}
 }
 
 void Application::update(sf::Time dt)
 {
-	mStateStack.update(dt);
+	mStateStackManager.update(dt);
 }
 
 
 void Application::render()
 {
 	mWindow.clear();
-	mStateStack.draw();
+	mStateStackManager.draw();
 	mWindow.display();
 }
 

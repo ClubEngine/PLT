@@ -9,11 +9,20 @@
 
 using namespace std;
 
-GameState::GameState(StateStack &stack, Context &context)
+GameState::GameState(StateStackManager &stack, Context &context)
     : State(stack, context), mouseispressed(false),
 	  camera(*(context.window)), netInterface(),
-	  entities()
+	  entities(), mController(), mView(), mModel()
 {
+	
+	// mController.registerView(mView)
+	// etc.
+	
+	registerController(mController);
+	registerModel(mModel);
+	registerView(mView);
+	
+	
 	//getContext().textures.load(Textures::Patate, "assets/images/patate.png");
     width = getContext().window->getSize().x;
     height = getContext().window->getSize().y;

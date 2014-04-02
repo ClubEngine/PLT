@@ -1,6 +1,6 @@
 #include "TestState.hpp"
 
-TestState::TestState(StateStack &stack, Context &context)
+TestState::TestState(StateStackManager &stack, Context &context)
 	: State(stack, context)
 {
 	

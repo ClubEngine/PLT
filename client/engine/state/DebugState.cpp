@@ -1,6 +1,6 @@
 #include "DebugState.hpp"
 
-DebugState::DebugState(StateStack &stack, Context &context)
+DebugState::DebugState(StateStackManager &stack, Context &context)
 	: State(stack, context)
 {
 }

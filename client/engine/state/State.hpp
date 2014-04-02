@@ -11,8 +11,9 @@
 #include "engine/TextureHolder.hpp"
 #include <SFML/Graphics.hpp>
 
+#include "Engine.hpp"
 
-class StateStack;
+class StateStackManager;
 
 /** Represent a state of the application life.
   */
@@ -20,7 +21,14 @@ class State
 {
 	public:
 				
-		State(StateStack & stack, Context context);
+		State(StateStackManager & stack, Context context);
+		
+		
+		void processController();
+		void updateModel(sf::Time dt);
+		bool processView(const sf::Event & event);
+		void updateView(sf::Time dt);
+		void render();
 		
 		virtual void draw() = 0;
 		
@@ -44,11 +52,19 @@ class State
 
 		Context getContext() const;
 		
+		void registerController(AbstractStateController & controller);
+		void registerView(AbstractStateView & view);
+		void registerModel(AbstractStateModel & model);
+		
 		
 	private:
 		
-		StateStack & mStack;
+		StateStackManager & mStack;
 		Context mContext;
+		
+		AbstractStateController * mController;
+		AbstractStateModel * mModel;
+		AbstractStateView * mView;
 };
 
 #endif // STATE_HPP

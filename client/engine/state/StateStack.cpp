@@ -4,12 +4,12 @@
 
 
 
-StateStack::StateStack(AbstractStateFactory & factory, Context context)
+StateStackManager::StateStackManager(AbstractStateFactory & factory, Context context)
 	: mStack(), mPendingList(), mContext(context), mFactory(factory)
 {
 }
 
-void StateStack::update(sf::Time dt)
+void StateStackManager::update(sf::Time dt)
 {
         // Iterate from top to bottom, stop as soon as update() returns false
         for (StatePtrVector::reverse_iterator itr = mStack.rbegin(); 
@@ -22,7 +22,7 @@ void StateStack::update(sf::Time dt)
         applyPendingChanges();
 }
 
-void StateStack::draw()
+void StateStackManager::draw()
 {
         // Draw all active states from bottom to top
 		for (StatePtrVector::const_iterator itr = mStack.begin(); 
@@ -30,13 +30,13 @@ void StateStack::draw()
 			(*itr)->draw();
 }
 
-void StateStack::handleEvent(const sf::Event& event)
+void StateStackManager::handleEvent(const sf::Event& event)
 {
         // Iterate from top to bottom, stop as soon as handleEvent() returns false
         for (StatePtrVector::reverse_iterator itr = mStack.rbegin();
 			 itr != mStack.rend(); ++itr)
         {
-                if (!(*itr)->handleEvent(event))
+                if (!(*itr)->processView(event))
                         break;
         }
 
@@ -44,27 +44,27 @@ void StateStack::handleEvent(const sf::Event& event)
 }
 
 
-void StateStack::pushState(States::ID id)
+void StateStackManager::pushState(States::ID id)
 {
 	mPendingList.push_back(PendingChange(Push, id));
 }
 
-void StateStack::popState()
+void StateStackManager::popState()
 {
 	mPendingList.push_back(PendingChange(Pop));
 }
 
-void StateStack::clearStates()
+void StateStackManager::clearStates()
 {
 	mPendingList.push_back(PendingChange(Clear));
 }
 
-bool StateStack::isEmpty() const
+bool StateStackManager::isEmpty() const
 {
 	return mStack.empty();
 }
 
-void StateStack::applyPendingChanges()
+void StateStackManager::applyPendingChanges()
 {
 	for(PendingChangeVector::const_iterator it = mPendingList.begin();
 		it != mPendingList.end(); ++it) {
@@ -90,7 +90,7 @@ void StateStack::applyPendingChanges()
 }
 
 
-StateStack::PendingChange::PendingChange(Action action, States::ID stateID)
+StateStackManager::PendingChange::PendingChange(Action action, States::ID stateID)
 : action(action)
 , stateID(stateID)
 {

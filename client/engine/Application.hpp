@@ -33,7 +33,7 @@ namespace Engine {
 			TextureHolder mTextureHolder;
 			SoundHolder mSoundHolder;     
 			
-	        StateStack mStateStack;
+	        StateStackManager mStateStackManager;
 	};
 
 }

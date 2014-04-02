@@ -9,7 +9,7 @@ class MyStateFactory : public AbstractStateFactory
 	public:
 		MyStateFactory();
 		
-		virtual State * get(States::ID id, StateStack &stateStack, Context & context);
+		virtual State * get(States::ID id, StateStackManager &stateStack, Context & context);
 };
 
 #endif // CSTATEFACTORY_HPP

@@ -6,7 +6,7 @@
 class DebugState : public State
 {
 	public:
-		DebugState(StateStack & stack, Context &context);
+		DebugState(StateStackManager & stack, Context &context);
 		
 		virtual bool handleEvent(const sf::Event & event);
 		virtual bool update(sf::Time dt);

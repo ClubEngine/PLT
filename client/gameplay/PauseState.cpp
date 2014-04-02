@@ -1,6 +1,6 @@
 #include "PauseState.hpp"
 
-PauseState::PauseState(StateStack &stack, Context &context)
+PauseState::PauseState(StateStackManager &stack, Context &context)
 	: State(stack, context)
 {
 	

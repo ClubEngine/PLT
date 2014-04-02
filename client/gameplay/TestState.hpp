@@ -9,7 +9,7 @@
 class TestState : public State
 {
 	public:
-		TestState(StateStack & stack, Context &context);
+		TestState(StateStackManager & stack, Context &context);
 		
 		virtual bool handleEvent(const sf::Event & event);
 		virtual bool update(sf::Time dt);

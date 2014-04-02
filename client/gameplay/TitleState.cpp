@@ -5,7 +5,7 @@
 
 
 
-TitleState::TitleState(StateStack &stack, Context & context) 
+TitleState::TitleState(StateStackManager &stack, Context & context) 
 	: State(stack, context)
 {
 }

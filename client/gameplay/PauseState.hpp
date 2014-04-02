@@ -9,7 +9,7 @@
 class PauseState : public State
 {
 	public:
-		PauseState(StateStack & stack, Context &context);
+		PauseState(StateStackManager & stack, Context &context);
 		
 		virtual bool handleEvent(const sf::Event & event);
 		virtual bool update(sf::Time dt);

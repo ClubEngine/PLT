@@ -15,7 +15,7 @@
 /**
   Manage states of the application.
 */
-class StateStack : private sf::NonCopyable
+class StateStackManager : private sf::NonCopyable
 {
 	public:
 		enum Action {
@@ -24,7 +24,7 @@ class StateStack : private sf::NonCopyable
 			Clear
 		};
 		
-		explicit StateStack(AbstractStateFactory & factory, Context context);
+		explicit StateStackManager(AbstractStateFactory & factory, Context context);
 		
 		/** Update all the states
 		  @param dt Time elapsed since the latest call

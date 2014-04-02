@@ -7,7 +7,7 @@
 #include "DebugState.hpp"
 
 
-class StateStack;
+class StateStackManager;
 class Context;
 
 class AbstractStateFactory
@@ -15,7 +15,7 @@ class AbstractStateFactory
 	public:
 		AbstractStateFactory();
 		
-		virtual State * get(States::ID id, StateStack & stateStack, Context & context) = 0;
+		virtual State * get(States::ID id, StateStackManager & stateStack, Context & context) = 0;
 		
 };
 
