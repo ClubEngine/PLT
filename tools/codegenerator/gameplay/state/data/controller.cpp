@@ -17,5 +17,5 @@ void <<<CC>>>::setView(<<<CV>>> &view)
 
 bool <<<CC>>>::processAuthoritativeMessage()
 {	
-	return false;
+	return true;
 }
