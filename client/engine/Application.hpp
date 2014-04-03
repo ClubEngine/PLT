@@ -21,8 +21,10 @@ namespace Engine {
 			
 	    private:
 			
+			void processNetworkMessages();
+			void updateModels(sf::Time dt);
 			void processInputs();
-			void update(sf::Time dt);
+			void updateViews(sf::Time dt);
 			void render();
 			
 	    private:

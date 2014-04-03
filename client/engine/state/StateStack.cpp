@@ -9,7 +9,24 @@ StateStackManager::StateStackManager(AbstractStateFactory & factory, Context con
 {
 }
 
-void StateStackManager::update(sf::Time dt)
+
+
+void StateStackManager::processNetMsg()
+{
+        // Iterate from top to bottom, stop as soon as handleEvent() returns false
+        for (StatePtrVector::reverse_iterator itr = mStack.rbegin();
+			 itr != mStack.rend(); ++itr)
+        {
+                if (!(*itr)->processController())
+                        break;
+        }
+
+		applyPendingChanges();
+}
+
+
+
+void StateStackManager::updateModels(sf::Time dt)
 {
         // Iterate from top to bottom, stop as soon as update() returns false
         for (StatePtrVector::reverse_iterator itr = mStack.rbegin(); 
@@ -22,15 +39,9 @@ void StateStackManager::update(sf::Time dt)
         applyPendingChanges();
 }
 
-void StateStackManager::draw()
-{
-        // Draw all active states from bottom to top
-		for (StatePtrVector::const_iterator itr = mStack.begin(); 
-			 itr != mStack.end(); ++itr)
-			(*itr)->draw();
-}
 
-void StateStackManager::handleEvent(const sf::Event& event)
+
+void StateStackManager::processInputs(const sf::Event& event)
 {
         // Iterate from top to bottom, stop as soon as handleEvent() returns false
         for (StatePtrVector::reverse_iterator itr = mStack.rbegin();
@@ -40,9 +51,20 @@ void StateStackManager::handleEvent(const sf::Event& event)
                         break;
         }
 
-        applyPendingChanges();
+		applyPendingChanges();
 }
 
+void StateStackManager::updateViews(sf::Time dt)
+{
+}
+
+void StateStackManager::render()
+{
+        // Draw all active states from bottom to top
+		for (StatePtrVector::const_iterator itr = mStack.begin(); 
+			 itr != mStack.end(); ++itr)
+			(*itr)->draw();
+}
 
 void StateStackManager::pushState(States::ID id)
 {

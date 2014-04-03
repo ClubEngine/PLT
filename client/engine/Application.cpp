@@ -34,6 +34,8 @@ void Application::pushState(States::ID id)
 	mStateStackManager.pushState(id);
 }
 
+
+
 void Application::run()
 {
 	sf::Clock clock;
@@ -48,14 +50,10 @@ void Application::run()
 		{
 			timeSinceLastUpdate -= TimePerFrame;
 			
-			//processNetworkMessages();
-			//updateModel(TimePerFrame);
+			processNetworkMessages();
+			updateModels(TimePerFrame);
 			processInputs();
-			//updateView(TimePerFrame);
-			
-			
-			
-			update(TimePerFrame);
+			updateViews(TimePerFrame);
 			
 			// Check inside this loop, because stack might be empty before update() call
 			if (mStateStackManager.isEmpty())
@@ -68,29 +66,41 @@ void Application::run()
 }
 
 
+void Application::processNetworkMessages()
+{
+//	NetMsg msg;
+//	while (mNetwork.pollMsg(event)) {
+//		mStateStackManager.processNetMsg(msg);
+//	}
+}
+
+void Application::updateModels(sf::Time dt)
+{
+	mStateStackManager.updateModels(dt);
+}
+
 void Application::processInputs()
 {
 	sf::Event event;
 	while (mWindow.pollEvent(event)) {
 		
 		
-		mStateStackManager.handleEvent(event);
+		mStateStackManager.processInputs(event);
 	
 		if (event.type == sf::Event::Closed)
 			mStateStackManager.clearStates();
 	}
 }
 
-void Application::update(sf::Time dt)
+void Application::updateViews(sf::Time dt)
 {
-	mStateStackManager.update(dt);
+	mStateStackManager.updateViews(dt);
 }
-
 
 void Application::render()
 {
 	mWindow.clear();
-	mStateStackManager.draw();
+	mStateStackManager.render();
 	mWindow.display();
 }
 

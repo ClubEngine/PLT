@@ -24,10 +24,10 @@ class State
 		State(StateStackManager & stack, Context context);
 		
 		
-		void processController();
-		void updateModel(sf::Time dt);
+		bool processController();
+		bool updateModel(sf::Time dt);
 		bool processView(const sf::Event & event);
-		void updateView(sf::Time dt);
+		bool updateView(sf::Time dt);
 		void render();
 		
 		virtual void draw() = 0;

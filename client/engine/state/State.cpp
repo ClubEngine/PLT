@@ -10,16 +10,18 @@ State::State(StateStackManager &stack, Context context)
 }
 
 
-void State::processController()
+bool State::processController()
 {
 	if (mController)
-		mController->processAuthoritativeMessage();
+		return mController->processAuthoritativeMessage();
+	return true;
 }
 
-void State::updateModel(sf::Time dt)
+bool State::updateModel(sf::Time dt)
 {
 	if (mModel)
-		mModel->update();
+		return mModel->update();
+	return true;
 }
 
 bool State::processView(const sf::Event & event)
@@ -30,11 +32,12 @@ bool State::processView(const sf::Event & event)
 	return true;
 }
 
-void State::updateView(sf::Time dt)
+bool State::updateView(sf::Time dt)
 {
 	update(dt);//test
 	if (mView)
-		mView->update();
+		return mView->update();
+	return true;
 }
 
 void State::render()

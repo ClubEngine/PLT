@@ -26,17 +26,22 @@ class StateStackManager : private sf::NonCopyable
 		
 		explicit StateStackManager(AbstractStateFactory & factory, Context context);
 		
+		void processNetMsg();
+		
 		/** Update all the states
 		  @param dt Time elapsed since the latest call
 		*/
-		void update(sf::Time dt);
+		void updateModels(sf::Time dt);
 		/** Notify states from the top
 		  @param event Event to treat
 		*/
-		void handleEvent(const sf::Event & event);
+		void processInputs(const sf::Event & event);
+		
+		void updateViews(sf::Time dt);
+		
 		/** Draw all the states from the bottom
 		  */
-		void draw();
+		void render();
 		
 		/** Set the top active state
 		  @param id Id of the state, accordly to the id into the StateFactory
