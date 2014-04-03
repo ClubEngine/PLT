@@ -13,49 +13,58 @@ StateStackManager::StateStackManager(AbstractStateFactory & factory, Context con
 
 void StateStackManager::processNetMsg()
 {
-        // Iterate from top to bottom, stop as soon as handleEvent() returns false
-        for (StatePtrVector::reverse_iterator itr = mStack.rbegin();
-			 itr != mStack.rend(); ++itr)
-        {
-                if (!(*itr)->processController())
-                        break;
-        }
+	// Iterate from top to bottom, stop as soon as handleEvent() returns false
+	for (StatePtrVector::reverse_iterator itr = mStack.rbegin();
+		 itr != mStack.rend(); ++itr)
+	{
+			if (!(*itr)->processController())
+					break;
+	}
 
-		applyPendingChanges();
+	applyPendingChanges();
 }
 
 
 
 void StateStackManager::updateModels(sf::Time dt)
 {
-        // Iterate from top to bottom, stop as soon as update() returns false
-        for (StatePtrVector::reverse_iterator itr = mStack.rbegin(); 
-			 itr != mStack.rend(); ++itr)
-        {
-                if (!(*itr)->update(dt))
-                        break;
-        }
+	// Iterate from top to bottom, stop as soon as update() returns false
+	for (StatePtrVector::reverse_iterator itr = mStack.rbegin(); 
+		 itr != mStack.rend(); ++itr)
+	{
+			if (!(*itr)->updateModel(dt))
+					break;
+	}
 
-        applyPendingChanges();
+	applyPendingChanges();
 }
 
 
 
 void StateStackManager::processInputs(const sf::Event& event)
 {
-        // Iterate from top to bottom, stop as soon as handleEvent() returns false
-        for (StatePtrVector::reverse_iterator itr = mStack.rbegin();
-			 itr != mStack.rend(); ++itr)
-        {
-                if (!(*itr)->processView(event))
-                        break;
-        }
+	// Iterate from top to bottom, stop as soon as handleEvent() returns false
+	for (StatePtrVector::reverse_iterator itr = mStack.rbegin();
+		 itr != mStack.rend(); ++itr)
+	{
+			if (!(*itr)->processView(event))
+					break;
+	}
 
-		applyPendingChanges();
+	applyPendingChanges();
 }
 
 void StateStackManager::updateViews(sf::Time dt)
 {
+	// Iterate from top to bottom, stop as soon as handleEvent() returns false
+    for (StatePtrVector::reverse_iterator itr = mStack.rbegin();
+		 itr != mStack.rend(); ++itr)
+    {
+            if (!(*itr)->updateView(dt))
+                    break;
+    }
+
+	applyPendingChanges();
 }
 
 void StateStackManager::render()
@@ -63,7 +72,7 @@ void StateStackManager::render()
         // Draw all active states from bottom to top
 		for (StatePtrVector::const_iterator itr = mStack.begin(); 
 			 itr != mStack.end(); ++itr)
-			(*itr)->draw();
+			(*itr)->render();
 }
 
 void StateStackManager::pushState(States::ID id)

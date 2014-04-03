@@ -23,25 +23,15 @@ class State
 				
 		State(StateStackManager & stack, Context context);
 		
+		/**
+		  Return false to stop states updating
+		*/
 		
 		bool processController();
 		bool updateModel(sf::Time dt);
 		bool processView(const sf::Event & event);
 		bool updateView(sf::Time dt);
 		void render();
-		
-		virtual void draw() = 0;
-		
-		/**
-		  Return false to stop states updating
-		*/
-		virtual bool update(sf::Time dt) = 0;
-		
-		/**
-		  Return false to stop states updating
-		*/
-		virtual bool handleEvent(const sf::Event & event) = 0; 
-		
 		
 		virtual ~State();
 		

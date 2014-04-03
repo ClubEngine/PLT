@@ -26,23 +26,20 @@ bool State::updateModel(sf::Time dt)
 
 bool State::processView(const sf::Event & event)
 {
-	handleEvent(event);
 	if (mView)
-		return mView->processInputs();
+		return mView->processInputs(event);
 	return true;
 }
 
 bool State::updateView(sf::Time dt)
 {
-	update(dt);//test
 	if (mView)
-		return mView->update();
+		return mView->update(dt);
 	return true;
 }
 
 void State::render()
 {
-	draw();
 	if (mView)
 		mView->render();
 }
