@@ -9,11 +9,19 @@
 
 using namespace std;
 
-GameState::GameState(StateStackManager &stack, Context &context)
-    : State(stack, context), mController(), mView(), mModel()
+GameState::GameState(ModelHelper &modelHelper, 
+					 ViewHelper &viewHelper,
+				     ControllerHelper &controllerHelper)
+    : State(), mModel(modelHelper), mView(viewHelper), mController(controllerHelper)
 {
-	// mController.registerView(mView)
-	// etc.
+	mModel.setView(mView);
+	mModel.setController(mController);
+	
+	mView.setModel(mModel);
+	mView.setController(mController);
+	
+	mController.setModel(mModel);
+	mController.setView(mView);
 	
 	registerController(mController);
 	registerModel(mModel);

@@ -1,12 +1,20 @@
-#include "StateStack.hpp"
+#include "StateStackManager.hpp"
 
 #include "engine/Context.hpp"
 
 
 
-StateStackManager::StateStackManager(AbstractStateFactory & factory, Context context)
-	: mStack(), mPendingList(), mContext(context), mFactory(factory)
+StateStackManager::StateStackManager(AbstractStateFactory & factory)
+	: mStack(), mPendingList(), mFactory(factory)
 {
+	
+}
+
+void StateStackManager::setHelpers(ModelHelper &modelHelper, ViewHelper &viewHelper, ControllerHelper &controllerHelper)
+{
+	mModelHelper = & modelHelper;
+	mViewHelper = & viewHelper;
+	mControllerHelper = & controllerHelper;
 }
 
 
@@ -104,7 +112,11 @@ void StateStackManager::applyPendingChanges()
 		
 		switch(change.action) {
 			case Push:
-				mStack.push_back(mFactory.get(change.stateID, *this, mContext));
+				mStack.push_back(
+							mFactory.get(change.stateID,
+										 *mModelHelper,
+										 *mViewHelper,
+										 *mControllerHelper));
 				break;
 				
 			case Pop:

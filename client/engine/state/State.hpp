@@ -11,17 +11,21 @@
 #include "engine/TextureHolder.hpp"
 #include <SFML/Graphics.hpp>
 
-#include "Engine.hpp"
+#include "AbstractStateModel.hpp"
+#include "AbstractStateView.hpp"
+#include "AbstractStateController.hpp"
+
+
 
 class StateStackManager;
 
 /** Represent a state of the application life.
   */
-class State
+class State : sf::NonCopyable
 {
 	public:
 				
-		State(StateStackManager & stack, Context context);
+		State();
 		
 		/**
 		  Return false to stop states updating
@@ -35,23 +39,12 @@ class State
 		
 		virtual ~State();
 		
-	protected:
-		void requestStackPush(States::ID stateID);
-		void requestStackPop();
-		void requestStateClear();
-
-		Context getContext() const;
-		
+	protected:		
 		void registerController(AbstractStateController & controller);
 		void registerView(AbstractStateView & view);
 		void registerModel(AbstractStateModel & model);
 		
-		
 	private:
-		
-		StateStackManager & mStack;
-		Context mContext;
-		
 		AbstractStateController * mController;
 		AbstractStateModel * mModel;
 		AbstractStateView * mView;

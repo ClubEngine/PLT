@@ -6,14 +6,14 @@
 
 
 TitleState::TitleState(StateStackManager &stack, Context & context) 
-	: State(stack, context)
+	: State()
 {
 }
 
 void TitleState::draw()
 {
 	//std::cout << "TitleState.draw" << std::endl;
-	getContext().window->clear(sf::Color::Red);
+//	getContext().window->clear(sf::Color::Red);
 }
 
 bool TitleState::update(sf::Time dt)

@@ -1,11 +1,10 @@
 #include "State.hpp"
 
 #include "engine/Context.hpp"
-#include "engine/state/StateStack.hpp"
+#include "StateStackManager.hpp"
 
-State::State(StateStackManager &stack, Context context)
-	: mStack(stack), mContext(context),
-	  mController(0), mModel(0), mView(0)
+State::State()
+	: mController(0), mModel(0), mView(0)
 {
 }
 
@@ -20,7 +19,7 @@ bool State::processController()
 bool State::updateModel(sf::Time dt)
 {
 	if (mModel)
-		return mModel->update();
+		return mModel->update(dt);
 	return true;
 }
 
@@ -45,25 +44,6 @@ void State::render()
 }
 
 
-void State::requestStackPush(States::ID stateID)
-{
-	mStack.pushState(stateID);
-}
-
-void State::requestStackPop()
-{
-	mStack.popState();
-}
-
-void State::requestStateClear()
-{
-	mStack.clearStates();
-}
-
-Context State::getContext() const
-{
-	return mContext;
-}
 
 void State::registerController(AbstractStateController &controller)
 {

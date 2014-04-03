@@ -31,15 +31,12 @@ SOURCES += \
     main.cpp \
     engine/TextureHolder.cpp \
     engine/SoundHolder.cpp \
-    engine/state/StateStack.cpp \
     engine/state/State.cpp \
     gameplay/TitleState.cpp \
     engine/state/AbstractStateFactory.cpp \
     engine/Context.cpp \
     engine/Application.cpp \
     engine/map.cpp \
-    engine/state/DebugState.cpp \
-    gameplay/TestState.cpp \
     gameplay/MyStateFactory.cpp \
     gameplay/PauseState.cpp \
     engine/Camera.cpp \
@@ -54,14 +51,20 @@ SOURCES += \
     gameplay/game/controllers/GameController.cpp \
     engine/state/AbstractStateView.cpp \
     engine/state/AbstractStateController.cpp \
-    engine/state/AbstractStateModel.cpp
+    engine/state/AbstractStateModel.cpp \
+    engine/state/debug/DebugState.cpp \
+    engine/state/debug/DebugView.cpp \
+    engine/state/debug/DebugController.cpp \
+    engine/state/helpers/ViewHelper.cpp \
+    engine/state/helpers/ControllerHelper.cpp \
+    engine/state/helpers/ModelHelper.cpp \
+    engine/state/StateStackManager.cpp
 
 HEADERS += \
     engine/TextureHolder.hpp \
     engine/Textures.hpp \
     engine/SoundHolder.hpp \
     engine/Sounds.hpp \
-    engine/state/StateStack.hpp \
     engine/state/States.hpp \
     engine/state/State.hpp \
     gameplay/TitleState.hpp \
@@ -70,7 +73,6 @@ HEADERS += \
     engine/Application.hpp \
     engine/map.hpp \
     engine/state/DebugState.hpp \
-    gameplay/TestState.hpp \
     gameplay/MyStates.hpp \
     gameplay/MyStateFactory.hpp \
     gameplay/PauseState.hpp \
@@ -89,5 +91,12 @@ HEADERS += \
     engine/Engine.hpp \
     engine/state/AbstractStateView.hpp \
     engine/state/AbstractStateController.hpp \
-    engine/state/AbstractStateModel.hpp
+    engine/state/AbstractStateModel.hpp \
+    engine/state/debug/DebugState.hpp \
+    engine/state/DebugController.hpp \
+    engine/state/debug/DebugController.hpp \
+    engine/state/helpers/ViewHelper.hpp \
+    engine/state/helpers/ControllerHelper.hpp \
+    engine/state/helpers/ModelHelper.hpp \
+    engine/state/StateStackManager.hpp
 

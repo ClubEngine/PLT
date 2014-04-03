@@ -1,7 +1,7 @@
 #include "PauseState.hpp"
 
 PauseState::PauseState(StateStackManager &stack, Context &context)
-	: State(stack, context)
+	: State()
 {
 	
 }
@@ -12,7 +12,7 @@ bool PauseState::handleEvent(const sf::Event &event)
 	if (event.type == sf::Event::KeyPressed &&
 		event.key.code == sf::Keyboard::P)
 	{
-		requestStackPop();
+		//requestStackPop();
 	}
 	return false;
 }
@@ -24,11 +24,11 @@ bool PauseState::update(sf::Time dt)
 
 void PauseState::draw()
 {
-	sf::RenderWindow & window = *getContext().window;
+//	sf::RenderWindow & window = *getContext().window;
 	
-	window.setView(window.getDefaultView());
+//	window.setView(window.getDefaultView());
 	
-	sf::RectangleShape rect(sf::Vector2f(800,600));
-	rect.setFillColor(sf::Color(0,0,0,128));
-	window.draw(rect);
+//	sf::RectangleShape rect(sf::Vector2f(800,600));
+//	rect.setFillColor(sf::Color(0,0,0,128));
+//	window.draw(rect);
 }

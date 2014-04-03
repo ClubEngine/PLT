@@ -1,5 +1,5 @@
-#ifndef STATESTACK_HPP
-#define STATESTACK_HPP
+#ifndef STATESTACKMANAGER_HPP
+#define STATESTACKMANAGER_HPP
 
 #include <vector>
 
@@ -24,7 +24,11 @@ class StateStackManager : private sf::NonCopyable
 			Clear
 		};
 		
-		explicit StateStackManager(AbstractStateFactory & factory, Context context);
+		explicit StateStackManager(AbstractStateFactory & factory);
+		
+		void setHelpers(ModelHelper &modelHelper,
+						ViewHelper &viewHelper,
+				        ControllerHelper &controllerHelper);
 		
 		void processNetMsg();
 		
@@ -67,9 +71,13 @@ class StateStackManager : private sf::NonCopyable
 		
 		StatePtrVector mStack;
 		PendingChangeVector mPendingList;
-		Context mContext;
+	
 		
 		AbstractStateFactory & mFactory;
+		
+		ModelHelper *mModelHelper;
+	    ViewHelper *mViewHelper;
+	    ControllerHelper *mControllerHelper;
 };
 
 
@@ -77,4 +85,4 @@ class StateStackManager : private sf::NonCopyable
 
 
 
-#endif // STATESTACK_HPP
+#endif // STATESTACKMANAGER_HPP

@@ -9,12 +9,14 @@
 class GameState : public State
 {
 	public:
-		GameState(StateStackManager & stack, Context &context);
+		GameState(ModelHelper &modelHelper, 
+				  ViewHelper &viewHelper,
+			      ControllerHelper &controllerHelper);
 		
 	private:
 
-		GameView mView;
 		GameModel mModel;
+		GameView mView;
 		GameController mController;
 		
 };

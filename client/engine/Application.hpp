@@ -8,16 +8,18 @@
 
 #include "SoundHolder.hpp"
 #include "TextureHolder.hpp"
-#include "engine/state/StateStack.hpp"
+#include "state/StateStackManager.hpp"
+#include "state/AbstractStateFactory.hpp"
 
 namespace Engine {
 
 	class Application
 	{
 	    public:
-	        Application(AbstractStateFactory & factory);
-			void run();
+			Application(AbstractStateFactory & factory);
 			void pushState(States::ID id);
+			void run();
+			
 			
 	    private:
 			
@@ -36,6 +38,11 @@ namespace Engine {
 			SoundHolder mSoundHolder;     
 			
 	        StateStackManager mStateStackManager;
+			
+			
+			ModelHelper mModelHelper;
+		    ViewHelper mViewHelper;
+		    ControllerHelper mControllerHelper;
 	};
 
 }

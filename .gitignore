@@ -19,9 +19,8 @@
 *.autosave
 
 # bin
-client/plt
+client/client
 server/server
 
 # Makefile
 Makefile
-client
