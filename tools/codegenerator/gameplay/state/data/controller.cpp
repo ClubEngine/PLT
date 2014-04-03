@@ -1,5 +1,9 @@
 #include "<<<CC>>>.hpp"
 
+#include "../models/<<<CM>>>.hpp"
+#include "../views/<<<CV>>>.hpp"
+
+
 <<<CC>>>::<<<CC>>>(ControllerHelper & helper)
 	: AbstractStateController(helper)
 {	

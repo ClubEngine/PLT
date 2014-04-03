@@ -1,5 +1,9 @@
 #include "<<<CV>>>.hpp"
 
+#include "../models/<<<CM>>>.hpp"
+#include "../controllers/<<<CC>>>.hpp"
+
+
 <<<CV>>>::<<<CV>>>(ViewHelper &helper)
 	: AbstractStateView(helper)
 {
