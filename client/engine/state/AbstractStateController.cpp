@@ -10,6 +10,8 @@ AbstractStateController::AbstractStateController(ControllerHelper &helper)
 
 void AbstractStateController::requestStackPush(States::ID stateID)
 {
+	if (mHelper.mSsM)
+		mHelper.mSsM->pushState(stateID);
 }
 
 void AbstractStateController::requestStateClear()
@@ -20,4 +22,6 @@ void AbstractStateController::requestStateClear()
 
 void AbstractStateController::requestStackPop()
 {
+	if (mHelper.mSsM)
+		mHelper.mSsM->popState();
 }

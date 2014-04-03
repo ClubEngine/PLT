@@ -30,6 +30,7 @@ const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 		mWindow.setKeyRepeatEnabled(false);
 		mWindow.setVerticalSyncEnabled(true);
 		
+		mViewHelper.mWindow = &mWindow;
 		mControllerHelper.setStateStackManager(mStateStackManager);
 		
 		mStateStackManager.setHelpers(mModelHelper,

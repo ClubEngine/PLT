@@ -2,4 +2,12 @@
 
 ViewHelper::ViewHelper()
 {
+	
+}
+
+
+
+sf::RenderTarget &ViewHelper::getRenderTarget() const
+{
+	return *mWindow;
 }

@@ -21,6 +21,9 @@ class AbstractStateView : sf::NonCopyable
 		virtual bool update(sf::Time dt) = 0;
 		virtual void render() = 0;
 	
+	protected:
+		sf::RenderTarget & getRenderTarget() const;
+	
 	private:
 		ViewHelper & mHelper;
 };

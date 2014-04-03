@@ -18,7 +18,9 @@ int main(int argc, char ** argv) {
 	//application.pushState(States::Title);
 	//application.pushState(States::Test);
 	application.pushState(States::Game);
-    application.pushState(States::Debug);
+    application.pushState(States::Pause);
+	application.pushState(States::Debug);
+	
 	
 	application.run();
 

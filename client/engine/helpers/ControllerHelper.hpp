@@ -3,7 +3,7 @@
 
 #include <SFML/System.hpp>
 
-#include "../../Context.hpp"
+#include "../Context.hpp"
 
 namespace Engine{
 	class Application;

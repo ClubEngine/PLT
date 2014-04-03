@@ -32,13 +32,11 @@ SOURCES += \
     engine/TextureHolder.cpp \
     engine/SoundHolder.cpp \
     engine/state/State.cpp \
-    gameplay/TitleState.cpp \
     engine/state/AbstractStateFactory.cpp \
     engine/Context.cpp \
     engine/Application.cpp \
     engine/map.cpp \
     gameplay/MyStateFactory.cpp \
-    gameplay/PauseState.cpp \
     engine/Camera.cpp \
     entity/EntityManager.cpp \
     entity/Unit.cpp \
@@ -55,10 +53,14 @@ SOURCES += \
     engine/state/debug/DebugState.cpp \
     engine/state/debug/DebugView.cpp \
     engine/state/debug/DebugController.cpp \
-    engine/state/helpers/ViewHelper.cpp \
-    engine/state/helpers/ControllerHelper.cpp \
-    engine/state/helpers/ModelHelper.cpp \
-    engine/state/StateStackManager.cpp
+    engine/helpers/ViewHelper.cpp \
+    engine/helpers/ControllerHelper.cpp \
+    engine/helpers/ModelHelper.cpp \
+    engine/state/StateStackManager.cpp \
+    gameplay/pause/PauseState.cpp \
+    gameplay/pause/views/PauseView.cpp \
+    gameplay/pause/models/PauseModel.cpp \
+    gameplay/pause/controllers/PauseController.cpp
 
 HEADERS += \
     engine/TextureHolder.hpp \
@@ -75,7 +77,6 @@ HEADERS += \
     engine/state/DebugState.hpp \
     gameplay/MyStates.hpp \
     gameplay/MyStateFactory.hpp \
-    gameplay/PauseState.hpp \
     engine/Camera.hpp \
     entity/EntityManager.hpp \
     entity/Entity.hpp \
@@ -95,9 +96,13 @@ HEADERS += \
     engine/state/debug/DebugState.hpp \
     engine/state/DebugController.hpp \
     engine/state/debug/DebugController.hpp \
-    engine/state/helpers/ViewHelper.hpp \
-    engine/state/helpers/ControllerHelper.hpp \
-    engine/state/helpers/ModelHelper.hpp \
+    engine/helpers/ViewHelper.hpp \
+    engine/helpers/ControllerHelper.hpp \
+    engine/helpers/ModelHelper.hpp \
     engine/state/StateStackManager.hpp \
-    gameplay/Gameplay.hpp
+    gameplay/Gameplay.hpp \
+    gameplay/pause/PauseState.hpp \
+    gameplay/pause/views/PauseView.hpp \
+    gameplay/pause/models/PauseModel.hpp \
+    gameplay/pause/controllers/PauseController.hpp
 
