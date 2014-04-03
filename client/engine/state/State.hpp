@@ -21,11 +21,11 @@ class StateStackManager;
 
 /** Represent a state of the application life.
   */
-class State : sf::NonCopyable
+class AbstractState : sf::NonCopyable
 {
 	public:
 				
-		State();
+		AbstractState();
 		
 		/**
 		  Return false to stop states updating
@@ -37,7 +37,7 @@ class State : sf::NonCopyable
 		bool updateView(sf::Time dt);
 		void render();
 		
-		virtual ~State();
+		virtual ~AbstractState();
 		
 	protected:		
 		void registerController(AbstractStateController & controller);

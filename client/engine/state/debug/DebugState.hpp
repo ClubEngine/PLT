@@ -4,7 +4,7 @@
 #include "../State.hpp"
 #include "DebugController.hpp"
 
-class DebugState : public State
+class DebugState : public AbstractState
 {
 	public:
 		DebugState(ModelHelper &modelHelper, 
@@ -24,10 +24,7 @@ class DebugState : public State
 				
 		} mView;
 		
-		DebugController mController;
-		
-		//class DebugModel
-		
+		DebugController mController;		
 };
 
 #endif // DEBUGSTATE_HPP

@@ -3,7 +3,7 @@
 DebugState::DebugState(ModelHelper &modelHelper, 
 					   ViewHelper &viewHelper,
 					   ControllerHelper &controllerHelper)
-	: State(), mView(viewHelper),
+	: AbstractState(), mView(viewHelper),
 	  mController(controllerHelper)
 {
 	mView.setController(mController);

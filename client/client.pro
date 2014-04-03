@@ -2,7 +2,7 @@
 TEMPLATE = app
 OBJECTS_DIR = obj
 
-INCLUDEPATH += /usr/local/include/ ../common/ ./engine
+INCLUDEPATH += /usr/local/include/ ../common/ ./engine ./gameplay
 
 
 debug {
@@ -98,5 +98,6 @@ HEADERS += \
     engine/state/helpers/ViewHelper.hpp \
     engine/state/helpers/ControllerHelper.hpp \
     engine/state/helpers/ModelHelper.hpp \
-    engine/state/StateStackManager.hpp
+    engine/state/StateStackManager.hpp \
+    gameplay/Gameplay.hpp
 

@@ -15,7 +15,7 @@ class AbstractStateFactory
 	public:
 		AbstractStateFactory();
 		
-		virtual State * get(States::ID id,
+		virtual AbstractState * get(States::ID id,
 							ModelHelper &modelHelper, 
 						    ViewHelper &viewHelper,
 						    ControllerHelper &controllerHelper) = 0;

@@ -66,7 +66,7 @@ class StateStackManager : private sf::NonCopyable
 		
 		void applyPendingChanges();
 		
-		typedef std::vector<State*> StatePtrVector;
+		typedef std::vector<AbstractState*> StatePtrVector;
 		typedef std::vector<PendingChange> PendingChangeVector;
 		
 		StatePtrVector mStack;

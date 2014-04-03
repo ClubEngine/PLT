@@ -3,41 +3,41 @@
 #include "engine/Context.hpp"
 #include "StateStackManager.hpp"
 
-State::State()
+AbstractState::AbstractState()
 	: mController(0), mModel(0), mView(0)
 {
 }
 
 
-bool State::processController()
+bool AbstractState::processController()
 {
 	if (mController)
 		return mController->processAuthoritativeMessage();
 	return true;
 }
 
-bool State::updateModel(sf::Time dt)
+bool AbstractState::updateModel(sf::Time dt)
 {
 	if (mModel)
 		return mModel->update(dt);
 	return true;
 }
 
-bool State::processView(const sf::Event & event)
+bool AbstractState::processView(const sf::Event & event)
 {
 	if (mView)
 		return mView->processInputs(event);
 	return true;
 }
 
-bool State::updateView(sf::Time dt)
+bool AbstractState::updateView(sf::Time dt)
 {
 	if (mView)
 		return mView->update(dt);
 	return true;
 }
 
-void State::render()
+void AbstractState::render()
 {
 	if (mView)
 		mView->render();
@@ -45,24 +45,24 @@ void State::render()
 
 
 
-void State::registerController(AbstractStateController &controller)
+void AbstractState::registerController(AbstractStateController &controller)
 {
 	mController = &controller;
 }
 
-void State::registerView(AbstractStateView &view)
+void AbstractState::registerView(AbstractStateView &view)
 {
 	mView = &view;
 }
 
-void State::registerModel(AbstractStateModel &model)
+void AbstractState::registerModel(AbstractStateModel &model)
 {
 	mModel = &model;
 }
 
 
 
-State::~State()
+AbstractState::~AbstractState()
 {
 }
 
