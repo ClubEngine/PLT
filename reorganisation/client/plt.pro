@@ -28,20 +28,33 @@ CONFIG(release) {
         -lsfml-network
 
 #   LIBS += -L../common/ \
-#       -lcommon
+#
 }
 
 SOURCES += \
-    	main.cpp \
-        Application.cpp \
-        Controller/Controller.cpp \
-        View/View.cpp \
-        Model/Model.cpp
+    main.cpp \
+    engine/Application.cpp \
+    engine/state/State.cpp \
+    engine/state/StateFactory.cpp \
+    engine/state/StateStack.cpp \
+    engine/state/StateStackManager.cpp \
+    gameplay/states/RTSStateFactory.cpp \
+    gameplay/states/GameState/GameState.cpp \
+    gameplay/states/MVC/Controller.cpp \
+    gameplay/states/MVC/View.cpp \
+    gameplay/states/MVC/Model.cpp \
 
 HEADERS += \
-	Application.hpp \
-        Application.hpp \
-        Controller/Controller.hpp \
-        View/View.hpp \
-        Model/Model.hpp
+    engine/Application.hpp \
+    engine/state/State.hpp \
+    engine/state/StateFactory.hpp \
+    engine/state/StateStack.hpp \
+    engine/state/StateStackManager.hpp \
+    gameplay/states/RTSStateFactory.hpp \
+    gameplay/states/RTSStatesID.hpp \
+    gameplay/states/GameState/GameState.hpp \
+    gameplay/states/MVC/Controller.hpp \
+    gameplay/states/MVC/View.hpp \
+    gameplay/states/MVC/Model.hpp \
+    tools/Factory.hpp \
 
