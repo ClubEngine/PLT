@@ -8,7 +8,7 @@ DebugController::DebugController(ControllerHelper &helper)
 {
 }
 
-bool DebugController::processAuthoritativeMessage()
+bool DebugController::processAuthoritativeMessage(const NetworkMessage &msg)
 {
 	return true;
 }

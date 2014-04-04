@@ -7,10 +7,10 @@ AbstractState::AbstractState()
 }
 
 
-bool AbstractState::processController()
+bool AbstractState::processController(const NetworkMessage & msg)
 {
 	if (mController)
-		return mController->processAuthoritativeMessage();
+		return mController->processAuthoritativeMessage(msg);
 	return true;
 }
 

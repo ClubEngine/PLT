@@ -56,6 +56,16 @@ void NetInterface::send(const Command &command)
 	send(packet);
 }
 
+bool NetInterface::pollMsg(NetworkMessage &msg)
+{
+	sf::Packet packet;
+	if (getPacket(packet)) {
+		// msg packet
+		return true;
+	}
+	return false;
+}
+
 
 
 void NetInterface::run()

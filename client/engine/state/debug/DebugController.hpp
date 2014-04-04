@@ -1,13 +1,13 @@
 #ifndef DEBUGCONTROLLER_HPP
 #define DEBUGCONTROLLER_HPP
 
-#include "Engine.hpp"
+#include "../AbstractStateController.hpp"
 
 class DebugController : public AbstractStateController {
 	public:
 		DebugController(ControllerHelper & helper);
 		
-		virtual bool processAuthoritativeMessage();
+		virtual bool processAuthoritativeMessage(const NetworkMessage & msg);
 		
 		void exit();
 		

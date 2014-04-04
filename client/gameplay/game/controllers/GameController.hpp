@@ -14,7 +14,7 @@ class GameController : public AbstractStateController
 		void setModel(GameModel & model);
 		void setView(GameView & view);
 		
-		virtual bool processAuthoritativeMessage();
+		virtual bool processAuthoritativeMessage(const NetworkMessage & msg);
 		
 		void pause();
 		void moveUnits(const EntityVector & selectedEntities, const sf::Vector2f & target);

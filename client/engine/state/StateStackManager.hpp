@@ -30,7 +30,7 @@ class StateStackManager : private sf::NonCopyable
 						ViewHelper &viewHelper,
 				        ControllerHelper &controllerHelper);
 		
-		void processNetMsg();
+		void processNetMsg(const NetworkMessage &msg);
 		
 		/** Update all the states
 		  @param dt Time elapsed since the latest call

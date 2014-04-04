@@ -5,6 +5,8 @@
 #include <SFML/Network.hpp>
 #include "../../../common/commands/core/Command.hpp"
 
+#include "NetworkMessage.hpp"
+
 #define TIMEOUT_CONNECT 2
 
 class NetInterface : public sf::NonCopyable
@@ -21,6 +23,9 @@ class NetInterface : public sf::NonCopyable
 		// high level
 		
 		void send(const Command & command);
+		
+		bool pollMsg(NetworkMessage & msg);
+		
 		
 		~NetInterface();
 		

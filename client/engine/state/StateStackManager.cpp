@@ -20,13 +20,13 @@ void StateStackManager::setHelpers(ModelHelper &modelHelper, ViewHelper &viewHel
 
 
 
-void StateStackManager::processNetMsg()
+void StateStackManager::processNetMsg(const NetworkMessage & msg)
 {
 	// Iterate from top to bottom, stop as soon as handleEvent() returns false
 	for (StatePtrVector::reverse_iterator itr = mStack.rbegin();
 		 itr != mStack.rend(); ++itr)
 	{
-			if (!(*itr)->processController())
+			if (!(*itr)->processController(msg))
 					break;
 	}
 

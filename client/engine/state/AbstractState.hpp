@@ -26,7 +26,7 @@ class AbstractState : sf::NonCopyable
 		  Return false to stop states updating
 		*/
 		
-		bool processController();
+		bool processController(const NetworkMessage &msg);
 		bool updateModel(sf::Time dt);
 		bool processView(const sf::Event & event);
 		bool updateView(sf::Time dt);

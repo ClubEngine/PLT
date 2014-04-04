@@ -8,7 +8,7 @@ class AbstractStateController : sf::NonCopyable
 	public:
 		AbstractStateController(ControllerHelper & helper);
 		
-		virtual bool processAuthoritativeMessage() = 0;
+		virtual bool processAuthoritativeMessage(const NetworkMessage & msg) = 0;
 	
 	protected:
 		ControllerHelper & mHelper;

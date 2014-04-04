@@ -19,7 +19,7 @@ void PauseController::setView(PauseView &view)
 	mView = &view;
 }
 
-bool PauseController::processAuthoritativeMessage()
+bool PauseController::processAuthoritativeMessage(const NetworkMessage & msg)
 {	
 	return false;
 }

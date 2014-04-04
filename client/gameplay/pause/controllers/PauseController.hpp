@@ -13,7 +13,7 @@ class PauseController : public AbstractStateController
 		void setModel(PauseModel & model);
 		void setView(PauseView & view);
 		
-		virtual bool processAuthoritativeMessage();
+		virtual bool processAuthoritativeMessage(const NetworkMessage & msg);
 		
 		void resume();
 		void exit();

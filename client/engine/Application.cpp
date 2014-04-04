@@ -83,10 +83,10 @@ const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 	
 	void Application::processNetworkMessages()
 	{
-	//	NetMsg msg;
-	//	while (mNetwork.pollMsg(event)) {
-	//		mStateStackManager.processNetMsg(msg);
-	//	}
+		NetworkMessage msg;
+		while (mNetwork.pollMsg(msg)) {
+			mStateStackManager.processNetMsg(msg);
+		}
 	}
 	
 	void Application::updateModels(sf::Time dt)

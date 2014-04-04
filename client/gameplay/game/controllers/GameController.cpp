@@ -9,7 +9,7 @@ GameController::GameController(ControllerHelper & helper)
 	
 }
 
-bool GameController::processAuthoritativeMessage()
+bool GameController::processAuthoritativeMessage(const NetworkMessage & msg)
 {
 	
 //	{

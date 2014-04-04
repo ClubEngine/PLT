@@ -61,7 +61,8 @@ SOURCES += \
     engine/state/AbstractState.cpp \
     engine/rts/entity/EntityManager.cpp \
     engine/rts/entity/MovableEntity.cpp \
-    engine/rts/entity/Unit.cpp
+    engine/rts/entity/Unit.cpp \
+    engine/network/NetworkMessage.cpp
 
 HEADERS += \
     engine/TextureHolder.hpp \
@@ -69,7 +70,6 @@ HEADERS += \
     engine/SoundHolder.hpp \
     engine/Sounds.hpp \
     engine/state/States.hpp \
-    gameplay/TitleState.hpp \
     engine/state/AbstractStateFactory.hpp \
     engine/Application.hpp \
     engine/map.hpp \
@@ -117,5 +117,6 @@ HEADERS += \
     engine/rts/world/Map.hpp \
     engine/rts/entity/EntityManager.hpp \
     engine/rts/entity/MovableEntity.hpp \
-    engine/rts/entity/Unit.hpp
+    engine/rts/entity/Unit.hpp \
+    engine/network/NetworkMessage.hpp
 

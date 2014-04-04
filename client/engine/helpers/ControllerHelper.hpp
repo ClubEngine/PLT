@@ -33,9 +33,6 @@ class ControllerHelper : sf::NonCopyable
 		
 		void setStateStackManager(StateStackManager & ssM);
 	
-		void a();
-		
-		
 		StateStackManager * mSsM;
 		NetInterface * mNetwork;
 		

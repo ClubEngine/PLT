@@ -25,7 +25,7 @@ void ControllerHelper::requestStateClear()
 
 void ControllerHelper::sendToAuthoritativeController(const Command &command)
 {
-	mNetwork->send(command);	
+	mNetwork->send(command);
 }
 
 void ControllerHelper::requestStackPop()
