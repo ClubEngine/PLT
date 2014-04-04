@@ -41,7 +41,7 @@ const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 									  mViewHelper,
 									  mControllerHelper);
 		
-		mNetwork.init("localhost", 55001);
+		mNetwork.init("localhost", COMMON_PORT);
 	}
 	
 	void Application::pushState(States::ID id)

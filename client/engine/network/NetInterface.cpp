@@ -61,6 +61,7 @@ bool NetInterface::pollMsg(NetworkMessage &msg)
 	sf::Packet packet;
 	if (getPacket(packet)) {
 		// msg packet
+		packet >> msg.s;
 		return true;
 	}
 	return false;

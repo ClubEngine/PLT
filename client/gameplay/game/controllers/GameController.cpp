@@ -11,7 +11,7 @@ GameController::GameController(ControllerHelper & helper)
 
 bool GameController::processAuthoritativeMessage(const NetworkMessage & msg)
 {
-	
+	std::cout << msg.s << std::endl;
 //	{
 //		sf::Packet packet;
 //		bool hasone=false;

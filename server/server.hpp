@@ -16,6 +16,7 @@
 #include "commands/gameplay/CommandMove.hpp"
 #include "commands/gameplay/CommandBuild.hpp"
 
+#include "Common.hpp"
 
 
 // gere tout^^

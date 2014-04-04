@@ -9,4 +9,6 @@
 
 #include "network/Network.hpp"
 
+#define COMMON_PORT 55002
+
 #endif // COMMON_HPP

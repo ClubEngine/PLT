@@ -4,7 +4,7 @@ Server::Server()
     :running(true)
 {
     // Create a socket to listen to new connection
-    if (listener.listen(55001) != sf::Socket::Done)
+    if (listener.listen(COMMON_PORT) != sf::Socket::Done)
         exit(-1);
     listener.reuse();
     // Add the listener to the selector
@@ -70,7 +70,12 @@ void Server::listenClients()
                     sf::Packet packet;
                     if (socketClient.receive(packet) == sf::Socket::Done)
                     {
-
+						std::string s;
+						packet >> s;
+						std::cout << s << std::endl;
+						packet.clear();
+						packet << "HELLO WORLD";
+						socketClient.send(packet);
 
                     }
                     else
