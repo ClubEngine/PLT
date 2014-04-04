@@ -13,7 +13,7 @@ class <<<CC>>> : public AbstractStateController
 		void setModel(<<<CM>>> & model);
 		void setView(<<<CV>>> & view);
 		
-		virtual bool processAuthoritativeMessage();
+		virtual bool processAuthoritativeMessage(const NetworkMessage & msg);
 				
 	private:
 		<<<CV>>> * mView;

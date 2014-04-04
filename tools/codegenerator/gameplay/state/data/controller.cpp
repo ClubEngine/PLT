@@ -19,7 +19,7 @@ void <<<CC>>>::setView(<<<CV>>> &view)
 	mView = &view;
 }
 
-bool <<<CC>>>::processAuthoritativeMessage()
+bool <<<CC>>>::processAuthoritativeMessage(const NetworkMessage & msg)
 {	
 	return true;
 }
