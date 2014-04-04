@@ -21,10 +21,14 @@ void PauseView::setController(PauseController &controller)
 
 bool PauseView::processInputs(const sf::Event & event)
 {
-	if (event.type == sf::Event::KeyPressed &&
-		event.key.code == sf::Keyboard::P)
-	{
-		mController->resume();
+	if (event.type == sf::Event::KeyPressed) {
+		if (event.key.code == sf::Keyboard::P)
+		{
+			mController->resume();
+		} else if (event.key.code == sf::Keyboard::Escape)
+		{
+			mController->exit();
+		}
 	}
 	return false;
 }

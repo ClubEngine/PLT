@@ -15,6 +15,9 @@ class GameController : public AbstractStateController
 		void setView(GameView & view);
 		
 		virtual bool processAuthoritativeMessage();
+		
+		void pause();
+		void moveUnits(const EntityVector & selectedEntities, const sf::Vector2f & target);
 				
 	private:
 		//NetInterface netInterface;

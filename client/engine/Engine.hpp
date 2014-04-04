@@ -4,7 +4,7 @@
 #include <SFML/System/NonCopyable.hpp>
 
 #include "network/NetInterface.hpp"
-#include "entity/EntityManager.hpp"
+#include "rts/entity/EntityManager.hpp"
 
 #include "Graphics.hpp"
 #include "State.hpp"

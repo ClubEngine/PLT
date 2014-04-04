@@ -16,6 +16,7 @@ class PauseController : public AbstractStateController
 		virtual bool processAuthoritativeMessage();
 		
 		void resume();
+		void exit();
 				
 	private:
 		PauseView * mView;

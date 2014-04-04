@@ -36,6 +36,7 @@ bool GameController::processAuthoritativeMessage()
 	return false;
 }
 
+
 void GameController::setModel(GameModel &model)
 {
 	mModel = &model;
@@ -46,3 +47,13 @@ void GameController::setView(GameView &view)
 	mView = &view;
 }
 
+void GameController::pause()
+{
+	mHelper.requestStackPush(States::Pause);
+}
+
+void GameController::moveUnits(const EntityVector &selectedEntities, const sf::Vector2f &target)
+{
+	CommandMove command(selectedEntities, target);
+	mHelper.sendToAuthoritativeController(command);
+}

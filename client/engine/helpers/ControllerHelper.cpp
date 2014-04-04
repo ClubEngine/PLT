@@ -23,6 +23,11 @@ void ControllerHelper::requestStateClear()
 		mSsM->clearStates();
 }
 
+void ControllerHelper::sendToAuthoritativeController(const Command &command)
+{
+	mNetwork->send(command);	
+}
+
 void ControllerHelper::requestStackPop()
 {
 	if (mSsM)

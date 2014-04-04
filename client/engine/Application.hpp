@@ -36,6 +36,7 @@ namespace engine {
 			SoundHolder mSoundHolder;     
 			
 	        StateStackManager mStateStackManager;
+			NetInterface mNetwork;
 			
 			ModelHelper mModelHelper;
 		    ViewHelper mViewHelper;

@@ -2,8 +2,7 @@
 #define CONTROLLERHELPER_HPP
 
 #include <SFML/System.hpp>
-
-#include "../Context.hpp"
+#include "network/NetInterface.hpp"
 
 namespace engine {
 	class Application;
@@ -13,6 +12,7 @@ class StateStackManager;
 class AbstractStateController;
 
 #include "state/States.hpp"
+#include "MyStates.hpp"
 
 class ControllerHelper : sf::NonCopyable
 {
@@ -21,12 +21,13 @@ class ControllerHelper : sf::NonCopyable
 		void requestStackPush(States::ID stateID);
 		void requestStackPop();
 		void requestStateClear();
-		
+	
+		void sendToAuthoritativeController(const Command & command);
 	
 	private:
 		
 		friend class engine::Application;
-		friend class AbstractStateController;
+		//friend class AbstractStateController;
 		
 		ControllerHelper();		
 		
@@ -35,9 +36,8 @@ class ControllerHelper : sf::NonCopyable
 		void a();
 		
 		
-		Context * context;
-		
 		StateStackManager * mSsM;
+		NetInterface * mNetwork;
 		
 };
 

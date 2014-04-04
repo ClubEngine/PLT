@@ -35,10 +35,13 @@ const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 		mViewHelper.mTextureHolder = &mTextureHolder;
 		
 		mControllerHelper.setStateStackManager(mStateStackManager);
+		mControllerHelper.mNetwork = &mNetwork;
 		
 		mStateStackManager.setHelpers(mModelHelper,
 									  mViewHelper,
 									  mControllerHelper);
+		
+		mNetwork.init("localhost", 55001);
 	}
 	
 	void Application::pushState(States::ID id)

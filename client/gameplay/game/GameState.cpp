@@ -1,6 +1,5 @@
 #include "GameState.hpp"
-#include "engine/map.hpp"
-#include "engine/CordinatesHelper.hpp"
+#include "Rts.hpp"
 #include <iostream>
 #include <cmath>
 #include "gameplay/MyStates.hpp"

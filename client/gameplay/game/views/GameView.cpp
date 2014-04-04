@@ -1,5 +1,9 @@
 #include "GameView.hpp"
 
+#include "../models/GameModel.hpp"
+#include "../controllers/GameController.hpp"
+
+
 GameView::GameView(ViewHelper &helper)
 	: AbstractStateView(helper),
 	  mCamera(helper.getRenderTarget())
@@ -64,9 +68,9 @@ bool GameView::processInputs(const sf::Event & event)
 {
 //	sf::RenderWindow  window ;//= *getContext().window;
 	
-//    switch (event.type) {
-//    case sf::Event::MouseButtonPressed :
-//    {
+    switch (event.type) {
+    case sf::Event::MouseButtonPressed :
+    {
 //			if (event.mouseButton.button == sf::Mouse::Left) {
 //				mouseispressed = true;
 				
@@ -84,20 +88,20 @@ bool GameView::processInputs(const sf::Event & event)
 		
 //				selected.p1 = selected.i1;
 //				selected.p2 = selected.i2;
-//			} else if (event.mouseButton.button == sf::Mouse::Right) {
-//				const EntityVector & selectedEntities = entities.getAll(); // test with all
-//				sf::Vector2f target = window.mapPixelToCoords(
-//										  sf::Vector2i(event.mouseButton.x, 
-//													   event.mouseButton.y));
+//			} else 
+			if (event.mouseButton.button == sf::Mouse::Right) {
+				const EntityVector  selectedEntities;
+					// = entities.getAll(); // test with all
+				sf::Vector2f target = mHelper.getRenderTarget().mapPixelToCoords(
+										  sf::Vector2i(event.mouseButton.x, 
+													   event.mouseButton.y));
 				
-//				//mController.moveUnits(selectedEntities, target);
-//				//CommandMove command(selectedEntities, target);
-//				//netInterface.send(command);
-//				//cout << "MOVE send" << endl;
-//			}
+				mController->moveUnits(selectedEntities, target);
+				
+			}
 
-//        break;
-//    }
+        break;
+    }
 //    case sf::Event::MouseMoved :
 //    {
 //        if (mouseispressed){
@@ -134,12 +138,12 @@ bool GameView::processInputs(const sf::Event & event)
 
 //        break;
 //    }
-//    case sf::Event::KeyPressed :
-//    {
-//		if (event.key.code == sf::Keyboard::P)
-//		{
-//			//mController.ui.requestPause();// requestStackPush(States::Pause);
-//		}
+    case sf::Event::KeyPressed :
+    {
+		if (event.key.code == sf::Keyboard::P)
+		{
+			mController->pause();
+		}
 
 
 //        for (int i = selected.p1.x/Map::tileSize ; i < selected.p2.x/Map::tileSize ; i++)
@@ -207,11 +211,11 @@ bool GameView::processInputs(const sf::Event & event)
 //                }
 //            }
 //        }
-//        break;
-//    }
-//    default:
-//        break;
-//    }
+        break;
+    }
+    default:
+        break;
+    }
 	
 	mCamera.handleEvent(event);
 	

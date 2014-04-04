@@ -10,6 +10,7 @@
 class AbstractStateFactory;
 class AbstractState;
 
+#include "Helpers.hpp"
 
 /**
   Manage states of the application.

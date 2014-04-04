@@ -1,7 +1,5 @@
 #include "AbstractState.hpp"
 
-#include "engine/Context.hpp"
-#include "StateStackManager.hpp"
 
 AbstractState::AbstractState()
 	: mController(0), mModel(0), mView(0)

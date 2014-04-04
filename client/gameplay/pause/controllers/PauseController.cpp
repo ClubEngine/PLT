@@ -28,3 +28,8 @@ void PauseController::resume()
 {
 	mHelper.requestStackPop();
 }
+
+void PauseController::exit()
+{
+	mHelper.requestStateClear();
+}
