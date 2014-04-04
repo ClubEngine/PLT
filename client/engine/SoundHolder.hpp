@@ -8,23 +8,27 @@
 
 #include "Sounds.hpp"
 
-/** Manage sounds
-  */
-class SoundHolder
-{
-    public:
-        SoundHolder();
+namespace Engine {
 
-        void load(Sounds::ID id, const std::string & filename);
-        void play(Sounds::ID id);
+	/** Manage sounds
+	  */
+	class SoundHolder
+	{
+		public:
+			SoundHolder();
+	
+			void load(Sounds::ID id, const std::string & filename);
+			void play(Sounds::ID id);
+	
+			virtual ~SoundHolder();
+	
+		private:
+			typedef std::map<Sounds::ID, sf::SoundBuffer *> SoundMap;
+			SoundMap mSoundMap;
+			sf::Sound masterSound;
+			sf::Sound minorSound;
+	};
 
-        virtual ~SoundHolder();
-
-    private:
-        typedef std::map<Sounds::ID, sf::SoundBuffer *> SoundMap;
-        SoundMap mSoundMap;
-        sf::Sound masterSound;
-        sf::Sound minorSound;
-};
+}
 
 #endif // SOUNDHOLDER_HPP

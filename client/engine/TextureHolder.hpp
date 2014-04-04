@@ -9,26 +9,30 @@
 
 #include "Textures.hpp"
 
-/** Manage textures.
-  Avoid double resource.
-*/
-class TextureHolder : private sf::NonCopyable
-{
-	public:
-		TextureHolder();
-		
-		void load(Textures::ID id, const std::string & filename);
-		
-		sf::Texture & get(Textures::ID id);
-		const sf::Texture & get(Textures::ID id) const;
-		
-        virtual ~TextureHolder();
-		
-	private:
-		typedef std::map<Textures::ID, sf::Texture *> TextureMap;
-		TextureMap mTextureMap;
-		
-		sf::Texture mDefaultTexture;
-};
+namespace Engine {
+
+	/** Manage textures.
+	  Avoid double resource.
+	*/
+	class TextureHolder : private sf::NonCopyable
+	{
+		public:
+			TextureHolder();
+			
+			void load(Textures::ID id, const std::string & filename);
+			
+			sf::Texture & get(Textures::ID id);
+			const sf::Texture & get(Textures::ID id) const;
+			
+			virtual ~TextureHolder();
+			
+		private:
+			typedef std::map<Textures::ID, sf::Texture *> TextureMap;
+			TextureMap mTextureMap;
+			
+			sf::Texture mDefaultTexture;
+	};
+	
+}
 
 #endif // TEXTUREHOLDER_HPP

@@ -31,6 +31,9 @@ const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 		mWindow.setVerticalSyncEnabled(true);
 		
 		mViewHelper.mWindow = &mWindow;
+		mViewHelper.mSoundHolder = &mSoundHolder;
+		mViewHelper.mTextureHolder = &mTextureHolder;
+		
 		mControllerHelper.setStateStackManager(mStateStackManager);
 		
 		mStateStackManager.setHelpers(mModelHelper,

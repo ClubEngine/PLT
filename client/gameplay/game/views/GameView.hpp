@@ -32,8 +32,8 @@ class GameView : public AbstractStateView
 
 //        selected selected;
 
-//        int width, height;
-//        Map *map;
+        int width, height;
+        Map *map;
 
 //        sf::Texture grid;
 //        sf::Sprite gridsprite;
@@ -48,7 +48,7 @@ class GameView : public AbstractStateView
 //        sf::RectangleShape downseg;
 		
 		
-		//Camera camera;
+		Camera camera;
 };
 
 #endif // GAMEVIEW_HPP

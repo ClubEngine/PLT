@@ -3,8 +3,9 @@
 
 using namespace std;
 
+using namespace Engine;
 
-Map::Map(Context &context, int nbCols, int nbRows){
+Map::Map(Engine::TextureHolder & textures, int nbCols, int nbRows){
 
     nbcols = nbRows;
     nbrows = nbCols; // Oh ta gueule toi...
@@ -12,17 +13,17 @@ Map::Map(Context &context, int nbCols, int nbRows){
     matrix = (int*)malloc(sizeof(int)*nbrows*nbcols);
 
 
-    spriteHerbe.setTexture(context.textures->get(Textures::Mapping));
-    spriteTerre.setTexture(context.textures->get(Textures::Mapping));
-    spriteStone.setTexture(context.textures->get(Textures::Mapping));
-    spriteHTupleft.setTexture(context.textures->get(Textures::Mapping));
-    spriteHTupright.setTexture(context.textures->get(Textures::Mapping));
-    spriteHTdownleft.setTexture(context.textures->get(Textures::Mapping));
-    spriteHTdownright.setTexture(context.textures->get(Textures::Mapping));
-    spriteHTupseg.setTexture(context.textures->get(Textures::Mapping));
-    spriteHTdownseg.setTexture(context.textures->get(Textures::Mapping));
-    spriteHTleftseg.setTexture(context.textures->get(Textures::Mapping));
-    spriteHTrightseg.setTexture(context.textures->get(Textures::Mapping));
+    spriteHerbe.setTexture(textures.get(Textures::Mapping));
+    spriteTerre.setTexture(textures.get(Textures::Mapping));
+    spriteStone.setTexture(textures.get(Textures::Mapping));
+    spriteHTupleft.setTexture(textures.get(Textures::Mapping));
+    spriteHTupright.setTexture(textures.get(Textures::Mapping));
+    spriteHTdownleft.setTexture(textures.get(Textures::Mapping));
+    spriteHTdownright.setTexture(textures.get(Textures::Mapping));
+    spriteHTupseg.setTexture(textures.get(Textures::Mapping));
+    spriteHTdownseg.setTexture(textures.get(Textures::Mapping));
+    spriteHTleftseg.setTexture(textures.get(Textures::Mapping));
+    spriteHTrightseg.setTexture(textures.get(Textures::Mapping));
 
     spriteHerbe.setTextureRect(sf::IntRect(10*tileSize, 1*tileSize, tileSize, tileSize));
     spriteTerre.setTextureRect(sf::IntRect(3*tileSize, 4*tileSize, tileSize, tileSize));
@@ -52,12 +53,12 @@ void Map::setTile(int i, int j, int state){
     matrix[i*nbcols +j] = state;
 }
 
-void Map::DisplayTile(sf::RenderWindow* render_win, int i, int j, sf::Sprite sp){
+void Map::DisplayTile(sf::RenderTarget& render_win, int i, int j, sf::Sprite sp){
     sp.setPosition(i*tileSize, j*tileSize);
-    render_win->draw(sp);
+    render_win.draw(sp);
 }
 
-void Map::Display(sf::RenderWindow* render_win){
+void Map::Display(sf::RenderTarget &render_win){
 
     for(int i = 0; i<nbrows; i++){
         for(int j = 0; j<nbcols; j++){

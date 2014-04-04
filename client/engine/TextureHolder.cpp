@@ -1,44 +1,48 @@
 #include "TextureHolder.hpp"
 
-TextureHolder::TextureHolder()
-{
-	mDefaultTexture.create(32, 32);
-}
+namespace Engine {
 
-void TextureHolder::load(Textures::ID id, const std::string &filename)
-{
-	TextureMap::iterator it = mTextureMap.find(id);
-	if (it != mTextureMap.end()) {
-		delete it->second;
-		mTextureMap.erase(id);
+	TextureHolder::TextureHolder()
+	{
+		mDefaultTexture.create(32, 32);
 	}
 	
-	sf::Texture * texture = new sf::Texture();
-	if (texture->loadFromFile(filename))
-		mTextureMap[id] = texture;
-}
-
-sf::Texture &TextureHolder::get(Textures::ID id)
-{
-	TextureMap::iterator it = mTextureMap.find(id);
+	void TextureHolder::load(Textures::ID id, const std::string &filename)
+	{
+		TextureMap::iterator it = mTextureMap.find(id);
+		if (it != mTextureMap.end()) {
+			delete it->second;
+			mTextureMap.erase(id);
+		}
+		
+		sf::Texture * texture = new sf::Texture();
+		if (texture->loadFromFile(filename))
+			mTextureMap[id] = texture;
+	}
 	
-	if (it != mTextureMap.end())
-		return *it->second;
-	return mDefaultTexture;
-}
-
-const sf::Texture &TextureHolder::get(Textures::ID id) const
-{
-	TextureMap::const_iterator it = mTextureMap.find(id);
+	sf::Texture &TextureHolder::get(Textures::ID id)
+	{
+		TextureMap::iterator it = mTextureMap.find(id);
+		
+		if (it != mTextureMap.end())
+			return *it->second;
+		return mDefaultTexture;
+	}
 	
-	if (it != mTextureMap.end())
-		return *it->second;
-	return mDefaultTexture;
-}
+	const sf::Texture &TextureHolder::get(Textures::ID id) const
+	{
+		TextureMap::const_iterator it = mTextureMap.find(id);
+		
+		if (it != mTextureMap.end())
+			return *it->second;
+		return mDefaultTexture;
+	}
+	
+	TextureHolder::~TextureHolder()
+	{
+		for(TextureMap::iterator it = mTextureMap.begin();
+			it != mTextureMap.end(); ++it)
+			delete it->second;
+	}
 
-TextureHolder::~TextureHolder()
-{
-	for(TextureMap::iterator it = mTextureMap.begin();
-		it != mTextureMap.end(); ++it)
-		delete it->second;
 }

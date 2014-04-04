@@ -1,15 +1,16 @@
 #include "GameView.hpp"
 
 GameView::GameView(ViewHelper &helper)
-	: AbstractStateView(helper)
+	: AbstractStateView(helper),
+	  camera(helper.getRenderTarget())
 {
 	
-	//getContext().textures.load(Textures::Patate, "assets/images/patate.png");
-//    width = 400;//getContext().window->getSize().x;
-//    height = 300;//getContext().window->getSize().y;
+	helper.getTextureHolder().load(Textures::Patate, "assets/images/patate.png");
+    width = 400;//getContext().window->getSize().x;
+    height = 300;//getContext().window->getSize().y;
 
 //    //cerr << width/Map::tile_size << "," << height/Map::tile_size << endl;
-//    map = new Map(context, width/Map::tileSize, height/Map::tileSize);
+	map = new Map(helper.getTextureHolder(), width/Map::tileSize, height/Map::tileSize);
 //    //map = new Map(context, 20, 20);
 
 //    selection.setFillColor(sf::Color(255,0,0,63));
@@ -212,27 +213,27 @@ bool GameView::processInputs(const sf::Event & event)
 //        break;
 //    }
 	
-//	camera.handleEvent(event);
+	camera.handleEvent(event);
 	
 	return true;
 }
 
 bool GameView::update(sf::Time dt)
 {
-//	camera.update(dt);
+	camera.update(dt);
 	
 	return true;
 }
 
 void GameView::render()
 {
-//	sf::RenderWindow  window;// = *getContext().window;
+	sf::RenderTarget & target = getRenderTarget();
 
-//	window.setView(camera.getView());
+	target.setView(camera.getView());
 	
-//    window.clear(sf::Color::White);
+    target.clear(sf::Color::White);
 
-//    map->Display(getContext().window);
+    map->Display(target);
 	
 //	{
 //		sf::RectangleShape sprite(sf::Vector2f(32,32));
@@ -243,7 +244,7 @@ void GameView::render()
 //			const MovableEntity * mentity = dynamic_cast<const MovableEntity*>(*it);
 //			if (mentity != 0) {
 //				sprite.setPosition(mentity->getPosition());
-//				window.draw(sprite);
+//				target.draw(sprite);
 //			}
 //		}
 //	}

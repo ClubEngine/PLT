@@ -7,6 +7,8 @@
 
 namespace Engine{
 	class Application;
+	class TextureHolder;
+	class SoundHolder;
 }
 
 class ViewHelper : sf::NonCopyable
@@ -14,6 +16,7 @@ class ViewHelper : sf::NonCopyable
 	public:
 		
 		sf::RenderTarget & getRenderTarget() const;
+		Engine::TextureHolder & getTextureHolder() const;
 		
 		int a;
 	private:
@@ -22,6 +25,9 @@ class ViewHelper : sf::NonCopyable
 		ViewHelper();
 		
 		sf::RenderWindow * mWindow;
+		Engine::TextureHolder * mTextureHolder;
+		Engine::SoundHolder * mSoundHolder; 
+		
 		
 		
 };
