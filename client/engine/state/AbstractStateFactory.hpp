@@ -3,12 +3,9 @@
 
 #include "States.hpp"
 
-#include "State.hpp"
+#include "AbstractState.hpp"
 #include "debug/DebugState.hpp"
 
-
-class StateStackManager;
-class Context;
 
 class AbstractStateFactory
 {

@@ -29,20 +29,16 @@ debug {
 
 SOURCES += \
     main.cpp \
-    engine/TextureHolder.cpp \
-    engine/SoundHolder.cpp \
-    engine/state/State.cpp \
+    engine/graphics/TextureHolder.cpp \
+    engine/audio/SoundHolder.cpp \
     engine/state/AbstractStateFactory.cpp \
     engine/Context.cpp \
     engine/Application.cpp \
-    engine/map.cpp \
+    engine/rts/world/Map.cpp \
     gameplay/MyStateFactory.cpp \
-    engine/Camera.cpp \
-    entity/EntityManager.cpp \
-    entity/Unit.cpp \
+    engine/graphics/Camera.cpp \
     engine/network/NetInterface.cpp \
-    entity/MovableEntity.cpp \
-    engine/CordinatesHelper.cpp \
+    engine/rts/world/CoordinateHelper.cpp \
     gameplay/game/GameState.cpp \
     gameplay/game/views/GameView.cpp \
     gameplay/game/models/GameModel.cpp \
@@ -60,7 +56,12 @@ SOURCES += \
     gameplay/pause/PauseState.cpp \
     gameplay/pause/views/PauseView.cpp \
     gameplay/pause/models/PauseModel.cpp \
-    gameplay/pause/controllers/PauseController.cpp
+    gameplay/pause/controllers/PauseController.cpp \
+    gameplay/game/views/MapRenderer.cpp \
+    engine/state/AbstractState.cpp \
+    engine/rts/entity/EntityManager.cpp \
+    engine/rts/entity/MovableEntity.cpp \
+    engine/rts/entity/Unit.cpp
 
 HEADERS += \
     engine/TextureHolder.hpp \
@@ -68,19 +69,13 @@ HEADERS += \
     engine/SoundHolder.hpp \
     engine/Sounds.hpp \
     engine/state/States.hpp \
-    engine/state/State.hpp \
     gameplay/TitleState.hpp \
     engine/state/AbstractStateFactory.hpp \
-    engine/Context.hpp \
     engine/Application.hpp \
     engine/map.hpp \
     engine/state/DebugState.hpp \
     gameplay/MyStates.hpp \
     gameplay/MyStateFactory.hpp \
-    engine/Camera.hpp \
-    entity/EntityManager.hpp \
-    entity/Entity.hpp \
-    entity/Unit.hpp \
     engine/network/NetInterface.hpp \
     Log.hpp \
     entity/MovableEntity.hpp \
@@ -104,5 +99,23 @@ HEADERS += \
     gameplay/pause/PauseState.hpp \
     gameplay/pause/views/PauseView.hpp \
     gameplay/pause/models/PauseModel.hpp \
-    gameplay/pause/controllers/PauseController.hpp
+    gameplay/pause/controllers/PauseController.hpp \
+    gameplay/game/views/MapRenderer.hpp \
+    engine/state/AbstractState.hpp \
+    engine/helpers/Helpers.hpp \
+    engine/Helpers.hpp \
+    engine/Graphics.hpp \
+    engine/State.hpp \
+    engine/Audio.hpp \
+    engine/Rts.hpp \
+    engine/graphics/Camera.hpp \
+    engine/graphics/TextureHolder.hpp \
+    engine/graphics/Textures.hpp \
+    engine/audio/SoundHolder.hpp \
+    engine/audio/Sounds.hpp \
+    engine/rts/world/CoordinateHelper.hpp \
+    engine/rts/world/Map.hpp \
+    engine/rts/entity/EntityManager.hpp \
+    engine/rts/entity/MovableEntity.hpp \
+    engine/rts/entity/Unit.hpp
 

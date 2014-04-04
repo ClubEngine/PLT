@@ -8,7 +8,7 @@
 
 #include "Sounds.hpp"
 
-namespace Engine {
+namespace engine {
 
 	/** Manage sounds
 	  */

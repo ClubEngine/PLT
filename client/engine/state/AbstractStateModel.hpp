@@ -14,8 +14,10 @@ class AbstractStateModel : sf::NonCopyable
 		
 		virtual bool update(sf::Time dt) = 0;
 		
-	private:
+	protected:
 		ModelHelper & mHelper;
+	
+	private:
 };
 
 #endif // ABSTRACTSTATEMODEL_HPP

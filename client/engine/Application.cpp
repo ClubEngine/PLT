@@ -1,7 +1,7 @@
 #include "Application.hpp"
 
 using namespace std;
-namespace Engine {
+namespace engine {
 
 
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);

@@ -1,11 +1,11 @@
-#include "map.hpp"
+#include "Map.hpp"
 #include <iostream>
 
 using namespace std;
 
-using namespace Engine;
+using namespace engine;
 
-Map::Map(Engine::TextureHolder & textures, int nbCols, int nbRows){
+Map::Map(engine::TextureHolder & textures, int nbCols, int nbRows){
 
     nbcols = nbRows;
     nbrows = nbCols; // Oh ta gueule toi...

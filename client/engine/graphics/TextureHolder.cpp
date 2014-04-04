@@ -1,6 +1,6 @@
 #include "TextureHolder.hpp"
 
-namespace Engine {
+namespace engine {
 
 	TextureHolder::TextureHolder()
 	{

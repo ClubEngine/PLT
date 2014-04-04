@@ -6,12 +6,10 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "SoundHolder.hpp"
-#include "TextureHolder.hpp"
-#include "state/StateStackManager.hpp"
-#include "state/AbstractStateFactory.hpp"
+#include "Engine.hpp"
+#include "Audio.hpp"
 
-namespace Engine {
+namespace engine {
 
 	class Application
 	{
@@ -38,7 +36,6 @@ namespace Engine {
 			SoundHolder mSoundHolder;     
 			
 	        StateStackManager mStateStackManager;
-			
 			
 			ModelHelper mModelHelper;
 		    ViewHelper mViewHelper;

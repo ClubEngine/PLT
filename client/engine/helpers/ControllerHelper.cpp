@@ -1,11 +1,9 @@
 #include "ControllerHelper.hpp"
-
-
+#include "state/StateStackManager.hpp"
 
 ControllerHelper::ControllerHelper()
 {
 }
-
 
 void ControllerHelper::setStateStackManager(StateStackManager &ssM)
 {
@@ -13,19 +11,21 @@ void ControllerHelper::setStateStackManager(StateStackManager &ssM)
 }
 
 
+void ControllerHelper::requestStackPush(States::ID stateID)
+{
+	if (mSsM)
+		mSsM->pushState(stateID);
+}
 
+void ControllerHelper::requestStateClear()
+{
+	if (mSsM)
+		mSsM->clearStates();
+}
 
-//void State::requestStackPush(States::ID stateID)
-//{
-//	mStack.pushState(stateID);
-//}
+void ControllerHelper::requestStackPop()
+{
+	if (mSsM)
+		mSsM->popState();
+}
 
-//void State::requestStackPop()
-//{
-//	mStack.popState();
-//}
-
-//void State::requestStateClear()
-//{
-//	mStack.clearStates();
-//}

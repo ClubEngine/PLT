@@ -9,7 +9,8 @@ class DebugController : public AbstractStateController {
 		
 		virtual bool processAuthoritativeMessage();
 		
-		void resume();
+		void exit();
+		
 };
 
 #endif // DEBUGCONTROLLER_HPP

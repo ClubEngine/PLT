@@ -5,7 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace Engine{
+namespace engine{
 	class Application;
 	class TextureHolder;
 	class SoundHolder;
@@ -16,20 +16,18 @@ class ViewHelper : sf::NonCopyable
 	public:
 		
 		sf::RenderTarget & getRenderTarget() const;
-		Engine::TextureHolder & getTextureHolder() const;
+		engine::TextureHolder & getTextureHolder() const;
 		
 		int a;
 	private:
-		friend class Engine::Application;
+		friend class engine::Application;
 		
 		ViewHelper();
 		
 		sf::RenderWindow * mWindow;
-		Engine::TextureHolder * mTextureHolder;
-		Engine::SoundHolder * mSoundHolder; 
-		
-		
-		
+		engine::TextureHolder * mTextureHolder;
+		engine::SoundHolder * mSoundHolder; 
+			
 };
 
 #endif // VIEWHELPER_HPP

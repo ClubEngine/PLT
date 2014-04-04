@@ -2,7 +2,7 @@
 
 GameView::GameView(ViewHelper &helper)
 	: AbstractStateView(helper),
-	  camera(helper.getRenderTarget())
+	  mCamera(helper.getRenderTarget())
 {
 	
 	helper.getTextureHolder().load(Textures::Patate, "assets/images/patate.png");
@@ -213,23 +213,23 @@ bool GameView::processInputs(const sf::Event & event)
 //        break;
 //    }
 	
-	camera.handleEvent(event);
+	mCamera.handleEvent(event);
 	
 	return true;
 }
 
 bool GameView::update(sf::Time dt)
 {
-	camera.update(dt);
+	mCamera.update(dt);
 	
 	return true;
 }
 
 void GameView::render()
 {
-	sf::RenderTarget & target = getRenderTarget();
+	sf::RenderTarget & target = mHelper.getRenderTarget();
 
-	target.setView(camera.getView());
+	target.setView(mCamera.getView());
 	
     target.clear(sf::Color::White);
 

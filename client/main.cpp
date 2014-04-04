@@ -13,7 +13,7 @@ int main(int argc, char ** argv) {
 	
 	MyStateFactory factory;
 	//Gameplay gameplay;	
-	Engine::Application application(factory);
+	engine::Application application(factory);
 
 	//application.pushState(States::Title);
 	//application.pushState(States::Test);

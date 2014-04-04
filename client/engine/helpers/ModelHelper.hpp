@@ -3,7 +3,7 @@
 
 #include <SFML/System.hpp>
 
-namespace Engine{
+namespace engine{
 	class Application;
 }
 
@@ -12,7 +12,7 @@ class ModelHelper : sf::NonCopyable
 	public:
 
 	private:
-		friend class Engine::Application;
+		friend class engine::Application;
 		
 		ModelHelper();
 };

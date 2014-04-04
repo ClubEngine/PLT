@@ -1,7 +1,7 @@
 #ifndef DEBUGSTATE_HPP
 #define DEBUGSTATE_HPP
 
-#include "../State.hpp"
+#include "../AbstractState.hpp"
 #include "DebugController.hpp"
 
 class DebugState : public AbstractState

@@ -2,6 +2,7 @@
 #define GAMEVIEW_HPP
 
 #include "Gameplay.hpp"
+#include "MapRenderer.hpp"
 
 class GameModel;
 class GameController;
@@ -48,7 +49,10 @@ class GameView : public AbstractStateView
 //        sf::RectangleShape downseg;
 		
 		
-		Camera camera;
+		Camera mCamera;
+		
+		MapRenderer mMapRenderer;
+		
 };
 
 #endif // GAMEVIEW_HPP

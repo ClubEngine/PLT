@@ -22,10 +22,10 @@ class AbstractStateView : sf::NonCopyable
 		virtual void render() = 0;
 	
 	protected:
-		sf::RenderTarget & getRenderTarget() const;
+		ViewHelper & mHelper;
 	
 	private:
-		ViewHelper & mHelper;
+		
 };
 
 #endif // ABSTRACTSTATEVIEW_HPP

@@ -26,5 +26,5 @@ bool PauseController::processAuthoritativeMessage()
 
 void PauseController::resume()
 {
-	requestStackPop();
+	mHelper.requestStackPop();
 }

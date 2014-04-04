@@ -13,7 +13,7 @@ bool DebugController::processAuthoritativeMessage()
 	return true;
 }
 
-void DebugController::resume()
+void DebugController::exit()
 {
-	requestStateClear();
+	mHelper.requestStateClear();
 }

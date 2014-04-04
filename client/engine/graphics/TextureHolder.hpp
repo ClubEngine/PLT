@@ -9,7 +9,7 @@
 
 #include "Textures.hpp"
 
-namespace Engine {
+namespace engine {
 
 	/** Manage textures.
 	  Avoid double resource.

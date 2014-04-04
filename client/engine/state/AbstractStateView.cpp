@@ -5,7 +5,4 @@ AbstractStateView::AbstractStateView(ViewHelper &helper)
 {
 }
 
-sf::RenderTarget &AbstractStateView::getRenderTarget() const
-{
-	return mHelper.getRenderTarget();
-}
+

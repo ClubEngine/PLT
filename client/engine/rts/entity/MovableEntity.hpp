@@ -1,7 +1,7 @@
 #ifndef MOVABLEENTITY_HPP
 #define MOVABLEENTITY_HPP
 
-#include "../../common/entity/Entity.hpp"
+#include "Common.hpp"
 
 class MovableEntity : public Entity
 {

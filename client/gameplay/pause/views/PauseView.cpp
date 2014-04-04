@@ -36,7 +36,7 @@ bool PauseView::update(sf::Time dt)
 
 void PauseView::render()
 {
-	sf::RenderTarget & target = getRenderTarget();
+	sf::RenderTarget & target = mHelper.getRenderTarget();
 		
 	target.setView(target.getDefaultView());
 		

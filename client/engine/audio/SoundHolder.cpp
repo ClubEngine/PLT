@@ -1,6 +1,6 @@
 #include "SoundHolder.hpp"
 
-namespace Engine {
+namespace engine {
 
 	SoundHolder::SoundHolder()
 	{

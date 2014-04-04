@@ -1,20 +1,15 @@
-#ifndef STATE_HPP
-#define STATE_HPP
+#ifndef ABSTRACTSTATE_HPP
+#define ABSTRACTSTATE_HPP
 
 
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Event.hpp>
 
-#include "States.hpp"
-
-#include "engine/Context.hpp"
-#include "engine/TextureHolder.hpp"
 #include <SFML/Graphics.hpp>
 
 #include "AbstractStateModel.hpp"
 #include "AbstractStateView.hpp"
 #include "AbstractStateController.hpp"
-
 
 
 class StateStackManager;
@@ -50,4 +45,4 @@ class AbstractState : sf::NonCopyable
 		AbstractStateView * mView;
 };
 
-#endif // STATE_HPP
+#endif // ABSTRACTSTATE_HPP

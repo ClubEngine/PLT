@@ -29,5 +29,6 @@ HEADERS += commands/gameplay/CommandMove.hpp \
     commands/core/Command.hpp \
     entity/Entity.hpp \
     commands/gameplay/CommandBuild.hpp \
-    network/Network.hpp
+    network/Network.hpp \
+    Common.hpp
 

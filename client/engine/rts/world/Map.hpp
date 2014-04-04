@@ -2,15 +2,16 @@
 #define MAP_HPP
 
 #include <SFML/Graphics.hpp>
-#include "engine/TextureHolder.hpp"
-#include "engine/Context.hpp"
 
-typedef sf::Vector2i MapCordinates;
+#include "Graphics.hpp"
+
+
+typedef sf::Vector2i MapCoordinates;
 
 class Map
 {
     public:
-        Map(Engine::TextureHolder &textures, int nbcols, int nbrows);
+        Map(engine::TextureHolder &textures, int nbcols, int nbrows);
 
         int getTile(int i,int j);
         void setTile(int i,int j, int state);

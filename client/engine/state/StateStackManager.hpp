@@ -7,9 +7,8 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Event.hpp>
 
-#include "AbstractStateFactory.hpp"
-
-
+class AbstractStateFactory;
+class AbstractState;
 
 
 /**
@@ -71,7 +70,6 @@ class StateStackManager : private sf::NonCopyable
 		
 		StatePtrVector mStack;
 		PendingChangeVector mPendingList;
-	
 		
 		AbstractStateFactory & mFactory;
 		
